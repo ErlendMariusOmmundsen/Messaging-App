@@ -5,6 +5,6 @@ Welcome to IT1901 Fall 2019 course
 Lukas
 Brage
 Aleksander
-Erlend
+Erlend :)
  
 Good luck! 
