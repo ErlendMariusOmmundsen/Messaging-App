@@ -9,7 +9,14 @@
 plugins {
     // Apply the java-library plugin to add support for Java Library
     id 'java-library'
+    
+    // java application with main method
+	id 'application'
+	// use javafx modules
+    id 'org.openjfx.javafxplugin' version '0.0.8'
 }
+
+mainClassName = 'project.Test' // application plugin
 
 repositories {
     // Use jcenter for resolving your dependencies.
