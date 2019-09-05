@@ -1,5 +1,6 @@
 package project;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -18,6 +19,8 @@ public class Inbox_IO implements MailReader{
 		String file = new File("").getAbsolutePath() + "/project/src/main/jave/"+filename;
 		Scanner scanner;
 		
+		//List<Message> messages = new ArrayList<Message>();
+		
 		try {
 			String s = "";
 			scanner = new Scanner(new File(file));
@@ -26,17 +29,19 @@ public class Inbox_IO implements MailReader{
 			}
 			scanner.close();
 			if(s == "") {
-				return "No data";
+				return null;
 			}
 			else {
-				return s;
+				// Bare for å fjerne rød linje
+				return null;
 			}
 			
 		} catch (FileNotFoundException e) {
 			
 		}
-		
-		
+
+		// Bare for å fjerne rød linje
+		return null;
 	}
 
 	
