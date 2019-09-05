@@ -35,12 +35,34 @@
             </AnchorPane>
         </items>
       </SplitPane>
-      <PasswordField layoutX="170.0" layoutY="311.0" prefHeight="50.0" prefWidth="260.0" />
-      <TextField layoutX="170.0" layoutY="236.0" prefHeight="50.0" prefWidth="260.0" />
-      <Button layoutX="277.0" layoutY="403.0" mnemonicParsing="false" text="Login" />
+      <PasswordField layoutX="170.0" layoutY="311.0" prefHeight="50.0" prefWidth="260.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </PasswordField>
+      <TextField layoutX="170.0" layoutY="211.0" prefHeight="50.0" prefWidth="260.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <Button layoutX="273.0" layoutY="417.0" mnemonicParsing="false" text="Login">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
       <Label layoutX="200.0" layoutY="68.0" prefHeight="0.0" prefWidth="200.0" text="Welcome">
          <font>
             <Font size="46.0" />
+         </font>
+      </Label>
+      <Label layoutX="242.0" layoutY="177.0" prefHeight="26.0" prefWidth="115.0" text="E-mail address:">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="263.0" layoutY="277.0" prefHeight="26.0" prefWidth="74.0" text="Password:">
+         <font>
+            <Font size="16.0" />
          </font>
       </Label>
    </children>
