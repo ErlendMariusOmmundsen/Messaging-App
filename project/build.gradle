@@ -16,12 +16,21 @@ plugins {
     id 'org.openjfx.javafxplugin' version '0.0.8'
 }
 
-mainClassName = 'project.Test' // application plugin
+mainClassName = 'project.FxApp' // application plugin
+
+javafx {
+    version = "11.0.2"
+    modules = [ 'javafx.controls', 'javafx.fxml'  ]
+}
 
 repositories {
     // Use jcenter for resolving your dependencies.
     // You can declare any Maven/Ivy/file repository here.
     jcenter()
+    
+    maven {
+      url "https://plugins.gradle.org/m2/"
+    }
 }
 
 dependencies {
@@ -30,7 +39,9 @@ dependencies {
 
     // This dependency is used internally, and not exposed to consumers on their own compile classpath.
     implementation 'com.google.guava:guava:27.0.1-jre'
-
+		
     // Use JUnit test framework
     testImplementation 'junit:junit:4.12'
 }
+
+apply plugin: "org.openjfx.javafxplugin"
