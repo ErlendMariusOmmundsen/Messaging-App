@@ -19,6 +19,11 @@ public class appController {
 	@FXML private TextArea textArea;
 	@FXML private Button loginButton;
 	
+	private void login() {
+		loginPane.setVisible(false);
+		splitPane.setVisible(true);
+	}
+	
 	
 	
 }
