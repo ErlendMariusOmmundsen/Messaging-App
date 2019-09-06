@@ -11,8 +11,10 @@ public class Account {
 	private Inbox inbox;
 
 	public Account(String mail_address, String password) throws IllegalArgumentException{
-		setEmail_address(mail_address);
+		this.mail_address = mail_address;
+		//setEmail_address(mail_address);
 		this.password = password;
+		this.inbox = new Inbox(this);
 	}
 	
 	public void setInbox(final Inbox inbox) {

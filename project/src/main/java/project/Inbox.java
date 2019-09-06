@@ -10,7 +10,7 @@ public class Inbox{
 	private List<Message> messages = new ArrayList<>();
 	
 	public Inbox(Account account) {
-		setAccount(account);
+		this.account = account;
 	}
 	
 	private void setAccount(final Account account) {
@@ -24,10 +24,6 @@ public class Inbox{
 	
 	public Account getAccount() {
 		return this.account;
-	}
-	
-	
-	
-	
+	}	
 
 }

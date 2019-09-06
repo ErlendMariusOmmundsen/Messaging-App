@@ -28,10 +28,8 @@ public class Message {
 		return from;
 	}
 	
-	
-	
-	
-	
-	
+	public String toString() {
+		return this.getMessage();
+	}
 	
 }
