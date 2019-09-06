@@ -10,7 +10,7 @@ public class Account {
 	private String password;
 	private Inbox inbox;
 
-	public Account(String mail_address, String password) {
+	public Account(String mail_address, String password) throws IllegalArgumentException{
 		setEmail_address(mail_address);
 		this.password = password;
 	}
@@ -22,18 +22,18 @@ public class Account {
 		this.inbox = inbox;
 	}
 	
-	private void setEmail_address(String mail_address) {
+	private void setEmail_address(String mail_address) throws IllegalArgumentException{
 		String[] part = mail_address.split("\\."); //escaper "."
 		String[] buffer = part[1].split("@");
 		String nameL = this.name.toLowerCase();
 		if(part.length < 3) {
-			throw new IllegalArgumentException("Feil email format");
+			throw new IllegalArgumentException();
 		}
 		if(nameL.contains(part[0].toLowerCase()) && nameL.contains(buffer[0].toLowerCase()) && Arrays.asList(gyldigLKode).contains(part[2])) {
 			this.mail_address = mail_address;
 		}
 		else {
-			throw new IllegalArgumentException("Feil email format!");
+			throw new IllegalArgumentException();
 		}
 		
 	}
