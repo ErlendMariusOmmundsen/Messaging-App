@@ -3,6 +3,7 @@ package project;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.SplitPane;
 import javafx.scene.control.TextArea;
@@ -17,6 +18,7 @@ public class appController {
 	@FXML private TextField emailField;
 	@FXML private PasswordField passwordField;
 	@FXML private TextArea textArea;
+	@FXML private ListView inbox;
 	@FXML private Button loginButton;
 	
 	private void login() {
