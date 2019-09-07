@@ -46,7 +46,7 @@ public class Inbox_IO implements MailReader{
 	
 	@Override
 	public List<Message> getMessages(String filename) throws IOException{
-		String filepath = new File("").getAbsolutePath() + "\\" + filename;
+		String filepath = new File("").getAbsolutePath() + "\\src\\main\\resources\\project\\" + filename;
 		Scanner scanner = new Scanner(new File(filepath));
 		
 		List<Message> messages = new ArrayList<Message>();

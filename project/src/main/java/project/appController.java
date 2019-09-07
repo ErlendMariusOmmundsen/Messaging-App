@@ -31,7 +31,7 @@ public class appController {
 		splitPane.setVisible(true);
 	}
 	
-	private void loginCheck() {
+	public void loginCheck() {
 		String emailInput = emailField.getText();
 		String passwordInput = passwordField.getText();
 		ArrayList<String> users = new ArrayList<String>();
@@ -43,19 +43,18 @@ public class appController {
 		
 		for (int i = 0; i < users.size(); i++) {
 			String user = users.get(i);
-			String email = user.substring(0, user.indexOf(" "));
-			String password = user.substring(user.indexOf("/t"), -1);
+			String email = user.substring(0, user.indexOf("\t"));
+			String password = user.substring(user.indexOf("\t")).strip();
 			if (email.equals(emailInput) && password.equals(passwordInput)) {
 				loginVisibility();
-				break;
-			}
-			else {
-				errorLabel.setVisible(true);
+				return;
 			}
 		}
 		
-	}
-	
-	
+		// Dersom ingen brukere matcher
+		errorLabel.setText("Error: No username/password combination like that.");
+		errorLabel.setVisible(true);
+		
+	}	
 	
 }

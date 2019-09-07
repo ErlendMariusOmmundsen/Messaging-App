@@ -1,0 +1,2 @@
+lukasnt@ntnu.no		123
+test@hotmail.no	abc

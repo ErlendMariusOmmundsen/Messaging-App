@@ -11,7 +11,8 @@ import java.util.Scanner;
 public class appIO {
 	
 	public ArrayList<String> loadData(String filename) throws FileNotFoundException {
-		FileReader content = new FileReader(filename);
+		String filepath = new File("").getAbsolutePath() + "\\src\\main\\resources\\project\\" + filename;
+		FileReader content = new FileReader(filepath);
 		LineNumberReader count = new LineNumberReader(content);
 		int result = count.getLineNumber() + 1;
 		try {
@@ -23,7 +24,7 @@ public class appIO {
 		}
 		
 		ArrayList<String> table = new ArrayList<>();
-		Scanner scanner = new Scanner(new File(filename));
+		Scanner scanner = new Scanner(new File(filepath));
 		for (int i = 0; i < result-1; i++) {
 			table.add(scanner.nextLine().toString());
 		}

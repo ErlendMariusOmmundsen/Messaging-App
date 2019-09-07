@@ -10,10 +10,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane fx:controller="project.appController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="523.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="523.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.appController">
    <children>
-      <SplitPane visible="false" fx:id="splitPane" prefHeight="523.0" prefWidth="600.0">
+      <SplitPane fx:id="splitPane" prefHeight="523.0" prefWidth="600.0" visible="false">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
@@ -28,7 +27,7 @@
             </AnchorPane>
         </items>
       </SplitPane>
-      <AnchorPane fx:id="anchorPane" layoutX="170.0" layoutY="68.0">
+      <AnchorPane fx:id="loginPane" layoutX="170.0" layoutY="68.0">
          <children>
             <PasswordField fx:id="passwordField" layoutY="243.0" prefHeight="50.0" prefWidth="260.0">
                <font>
@@ -40,7 +39,7 @@
                   <Font size="14.0" />
                </font>
             </TextField>
-            <Button fx:id="loginButton" layoutX="103.0" layoutY="349.0" mnemonicParsing="false" text="Login">
+            <Button fx:id="loginButton" layoutX="103.0" layoutY="349.0" mnemonicParsing="false" onAction="#loginCheck" text="Login">
                <font>
                   <Font size="14.0" />
                </font>
@@ -58,6 +57,11 @@
             <Label fx:id="passwordLabel" layoutX="93.0" layoutY="209.0" prefHeight="26.0" prefWidth="74.0" text="Password:">
                <font>
                   <Font size="16.0" />
+               </font>
+            </Label>
+            <Label id="errorLabel" fx:id="errorLabel" layoutX="111.0" layoutY="311.0" text="Error: " textAlignment="CENTER" textFill="RED" visible="false">
+               <font>
+                  <Font size="14.0" />
                </font>
             </Label>
          </children>
