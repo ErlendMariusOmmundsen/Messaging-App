@@ -1,6 +1,7 @@
 package project;
 
 import java.util.List;
+import java.io.IOException;
 import java.util.ArrayList;
 
 
@@ -8,6 +9,7 @@ public class Inbox{
 	
 	private Account account;
 	private List<Message> messages = new ArrayList<>();
+	private Inbox_IO io = new Inbox_IO();
 	
 	public Inbox(Account account) {
 		this.account = account;
@@ -24,6 +26,15 @@ public class Inbox{
 	
 	public Account getAccount() {
 		return this.account;
-	}	
+	}
+	
+	public void loadMessages() throws IOException {
+		// I starten bare 1 felles Inbox, men etter hvert får hver account en inbox.
+		this.messages = io.getMessages("testInbox.txt");
+	}
+	
+	public List<Message> getMessages() {
+		return this.messages;
+	}
 
 }

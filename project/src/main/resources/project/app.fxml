@@ -16,13 +16,27 @@
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <ListView fx:id="inbox" layoutY="-1.0" prefHeight="522.0" prefWidth="200.0" />
+                  <ListView fx:id="inbox" layoutY="75.0" prefHeight="446.0" prefWidth="200.0" />
                   <Label fx:id="inboxLabel" layoutX="63.0" layoutY="14.0" prefHeight="34.0" prefWidth="74.0" text="Inbox">
                      <font>
                         <Font size="22.0" />
                      </font>
                   </Label>
-                  <TextArea fx:id="textArea" editable="false" layoutX="227.0" layoutY="84.0" prefHeight="355.0" prefWidth="338.0" />
+                  <TextArea fx:id="textArea" editable="false" layoutX="227.0" layoutY="84.0" prefHeight="355.0" prefWidth="338.0">
+                     <font>
+                        <Font size="14.0" />
+                     </font></TextArea>
+                  <Button layoutX="200.0" layoutY="450.0" mnemonicParsing="false" onAction="#displayMessage" text="Show message" />
+                  <Label fx:id="toLabel" layoutX="200.0" layoutY="50.0" prefHeight="20.0" prefWidth="150.0" text="To:">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="fromLabel" layoutX="400.0" layoutY="50.0" prefHeight="20.0" prefWidth="150.0" text="From: ">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
                </children>
             </AnchorPane>
         </items>
@@ -59,7 +73,7 @@
                   <Font size="16.0" />
                </font>
             </Label>
-            <Label id="errorLabel" fx:id="errorLabel" layoutX="111.0" layoutY="311.0" text="Error: " textAlignment="CENTER" textFill="RED" visible="false">
+            <Label id="errorLabel" fx:id="errorLabel" layoutX="10.0" layoutY="311.0" text="Error: " textAlignment="CENTER" textFill="RED" visible="false">
                <font>
                   <Font size="14.0" />
                </font>

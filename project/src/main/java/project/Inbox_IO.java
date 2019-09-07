@@ -56,7 +56,8 @@ public class Inbox_IO implements MailReader{
 			Account from = new Account(scanner.nextLine(), null);
 			String subject = scanner.nextLine();
 			String text = scanner.nextLine();
-			scanner.nextLine();
+			
+			if (scanner.hasNextLine()) scanner.nextLine();
 			
 			messages.add(new Message(subject, text, to, from));
 		}

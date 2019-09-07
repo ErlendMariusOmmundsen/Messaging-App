@@ -1,5 +1,6 @@
 package project;
 
+import java.io.IOException;
 import java.util.Arrays;
 
 public class Account {
@@ -52,7 +53,9 @@ public class Account {
 		return inbox;
 	}
 	
-	
+	public void loadInboxMessages() throws IOException {
+		inbox.loadMessages();
+	}
 	
 	
 	
