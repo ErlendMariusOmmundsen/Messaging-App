@@ -73,8 +73,7 @@ public class appController {
 		try {
 			currentAccount.loadInboxMessages();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println("Couldn't load new messages.");
 		}
 		
 		List<String> subjects = currentAccount.getInbox().getMessages().stream().map(m -> m.getSubject()).collect(Collectors.toList());
