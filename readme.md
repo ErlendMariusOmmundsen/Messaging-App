@@ -1,10 +1,11 @@
 # Group gr1922 repository 
  
-Welcome to IT1901 Fall 2019 course
+This link takes you to some mockups of the app: [](https://gitlab.stud.idi.ntnu.no/it1901/gr1922/gr1922/tree/master/project/Illustrations)
 
-Lukas - test
+Lukas 
 Brage
 Aleksander
-Erlend :)
+Erlend
+
+
  
-Good luck! 
