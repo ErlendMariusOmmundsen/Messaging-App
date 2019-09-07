@@ -7,3 +7,8 @@ lukasnt@ntnu.no
 123@hotmail.no
 testTilbake
 hallo der lukas
+
+eksempel@outlook.com
+123@hotmail.no
+Eksempel
+Dette er enda et eksempel
