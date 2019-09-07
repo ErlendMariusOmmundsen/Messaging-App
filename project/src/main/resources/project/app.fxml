@@ -29,16 +29,16 @@
       </SplitPane>
       <AnchorPane fx:id="loginPane" layoutX="170.0" layoutY="68.0">
          <children>
-            <PasswordField fx:id="passwordField" layoutY="243.0" prefHeight="50.0" prefWidth="260.0">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </PasswordField>
             <TextField fx:id="emailField" layoutY="143.0" prefHeight="50.0" prefWidth="260.0">
                <font>
                   <Font size="14.0" />
                </font>
             </TextField>
+            <PasswordField fx:id="passwordField" layoutY="243.0" prefHeight="50.0" prefWidth="260.0">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </PasswordField>
             <Button fx:id="loginButton" layoutX="103.0" layoutY="349.0" mnemonicParsing="false" onAction="#loginCheck" text="Login">
                <font>
                   <Font size="14.0" />
