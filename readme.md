@@ -56,7 +56,7 @@ The delete function is also in development.
 * **Aleksander** - *Domainlogic* - [aleksawk](https://gitlab.stud.idi.ntnu.no/aleksawk)
 * **Erlend** - *FXML og App-controller* - [erlenmom](https://gitlab.stud.idi.ntnu.no/erlenmom)
 
-## User Stories
+## User Stories 
 
 Nr. 1: "I want to login and read messages from other people."
 
