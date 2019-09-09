@@ -83,7 +83,9 @@ public class appController {
 	
 	public void displayMessage() {
 		int messageIndex = inbox.getSelectionModel().getSelectedIndex();
+		if (messageIndex == -1) return;
 		Message message = currentAccount.getInbox().getMessages().get(messageIndex); 
+
 		
 		textArea.setText("Subject: " + message.getSubject() + "\n\n" + message.getMessage());
 		toLabel.setText("To: " + message.getTo().getMail_address());

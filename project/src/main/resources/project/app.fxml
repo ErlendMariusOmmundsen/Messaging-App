@@ -10,13 +10,13 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="523.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.appController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="523.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.appController">
    <children>
       <SplitPane fx:id="splitPane" prefHeight="523.0" prefWidth="600.0" visible="false">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <ListView fx:id="inbox" layoutY="75.0" prefHeight="446.0" prefWidth="200.0" />
+                  <ListView fx:id="inbox" layoutY="75.0" onKeyReleased="#displayMessage" onMouseClicked="#displayMessage" prefHeight="446.0" prefWidth="200.0" />
                   <Label fx:id="inboxLabel" layoutX="63.0" layoutY="14.0" prefHeight="34.0" prefWidth="74.0" text="Inbox">
                      <font>
                         <Font size="22.0" />
@@ -26,7 +26,6 @@
                      <font>
                         <Font size="14.0" />
                      </font></TextArea>
-                  <Button layoutX="200.0" layoutY="450.0" mnemonicParsing="false" onAction="#displayMessage" text="Show message" />
                   <Label fx:id="toLabel" layoutX="227.0" layoutY="21.0" prefHeight="20.0" prefWidth="357.0" text="To:">
                      <font>
                         <Font size="14.0" />
