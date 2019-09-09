@@ -14,7 +14,6 @@ What things you need to install the software and how to install them
 ```
 Gradle
 Java
-Your preferred IDE (Eclipse, IntelliJ ect.)
 
 ```
 
@@ -58,6 +57,6 @@ The delete function is also in development.
 
 ## User Stories  
 
-Nr. 1: "I want to login and read messages from other people."
+Nr. 1: "As a human, i want to login and read messages from other people."
 
 
