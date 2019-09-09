@@ -14,83 +14,50 @@ What things you need to install the software and how to install them
 ```
 Gradle
 Java
+Your preferred IDE (Eclipse, IntelliJ ect.)
 
 ```
 
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
-
+Step 1: Clone the repository at: [Gitlab](https://gitlab.stud.idi.ntnu.no/it1901/gr1922/gr1922.git):
+		
+Step 2: Go to /project in CMD and write the command. For example:
+``` 
+C:\Users\AleksanderWestergaar\Desktop\Dokumenter\git2\gr1922> Gradle run 
+ 
 ```
-Give the example
-```
+Step 3: Use the pre-registered user to login. Email: eksempel@outlook.com | Password: eksempel
 
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
 
 ## Running the tests
 
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
+Step 1: Go to /project in CMD and write the command. For example:
+``` 
+C:\Users\AleksanderWestergaar\Desktop\Dokumenter\git2\gr1922> Gradle test 
+ 
 ```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
 
 ## Built With
 
 * [Gradle](https://docs.gradle.org/current/userguide/userguide.html) - Dependency Management
 
-## Roadmap
+## Project Status
 
-We plan on having a register user page
+We currently developing a "create account" page in the app.
+We also plan to implement the ability to send mail to another user using the system. 
+The delete function is also in development. 
 
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
 
 ## Authors
 
-* **Lukas** - *Hva gjorde du* - [lukasnt](https://gitlab.stud.idi.ntnu.no/lukasnt)
-* **Brage** - *Hva gjorde du* - [bragesc](https://gitlab.stud.idi.ntnu.no/bragesc)
-* **Aleksander** - *Hva gjorde du* - [aleksawk](https://gitlab.stud.idi.ntnu.no/aleksawk)
-* **Erlend** - *Hva gjorde du* - [erlenmom](https://gitlab.stud.idi.ntnu.no/erlenmom)
+* **Lukas** - *Gradle and IO  * - [lukasnt](https://gitlab.stud.idi.ntnu.no/lukasnt)
+* **Brage** - *Gradle, JUNIT tests* - [bragesc](https://gitlab.stud.idi.ntnu.no/bragesc)
+* **Aleksander** - *Domainlogic* - [aleksawk](https://gitlab.stud.idi.ntnu.no/aleksawk)
+* **Erlend** - *FXML og App-controller* - [erlenmom](https://gitlab.stud.idi.ntnu.no/erlenmom)
 
-## License
+## User Stories
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
-
+Nr. 1: "I want to login and read messages from other people."
 
 
