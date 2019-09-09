@@ -1,4 +1,6 @@
-# Group gr1922 repository 
+# Group gr1922 repository
+
+About the repository: The project is in /project. The domain logic is in /main/java/project and the tests in /src/test/project
 
 This is currently an offline messaging app for users of the same computer. 
 This link takes you to some mockups of the app: [Mockups](https://gitlab.stud.idi.ntnu.no/it1901/gr1922/gr1922/tree/master/project/Illustrations)
