@@ -12,7 +12,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="523.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.appController">
    <children>
-      <SplitPane fx:id="splitPane" prefHeight="523.0" prefWidth="600.0" visible="false">
+      <SplitPane fx:id="splitPane" prefHeight="523.0" prefWidth="600.0">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
@@ -27,12 +27,12 @@
                         <Font size="14.0" />
                      </font></TextArea>
                   <Button layoutX="200.0" layoutY="450.0" mnemonicParsing="false" onAction="#displayMessage" text="Show message" />
-                  <Label fx:id="toLabel" layoutX="200.0" layoutY="50.0" prefHeight="20.0" prefWidth="150.0" text="To:">
+                  <Label fx:id="toLabel" layoutX="227.0" layoutY="21.0" prefHeight="20.0" prefWidth="357.0" text="To:">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <Label fx:id="fromLabel" layoutX="400.0" layoutY="50.0" prefHeight="20.0" prefWidth="150.0" text="From: ">
+                  <Label fx:id="fromLabel" layoutX="227.0" layoutY="48.0" prefHeight="20.0" prefWidth="358.0" text="From: ">
                      <font>
                         <Font size="14.0" />
                      </font>
