@@ -22,10 +22,10 @@ Your preferred IDE (Eclipse, IntelliJ ect.)
 
 Step 1: Clone the repository at: [Gitlab](https://gitlab.stud.idi.ntnu.no/it1901/gr1922/gr1922.git):
 		
-Step 2: Go to /project in CMD and write the command. For example:
+Step 2: Go to /project in CMD and write the command. 
 ``` 
-C:\Users\AleksanderWestergaar\Desktop\Dokumenter\git2\gr1922> Gradle run 
- 
+gradle run 
+
 ```
 Step 3: Use the pre-registered user to login. Email: eksempel@outlook.com | Password: eksempel
 
@@ -34,7 +34,7 @@ Step 3: Use the pre-registered user to login. Email: eksempel@outlook.com | Pass
 
 Step 1: Go to /project in CMD and write the command. For example:
 ``` 
-C:\Users\AleksanderWestergaar\Desktop\Dokumenter\git2\gr1922> Gradle test 
+gradle test 
  
 ```
 
@@ -56,7 +56,7 @@ The delete function is also in development.
 * **Aleksander** - *Domainlogic* - [aleksawk](https://gitlab.stud.idi.ntnu.no/aleksawk)
 * **Erlend** - *FXML og App-controller* - [erlenmom](https://gitlab.stud.idi.ntnu.no/erlenmom)
 
-## User Stories 
+## User Stories  
 
 Nr. 1: "I want to login and read messages from other people."
 
