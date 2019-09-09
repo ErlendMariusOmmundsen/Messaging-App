@@ -2,7 +2,6 @@
 
 This is currently an offline messaging app for users of the same computer. 
 This link takes you to some mockups of the app: [Mockups](https://gitlab.stud.idi.ntnu.no/it1901/gr1922/gr1922/tree/master/project/Illustrations)
-Here is one of them: ![Mockup 1](https://gitlab.stud.idi.ntnu.no/it1901/gr1922/gr1922/blob/master/project/Illustrations/Illustration1.png)
 
 ## Getting Started
 
