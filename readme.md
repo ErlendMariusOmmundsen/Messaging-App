@@ -71,7 +71,9 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## Authors
 
-Lukas 
+**Lukas** - *Hva gjorde du* - 
+**Lukas** - *Hva gjorde du* - 
+**Lukas** - *Hva gjorde du* - 
 Brage
 Aleksander
 Erlend
