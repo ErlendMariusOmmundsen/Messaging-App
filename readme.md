@@ -12,7 +12,9 @@ These instructions will get you a copy of the project up and running on your loc
 What things you need to install the software and how to install them
 
 ```
-Give examples
+Gradle
+Java
+
 ```
 
 ### Installing
@@ -71,12 +73,11 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## Authors
 
-**Lukas** - *Hva gjorde du* - 
-**Lukas** - *Hva gjorde du* - 
-**Lukas** - *Hva gjorde du* - 
-Brage
-Aleksander
-Erlend
+**Lukas** - *Hva gjorde du* - [lukasnt](https://gitlab.stud.idi.ntnu.no/lukasnt)
+**Brage** - *Hva gjorde du* - [bragesc](https://gitlab.stud.idi.ntnu.no/bragesc)
+**Aleksander** - *Hva gjorde du* - [aleksawk](https://gitlab.stud.idi.ntnu.no/aleksawk)
+**Erlend** - *Hva gjorde du* - [erlenmom](https://gitlab.stud.idi.ntnu.no/erlenmom)
+
 
 * **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
 
