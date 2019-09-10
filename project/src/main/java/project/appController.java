@@ -29,15 +29,31 @@ public class appController {
 	@FXML private PasswordField passwordField;
 	@FXML private TextArea textArea;
 	@FXML private ListView<String> inbox;
-	@FXML private Button loginButton;
+	@FXML private Button loginButton, logoutButton;
 	
 	private appIO io = new appIO();
 	
 	private Account currentAccount;
 	
-	private void loginVisibility() {
+	private void appVisibility() {
 		loginPane.setVisible(false);
 		splitPane.setVisible(true);
+	}
+	private void loginVisibility() {
+		loginPane.setVisible(true);
+		splitPane.setVisible(false);
+	}
+	
+	/**
+	 * This method clears text in the app: Inbox, Textareas, other Labels, etc.
+	 */
+	private void clear() {
+		inbox.getItems().clear();
+		textArea.setText("");
+		toLabel.setText("To: ");
+		fromLabel.setText("From: ");
+		passwordField.setText("");
+		errorLabel.setText("");
 	}
 	
 	public void loginCheck() {
@@ -55,8 +71,9 @@ public class appController {
 			String email = user.substring(0, user.indexOf("\t"));
 			String password = user.substring(user.indexOf("\t")).strip();
 			if (email.equals(emailInput) && password.equals(passwordInput)) {
+				clear();
+				appVisibility();
 				this.currentAccount = new Account(email, password);
-				loginVisibility();
 				updateInbox();
 				return;
 			}
@@ -66,6 +83,12 @@ public class appController {
 		errorLabel.setText("Error: No username/password combination like that.");
 		errorLabel.setVisible(true);
 		
+	}
+	
+	public void logout() {
+		clear();
+		this.currentAccount = null;
+		loginVisibility();
 	}
 	
 	public void updateInbox() {
@@ -85,11 +108,9 @@ public class appController {
 		int messageIndex = inbox.getSelectionModel().getSelectedIndex();
 		if (messageIndex == -1) return;
 		Message message = currentAccount.getInbox().getMessages().get(messageIndex); 
-
 		
 		textArea.setText("Subject: " + message.getSubject() + "\n\n" + message.getMessage());
 		toLabel.setText("To: " + message.getTo().getMail_address());
 		fromLabel.setText("From: " + message.getFrom().getMail_address());
-		
 	}
 }
