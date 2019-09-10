@@ -29,7 +29,7 @@ public class appController {
 	@FXML private PasswordField passwordField;
 	@FXML private TextArea textArea;
 	@FXML private ListView<String> inbox;
-	@FXML private Button loginButton, logoutButton;
+	@FXML private Button loginButton, logoutButton, newMessageButton;
 	
 	private appIO io = new appIO();
 	
@@ -91,6 +91,15 @@ public class appController {
 		loginVisibility();
 	}
 	
+	/**
+	 * This method initializes the new message-screen for the user
+	 *
+	 */
+	public void initNewMessage() {
+		textArea.setText("");
+		textArea.setEditable(true);
+	}
+	
 	public void updateInbox() {
 		
 		try {
@@ -110,6 +119,7 @@ public class appController {
 		Message message = currentAccount.getInbox().getMessages().get(messageIndex); 
 		
 		textArea.setText("Subject: " + message.getSubject() + "\n\n" + message.getMessage());
+		textArea.setEditable(false);
 		toLabel.setText("To: " + message.getTo().getMail_address());
 		fromLabel.setText("From: " + message.getFrom().getMail_address());
 	}
