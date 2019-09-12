@@ -103,20 +103,39 @@ public class appController {
 	public void updateInbox() {
 		
 		try {
-			currentAccount.loadInboxMessages();
+			currentAccount.getInbox().loadMessages();
 		} catch (IOException e) {
 			System.out.println("Couldn't load new messages.");
 		}
 		
 		List<String> subjects = currentAccount.getInbox().getMessages().stream().map(m -> m.getSubject()).collect(Collectors.toList());
 		System.out.println(subjects);
+		System.out.println(currentAccount.getInbox().getMessages());
+		inbox.getItems().clear();
+		inbox.getItems().addAll(subjects);
+	}
+	
+	public void deleteMessage() {
+		int messageIndex = inbox.getSelectionModel().getSelectedIndex();
+		if (messageIndex == -1) return;
+		
+		currentAccount.getInbox().deleteMessage(messageIndex);
+		try {
+			currentAccount.getInbox().uploadInbox("");
+		} catch (IOException e) {
+			System.out.println("Couldn't edit the Inbox file");
+		}
+		//this.updateInbox();
+		List<String> subjects = currentAccount.getInbox().getMessages().stream().map(m -> m.getSubject()).collect(Collectors.toList());
+		System.out.println(subjects);
+		inbox.getItems().clear();
 		inbox.getItems().addAll(subjects);
 	}
 	
 	public void displayMessage() {
 		int messageIndex = inbox.getSelectionModel().getSelectedIndex();
 		if (messageIndex == -1) return;
-		Message message = currentAccount.getInbox().getMessages().get(messageIndex); 
+		Message message = currentAccount.getInbox().getMessage(messageIndex);
 		
 		textArea.setText("Subject: " + message.getSubject() + "\n\n" + message.getMessage());
 		textArea.setEditable(false);

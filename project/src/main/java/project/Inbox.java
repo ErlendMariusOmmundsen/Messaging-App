@@ -33,6 +33,18 @@ public class Inbox{
 		this.messages = io.getMessages("testInbox.txt");
 	}
 	
+	public void uploadInbox(String filename) throws IOException {
+		io.uploadInbox(this, "testInboxDelete.txt");
+	}
+	
+	public void deleteMessage(int messageIndex) {
+		this.messages.remove(messageIndex);
+	}
+	
+	public Message getMessage(int messageIndex) {
+		return this.messages.get(messageIndex);
+	}
+	
 	public List<Message> getMessages() {
 		return this.messages;
 	}

@@ -10,26 +10,11 @@ import java.util.Scanner;
 
 public class Inbox_IO implements MailReader{
 	
-	// Dette er en liten test som man kan kjøre i eclipse
-	// Skrive til test.txt og skriver ut alle meldingene i test.txt 
-	public static void main(String[] args) {
-		Inbox_IO io = new Inbox_IO();
-		try {
-			Account test = new Account("123@hotmail.no", "123");
-			Account lukas = new Account("lukasnt@ntnu.no", "123");
-			io.uploadMessage(new Message("test", "hallo", test, lukas), "test.txt");
-			List<Message> messages = io.getMessages("test.txt");
-			System.out.println(messages);
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (IllegalArgumentException e) {
-			e.printStackTrace();
-		}
-	}
+	public static final String resourceFilepath = new File("").getAbsolutePath() + "\\src\\main\\resources\\project\\";
 	
 	@Override
 	public void uploadMessage(Message message, String filename) throws IOException{
-		String filepath = new File("").getAbsolutePath() + "\\" + filename;
+		String filepath = resourceFilepath + filename;
 		FileWriter fr = new FileWriter(new File(filepath), true);
 		PrintWriter writer = new PrintWriter(fr);
 		
@@ -43,10 +28,17 @@ public class Inbox_IO implements MailReader{
 		writer.close();
 	}
 	
-	
+	@Override
+	public void uploadInbox(Inbox inbox, String filename) throws IOException {
+		this.clearFile(filename);
+		for (Message message : inbox.getMessages()) {
+			this.uploadMessage(message, filename);
+		}
+	}
+
 	@Override
 	public List<Message> getMessages(String filename) throws IOException{
-		String filepath = new File("").getAbsolutePath() + "\\src\\main\\resources\\project\\" + filename;
+		String filepath = resourceFilepath + filename;
 		Scanner scanner = new Scanner(new File(filepath));
 		
 		List<Message> messages = new ArrayList<Message>();
@@ -65,4 +57,10 @@ public class Inbox_IO implements MailReader{
 		return messages;
 	}
 	
+	private void clearFile(String filename) throws IOException {
+		String filepath = resourceFilepath + filename;
+		PrintWriter writer = new PrintWriter(new File(filepath));
+		writer.print("");
+		writer.close();
+	}
 }

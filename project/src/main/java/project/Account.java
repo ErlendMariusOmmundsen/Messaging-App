@@ -53,10 +53,4 @@ public class Account {
 		return inbox;
 	}
 	
-	public void loadInboxMessages() throws IOException {
-		inbox.loadMessages();
-	}
-	
-	
-	
 }
