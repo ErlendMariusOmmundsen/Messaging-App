@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Scanner;
 
-public class Inbox_IO implements MailReader{
+public class InboxIO implements MailReader{
 	
 	public static final String resourceFilepath = new File("").getAbsolutePath() + "\\src\\main\\resources\\project\\";
 	
