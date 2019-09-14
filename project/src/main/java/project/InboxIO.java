@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public class InboxIO implements MailReader{
 	
-	public static final String resourceFilepath = new File("").getAbsolutePath() + "\\src\\main\\resources\\project\\";
+	public static final String resourceFilepath = new File("").getAbsolutePath() + "\\src\\main\\resources\\project\\io\\inbox\\";
 	
 	@Override
 	public void uploadMessage(Message message, String filename) throws IOException{
@@ -22,7 +22,7 @@ public class InboxIO implements MailReader{
 		writer.println(message.getFrom().getMail_address());
 		writer.println(message.getSubject());
 		writer.println(message.getMessage());
-		writer.println("");
+		writer.println();
 		
 		writer.flush();
 		writer.close();

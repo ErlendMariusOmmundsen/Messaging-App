@@ -1,7 +1,5 @@
 package project;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
@@ -62,6 +60,10 @@ public class Account {
 		return inbox;
 	}
 	
+	public void createAccount() throws IOException, IllegalStateException {
+		
+	}
+	
 	/**
 	 * 
 	 * @return true if the email adress of this account exists in the system, else return false.
@@ -93,13 +95,17 @@ public class Account {
 	}
 	
 	/**
-	 * 
-	 * @param message, the message to be sent.
-	 * @param to, the account to send it to.
+	 * This account sends a message to another account. This is an transaction with the system.
+	 * @param message - The message to be sent.
+	 * @param to - The account to send the message to.
+	 * @throws IOException If something goes wrong reading or writing to the system.
+	 * @throws IllegalStateException If not both of the accounts exists in the system.
 	 */
-	public void sendMessage(Message message, Account to) {
-		Inbox toInbox = to.getInbox();
-		toInbox.addMessage(message);
-		
+	public void sendMessage(Message message, Account to) throws IOException, IllegalStateException {
+		if (this.exists() && to.exists()) {
+			to.getInbox().uploadMessage(message);
+		} else {
+			throw new IllegalStateException("The accounts in the transaction needs to exist in the system");
+		}
 	}
 }

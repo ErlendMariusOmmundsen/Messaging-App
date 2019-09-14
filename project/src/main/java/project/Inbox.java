@@ -11,8 +11,11 @@ public class Inbox{
 	private List<Message> messages = new ArrayList<>();
 	private InboxIO io = new InboxIO();
 	
+	private String inboxFilename;
+	
 	public Inbox(Account account) {
 		this.account = account;
+		this.inboxFilename = this.getAccount().getMail_address() + ".txt";
 	}
 	
 	private void setAccount(final Account account) {
@@ -30,11 +33,15 @@ public class Inbox{
 	
 	public void loadMessages() throws IOException {
 		// I starten bare 1 felles Inbox, men etter hvert får hver account en inbox.
-		this.messages = io.getMessages("testInbox.txt");
+		this.messages = io.getMessages(this.inboxFilename);
 	}
 	
 	public void uploadInbox() throws IOException {
-		io.uploadInbox(this, "testInboxDelete.txt");
+		io.uploadInbox(this, this.inboxFilename);
+	}
+	
+	public void uploadMessage(Message message) throws IOException, IllegalStateException {			
+		io.uploadMessage(message, this.inboxFilename);
 	}
 	
 	public void deleteMessage(int messageIndex) {

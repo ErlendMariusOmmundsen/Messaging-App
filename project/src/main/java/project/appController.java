@@ -1,14 +1,9 @@
 package project;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import javafx.beans.Observable;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -18,18 +13,17 @@ import javafx.scene.control.SplitPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import javafx.util.Callback;
 
 public class appController {
 	
 	@FXML private AnchorPane loginPane;
 	@FXML private SplitPane splitPane;
 	@FXML private Label inboxLabel, welcomeLabel, emailLabel, errorLabel, toLabel, fromLabel;
-	@FXML private TextField emailField;
+	@FXML private TextField emailField, toField, fromField, subjectField;
 	@FXML private PasswordField passwordField;
 	@FXML private TextArea textArea;
 	@FXML private ListView<String> inbox;
-	@FXML private Button loginButton, logoutButton, newMessageButton;
+	@FXML private Button loginButton, logoutButton, newMessageButton, sendButton;
 	
 	private appIO io = new appIO();
 	
@@ -52,7 +46,7 @@ public class appController {
 	}
 	
 	/**
-	 * This method clears text in the app: Inbox, Textareas, other Labels, etc.
+	 * This method clears text in the app: Inbox, Textareas, TextFields, other Labels, etc.
 	 */
 	private void clear() {
 		inbox.getItems().clear();
@@ -61,6 +55,9 @@ public class appController {
 		fromLabel.setText("From: ");
 		passwordField.setText("");
 		errorLabel.setText("");
+		toField.setText("");
+		fromField.setText("");
+		subjectField.setText("");
 	}
 	
 	/**
@@ -89,7 +86,7 @@ public class appController {
 	}
 	
 	/**
-	 * logs this account out, and return back to the login menu.
+	 * logs this account out, and returns back to the login menu.
 	 */
 	public void logout() {
 		clear();
@@ -99,11 +96,38 @@ public class appController {
 	
 	/**
 	 * This method initializes the new message-screen for the user
-	 *
+	 * 
+	 * (Not done)
 	 */
 	public void initNewMessage() {
 		textArea.setText("");
+		toField.setText("");
+		fromField.setText("");
+		subjectField.setText("");
 		textArea.setEditable(true);
+	}
+	
+	/**
+	 * Sends the message with the current information filled in.
+	 */
+	public void sendMessage() {
+		Account toAccount = new Account(toField.getText());
+		String subject = subjectField.getText();
+		String text = textArea.getText();
+		Message message = new Message(subject , text, toAccount, currentAccount);
+		
+		try {
+			currentAccount.sendMessage(message, toAccount);
+		} catch (IllegalStateException e) {
+			System.out.println(e.getMessage());
+		} catch (IOException e) {
+			System.out.println(e.getMessage());
+		}
+		
+		// Bare for å teste
+		updateInbox();
+		
+		System.out.println("Message sent");
 	}
 	
 	/**
@@ -139,6 +163,7 @@ public class appController {
 		} catch (IOException e) {
 			System.out.println("Couldn't edit the Inbox file");
 		}
+		
 		//this.updateInbox();
 		List<String> subjects = currentAccount.getInbox().getMessages().stream().map(m -> m.getSubject()).collect(Collectors.toList());
 		System.out.println(subjects);
@@ -155,9 +180,10 @@ public class appController {
 		if (messageIndex == -1) return;
 		Message message = currentAccount.getInbox().getMessage(messageIndex);
 		
-		textArea.setText("Subject: " + message.getSubject() + "\n\n" + message.getMessage());
+		textArea.setText(message.getMessage());
 		textArea.setEditable(false);
-		toLabel.setText("To: " + message.getTo().getMail_address());
-		fromLabel.setText("From: " + message.getFrom().getMail_address());
+		toField.setText(message.getTo().getMail_address());
+		fromField.setText(message.getFrom().getMail_address());
+		subjectField.setText(message.getSubject());
 	}
 }

@@ -22,27 +22,44 @@
                         <Font size="22.0" />
                      </font>
                   </Label>
-                  <TextArea fx:id="textArea" editable="false" layoutX="227.0" layoutY="84.0" prefHeight="355.0" prefWidth="338.0">
+                  <TextArea fx:id="textArea" editable="false" layoutX="227.0" layoutY="100.0" prefHeight="325.0" prefWidth="350.0">
                      <font>
                         <Font size="14.0" />
                      </font></TextArea>
-                  <Label fx:id="toLabel" layoutX="227.0" layoutY="21.0" prefHeight="20.0" prefWidth="357.0" text="To:">
+                  <Label fx:id="toLabel" layoutX="225.0" layoutY="20.0" prefHeight="20.0" prefWidth="357.0" text="To:">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <Label fx:id="fromLabel" layoutX="227.0" layoutY="48.0" prefHeight="20.0" prefWidth="358.0" text="From: ">
+                  <Label fx:id="fromLabel" layoutX="225.0" layoutY="50.0" prefHeight="20.0" prefWidth="358.0" text="From: ">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
+                  <Label layoutX="225.0" layoutY="75.0" text="Subject: ">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="toField" layoutX="275.0" layoutY="10.0" />
+                  <TextField fx:id="fromField" layoutX="275.0" layoutY="40.0" />
+                  <TextField fx:id="subjectField" layoutX="275.0" layoutY="70.0" />
                   <Button fx:id="logoutButton" layoutX="525.0" layoutY="10.0" mnemonicParsing="false" onAction="#logout" text="Log out" />
                   <Button fx:id="newMessageButton" layoutX="225.0" layoutY="450.0" mnemonicParsing="false" onAction="#initNewMessage" text="+">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Button>
-                  <Button fx:id="deleteButton" layoutX="300.0" layoutY="450.0" mnemonicParsing="false" onAction="#deleteMessage" text="Delete message" />
+                  <Button fx:id="sendButton" layoutX="300.0" layoutY="450.0" mnemonicParsing="false" onAction="#sendMessage" text="Send Message">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="deleteButton" layoutX="400.0" layoutY="450.0" mnemonicParsing="false" onAction="#deleteMessage" text="Delete message">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
                </children>
             </AnchorPane>
         </items>
