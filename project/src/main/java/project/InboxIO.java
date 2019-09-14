@@ -54,6 +54,7 @@ public class InboxIO implements MailReader{
 			messages.add(new Message(subject, text, to, from));
 		}
 		
+		scanner.close();
 		return messages;
 	}
 	

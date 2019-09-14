@@ -9,7 +9,7 @@ public class Inbox{
 	
 	private Account account;
 	private List<Message> messages = new ArrayList<>();
-	private Inbox_IO io = new Inbox_IO();
+	private InboxIO io = new InboxIO();
 	
 	public Inbox(Account account) {
 		this.account = account;
@@ -33,12 +33,16 @@ public class Inbox{
 		this.messages = io.getMessages("testInbox.txt");
 	}
 	
-	public void uploadInbox(String filename) throws IOException {
+	public void uploadInbox() throws IOException {
 		io.uploadInbox(this, "testInboxDelete.txt");
 	}
 	
 	public void deleteMessage(int messageIndex) {
 		this.messages.remove(messageIndex);
+	}
+	
+	public void addMessage(Message message) {
+		this.messages.add(message);
 	}
 	
 	public Message getMessage(int messageIndex) {
