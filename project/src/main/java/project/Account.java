@@ -1,7 +1,10 @@
 package project;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.List;
 
 public class Account {
 	
@@ -10,12 +13,18 @@ public class Account {
 	private String mail_address;
 	private String password;
 	private Inbox inbox;
-
-	public Account(String mail_address, String password) throws IllegalArgumentException{
+	
+	private appIO io = new appIO();
+	
+	public Account(String mail_address) {
 		this.mail_address = mail_address;
+		this.inbox = new Inbox(this);
+	}
+	
+	public Account(String mail_address, String password) throws IllegalArgumentException{
+		this(mail_address);
 		//setEmail_address(mail_address);
 		this.password = password;
-		this.inbox = new Inbox(this);
 	}
 	
 	public void setInbox(final Inbox inbox) {
@@ -53,4 +62,34 @@ public class Account {
 		return inbox;
 	}
 	
+	public boolean exists() throws IOException {
+		return new appIO().loadData(appIO.usersFilename).stream()
+				.map(acc -> acc.getMail_address())
+				.anyMatch(email -> this.mail_address.equals(email));
+	}
+	
+	public boolean isValid() throws IOException {
+		List<Account> validAccounts;
+		try {			
+			validAccounts = io.loadData(appIO.usersFilename);
+		} catch (IOException e) {
+			throw new IOException("Couldn't access user files");
+		}
+		
+		validAccounts.stream().forEach(acc -> System.out.println(acc.getMail_address() + ", " + acc.getPassword()));
+		
+		return validAccounts.stream()
+			.anyMatch(acc -> this.password.equals(acc.getPassword()) 
+					      && this.mail_address.equals(acc.getMail_address()));
+	}
+	
+	public boolean sendMessage(Message message, Account to) throws IOException {
+		if (to.exists()) {			
+			Inbox toInbox = to.getInbox();
+			toInbox.addMessage(message);
+			toInbox.uploadInbox();
+			return true;
+		}
+		return false;
+	}
 }

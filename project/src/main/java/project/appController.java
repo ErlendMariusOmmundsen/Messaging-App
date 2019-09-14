@@ -59,29 +59,22 @@ public class appController {
 	public void loginCheck() {
 		String emailInput = emailField.getText();
 		String passwordInput = passwordField.getText();
-		ArrayList<String> users = new ArrayList<String>();
+		Account account = new Account(emailInput, passwordInput);
 		try {
-			users = io.loadData("users.txt");
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
-		
-		for (int i = 0; i < users.size(); i++) {
-			String user = users.get(i);
-			String email = user.substring(0, user.indexOf("\t"));
-			String password = user.substring(user.indexOf("\t")).strip();
-			if (email.equals(emailInput) && password.equals(passwordInput)) {
+			if (account.isValid()) {
+				currentAccount = account;
 				clear();
 				appVisibility();
-				this.currentAccount = new Account(email, password);
 				updateInbox();
-				return;
 			}
+			else {
+				errorLabel.setText("Error: No username/password combination like that.");
+				errorLabel.setVisible(true);
+			}
+		} catch (IOException e) {
+			errorLabel.setText("Error: " + e.getMessage());
+			errorLabel.setVisible(true);
 		}
-		
-		// Dersom ingen brukere matcher
-		errorLabel.setText("Error: No username/password combination like that.");
-		errorLabel.setVisible(true);
 		
 	}
 	
@@ -121,13 +114,14 @@ public class appController {
 		
 		currentAccount.getInbox().deleteMessage(messageIndex);
 		try {
-			currentAccount.getInbox().uploadInbox("");
+			currentAccount.getInbox().uploadInbox();
 		} catch (IOException e) {
 			System.out.println("Couldn't edit the Inbox file");
 		}
 		//this.updateInbox();
 		List<String> subjects = currentAccount.getInbox().getMessages().stream().map(m -> m.getSubject()).collect(Collectors.toList());
 		System.out.println(subjects);
+		System.out.println(currentAccount.getInbox().getMessages());
 		inbox.getItems().clear();
 		inbox.getItems().addAll(subjects);
 	}

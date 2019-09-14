@@ -10,9 +10,14 @@ import java.util.Scanner;
 
 public class appIO {
 	
-	public ArrayList<String> loadData(String filename) throws FileNotFoundException {
-		String filepath = new File("").getAbsolutePath() + "\\src\\main\\resources\\project\\" + filename;
+	public static final String usersFilename = "users.txt";
+	public static final String resourceFilepath = new File("").getAbsolutePath() + "\\src\\main\\resources\\project\\";
+	
+	public ArrayList<Account> loadData(String filename) throws IOException {
+		String filepath = appIO.resourceFilepath + filename;
 		FileReader content = new FileReader(filepath);
+		
+		// Counts the lines
 		LineNumberReader count = new LineNumberReader(content);
 		int result = count.getLineNumber() + 1;
 		try {
@@ -23,14 +28,19 @@ public class appIO {
 			e.printStackTrace();
 		}
 		
-		ArrayList<String> table = new ArrayList<>();
+		// Read the lines to list of Account objects
+		ArrayList<Account> accounts = new ArrayList<>();
 		Scanner scanner = new Scanner(new File(filepath));
 		for (int i = 0; i < result-1; i++) {
-			table.add(scanner.nextLine().toString());
+			String[] data = scanner.nextLine().toString().split("\t");
+			String email = data[0];
+			String password = data[1];
+			Account account = new Account(email, password);
+			accounts.add(account);
 		}
 		scanner.close();
-		return table;
-		
+		return accounts;
 		
 	}
+	
 }
