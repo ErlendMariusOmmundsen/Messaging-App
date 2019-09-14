@@ -57,17 +57,28 @@ public class Account {
 	public String getPassword() {
 		return this.password;
 	}
-
+	
 	public Inbox getInbox() {
 		return inbox;
 	}
 	
+	/**
+	 * 
+	 * @return true if the email adress of this account exists in the system, else return false.
+	 * @throws IOException if the io can't read from the system
+	 */
 	public boolean exists() throws IOException {
 		return new appIO().loadData(appIO.usersFilename).stream()
 				.map(acc -> acc.getMail_address())
 				.anyMatch(email -> this.mail_address.equals(email));
 	}
 	
+	
+	/**
+	 * 
+	 * @return true if the email/password combination of this account exists in the system, else return false.
+	 * @throws IOException if the io can't read from the system.
+	 */
 	public boolean isValid() throws IOException {
 		List<Account> validAccounts;
 		try {			
@@ -76,20 +87,19 @@ public class Account {
 			throw new IOException("Couldn't access user files");
 		}
 		
-		validAccounts.stream().forEach(acc -> System.out.println(acc.getMail_address() + ", " + acc.getPassword()));
-		
 		return validAccounts.stream()
 			.anyMatch(acc -> this.password.equals(acc.getPassword()) 
 					      && this.mail_address.equals(acc.getMail_address()));
 	}
 	
-	public boolean sendMessage(Message message, Account to) throws IOException {
-		if (to.exists()) {			
-			Inbox toInbox = to.getInbox();
-			toInbox.addMessage(message);
-			toInbox.uploadInbox();
-			return true;
-		}
-		return false;
+	/**
+	 * 
+	 * @param message, the message to be sent.
+	 * @param to, the account to send it to.
+	 */
+	public void sendMessage(Message message, Account to) {
+		Inbox toInbox = to.getInbox();
+		toInbox.addMessage(message);
+		
 	}
 }

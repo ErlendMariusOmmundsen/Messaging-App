@@ -35,10 +35,17 @@ public class appController {
 	
 	private Account currentAccount;
 	
+	/**
+	 * Makes the app visible
+	 */
 	private void appVisibility() {
 		loginPane.setVisible(false);
 		splitPane.setVisible(true);
 	}
+	
+	/**
+	 * Makes the login menu visible
+	 */
 	private void loginVisibility() {
 		loginPane.setVisible(true);
 		splitPane.setVisible(false);
@@ -56,6 +63,9 @@ public class appController {
 		errorLabel.setText("");
 	}
 	
+	/**
+	 * Checks if the login is valid with accounts in the system. If so the mail application will be visible.
+	 */
 	public void loginCheck() {
 		String emailInput = emailField.getText();
 		String passwordInput = passwordField.getText();
@@ -78,6 +88,9 @@ public class appController {
 		
 	}
 	
+	/**
+	 * logs this account out, and return back to the login menu.
+	 */
 	public void logout() {
 		clear();
 		this.currentAccount = null;
@@ -93,6 +106,10 @@ public class appController {
 		textArea.setEditable(true);
 	}
 	
+	/**
+	 * Loads the messages of the system to the inbox of the current account.
+	 * Then adds the subjects of the messages to the inbox-UI.
+	 */
 	public void updateInbox() {
 		
 		try {
@@ -102,12 +119,16 @@ public class appController {
 		}
 		
 		List<String> subjects = currentAccount.getInbox().getMessages().stream().map(m -> m.getSubject()).collect(Collectors.toList());
-		System.out.println(subjects);
-		System.out.println(currentAccount.getInbox().getMessages());
 		inbox.getItems().clear();
 		inbox.getItems().addAll(subjects);
 	}
 	
+	/**
+	 * Deletes the current selected message in the Inbox-UI.
+	 * Then it uploads the new inbox to the system. (only to a test file right now)
+	 * 
+	 * This functionality is only a test right now.
+	 */
 	public void deleteMessage() {
 		int messageIndex = inbox.getSelectionModel().getSelectedIndex();
 		if (messageIndex == -1) return;
@@ -126,6 +147,9 @@ public class appController {
 		inbox.getItems().addAll(subjects);
 	}
 	
+	/**
+	 * Displays the selected message in the Inbox-UI on the text area.
+	 */
 	public void displayMessage() {
 		int messageIndex = inbox.getSelectionModel().getSelectedIndex();
 		if (messageIndex == -1) return;
