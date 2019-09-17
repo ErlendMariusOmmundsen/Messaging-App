@@ -10,6 +10,8 @@ plugins {
     // Apply the java-library plugin to add support for Java Library
     id 'java-library'
     
+    id 'jacoco'
+    
     // java application with main method
 	id 'application'
 	// use javafx modules
