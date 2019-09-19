@@ -43,8 +43,3 @@ lukasnt@ntnu.no
 testTilbake
 hallo der lukas
 
-eksempel@outlook.com
-lukasnt@ntnu.no
-123
-Mitt passord er 123
-
