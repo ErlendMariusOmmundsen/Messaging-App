@@ -214,9 +214,11 @@ public class appController {
 		String password = txt_C_password.getText();
 		Account newAccount = new Account(mail, password);
 		try {
-			io.newAccount(newAccount);
+			newAccount.createAccount();
 		} catch (IOException e) {
 			e.printStackTrace();
+		} catch (IllegalStateException e) {
+			System.out.println(e.getMessage());
 		}
 		//endre visiblity fra createAccount til login
 		loginVisibility();

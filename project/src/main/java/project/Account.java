@@ -43,7 +43,11 @@ public class Account {
 	}
 	
 	public void createAccount() throws IOException, IllegalStateException {
-		
+		if (!this.exists()) {			
+			io.newAccount(this);
+		} else {
+			throw new IllegalStateException("The account already exists");
+		}
 	}
 	
 	/**

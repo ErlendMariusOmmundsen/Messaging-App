@@ -3,6 +3,7 @@ package project;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.LineNumberReader;
 import java.util.ArrayList;
@@ -46,15 +47,12 @@ public class appIO {
 	
 	public void newAccount(Account account) throws IOException {
 		String filepath = appIO.resourceFilepath + usersFilename;
+		FileWriter fw = new FileWriter(new File(filepath), true);
 		PrintWriter writer;
-		try {
-			writer = new PrintWriter(new File(filepath));
-			writer.print(account.getMail_address() + "\t" + account.getPassword());
-			writer.flush();
-			writer.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		writer = new PrintWriter(fw);
+		writer.println(account.getMail_address() + "\t" + account.getPassword());
+		writer.flush();
+		writer.close();	
 	}
 	
 }
