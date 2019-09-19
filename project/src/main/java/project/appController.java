@@ -16,14 +16,14 @@ import javafx.scene.layout.AnchorPane;
 
 public class appController {
 	
-	@FXML private AnchorPane loginPane;
+	@FXML private AnchorPane loginPane, CreateAccountPane;
 	@FXML private SplitPane splitPane;
 	@FXML private Label inboxLabel, welcomeLabel, emailLabel, errorLabel, toLabel, fromLabel;
-	@FXML private TextField emailField, toField, fromField, subjectField;
-	@FXML private PasswordField passwordField;
+	@FXML private TextField emailField, toField, fromField, subjectField, txt_C_Email;
+	@FXML private PasswordField passwordField, txt_C_password;
 	@FXML private TextArea textArea;
 	@FXML private ListView<String> inbox;
-	@FXML private Button loginButton, logoutButton, newMessageButton, sendButton;
+	@FXML private Button loginButton, logoutButton, newMessageButton, sendButton, btnConfirm;
 	
 	private appIO io = new appIO();
 	
@@ -35,6 +35,7 @@ public class appController {
 	private void appVisibility() {
 		loginPane.setVisible(false);
 		splitPane.setVisible(true);
+		CreateAccountPane.setVisible(false);
 	}
 	
 	/**
@@ -43,6 +44,13 @@ public class appController {
 	private void loginVisibility() {
 		loginPane.setVisible(true);
 		splitPane.setVisible(false);
+		CreateAccountPane.setVisible(false);
+	}
+	
+	private void createAccountVisiblity() {
+		loginPane.setVisible(false);
+		splitPane.setVisible(false);
+		CreateAccountPane.setVisible(true);
 	}
 	
 	/**
@@ -185,5 +193,32 @@ public class appController {
 		toField.setText(message.getTo().getMail_address());
 		fromField.setText(message.getFrom().getMail_address());
 		subjectField.setText(message.getSubject());
+	}
+	
+	/**
+	 * Makes the CA pane visible when the user clicks on the "Create Account" button on the login pane
+	 */
+	
+	public void handle_switch_CA() {
+		createAccountVisiblity();
+	}
+	
+	/**
+	 * Creates a new account object and inputs it to the appIO.
+	 * 
+	 * Returns to login page after completion.
+	 */
+	public void handleCreateAccount() {
+		//oppretter nytt Acc object og bruker io til å sende det til txt
+		String mail = txt_C_Email.getText();
+		String password = txt_C_password.getText();
+		Account newAccount = new Account(mail, password);
+		try {
+			io.newAccount(newAccount);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		//endre visiblity fra createAccount til login
+		loginVisibility();
 	}
 }

@@ -9,6 +9,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="523.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.appController">
    <children>
@@ -64,34 +65,34 @@
             </AnchorPane>
         </items>
       </SplitPane>
-      <AnchorPane fx:id="loginPane" layoutX="170.0" layoutY="68.0">
+      <AnchorPane fx:id="loginPane" layoutX="-8.0" layoutY="-8.0" prefHeight="533.0" prefWidth="607.0">
          <children>
-            <TextField fx:id="emailField" layoutY="143.0" prefHeight="50.0" prefWidth="260.0">
+            <TextField fx:id="emailField" layoutX="174.0" layoutY="193.0" prefHeight="50.0" prefWidth="260.0">
                <font>
                   <Font size="14.0" />
                </font>
             </TextField>
-            <PasswordField fx:id="passwordField" layoutY="243.0" prefHeight="50.0" prefWidth="260.0">
+            <PasswordField fx:id="passwordField" layoutX="174.0" layoutY="306.0" prefHeight="50.0" prefWidth="260.0">
                <font>
                   <Font size="14.0" />
                </font>
             </PasswordField>
-            <Button fx:id="loginButton" layoutX="103.0" layoutY="349.0" mnemonicParsing="false" onAction="#loginCheck" text="Login">
+            <Button fx:id="loginButton" layoutX="276.0" layoutY="391.0" mnemonicParsing="false" onAction="#loginCheck" text="Login">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
-            <Label fx:id="welcomeLabel" layoutX="30.0" prefHeight="0.0" prefWidth="200.0" text="Welcome">
+            <Label fx:id="welcomeLabel" layoutX="204.0" layoutY="78.0" prefHeight="0.0" prefWidth="200.0" text="Welcome">
                <font>
                   <Font size="46.0" />
                </font>
             </Label>
-            <Label fx:id="emailLabel" layoutX="72.0" layoutY="109.0" prefHeight="26.0" prefWidth="115.0" text="E-mail address:">
+            <Label fx:id="emailLabel" layoutX="52.0" layoutY="205.0" prefHeight="26.0" prefWidth="115.0" text="E-mail address:">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <Label fx:id="passwordLabel" layoutX="93.0" layoutY="209.0" prefHeight="26.0" prefWidth="74.0" text="Password:">
+            <Label fx:id="passwordLabel" layoutX="93.0" layoutY="318.0" prefHeight="26.0" prefWidth="74.0" text="Password:">
                <font>
                   <Font size="16.0" />
                </font>
@@ -101,6 +102,22 @@
                   <Font size="14.0" />
                </font>
             </Label>
+            <Label fx:id="txt_notmember" layoutX="204.0" layoutY="479.0" text="Not a member?" />
+            <Button fx:id="btnSwitch_CA" layoutX="319.0" layoutY="475.0" mnemonicParsing="false" onAction="#handle_switch_CA" text="Create Account" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="CreateAccountPane" layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="533.0" prefWidth="596.0" visible="false">
+         <children>
+            <TextField fx:id="txt_C_Email" layoutX="160.0" layoutY="216.0" prefHeight="39.0" prefWidth="276.0" />
+            <Text layoutX="200.0" layoutY="114.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Create Account">
+               <font>
+                  <Font size="29.0" />
+               </font>
+            </Text>
+            <Text layoutX="113.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email:" wrappingWidth="32.0" />
+            <Text layoutX="92.0" layoutY="332.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password:" />
+            <Button fx:id="btnConfirm" layoutX="272.0" layoutY="436.0" mnemonicParsing="false" onAction="#handleCreateAccount" text="Confirm" />
+            <PasswordField fx:id="txt_C_password" layoutX="160.0" layoutY="308.0" prefHeight="39.0" prefWidth="276.0" />
          </children>
       </AnchorPane>
    </children>

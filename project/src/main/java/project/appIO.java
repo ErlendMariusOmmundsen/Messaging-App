@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.LineNumberReader;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.io.PrintWriter;
 
 public class appIO {
 	
@@ -41,6 +42,19 @@ public class appIO {
 		scanner.close();
 		return accounts;
 		
+	}
+	
+	public void newAccount(Account account) throws IOException {
+		String filepath = appIO.resourceFilepath + usersFilename;
+		PrintWriter writer;
+		try {
+			writer = new PrintWriter(new File(filepath));
+			writer.print(account.getMail_address() + "\t" + account.getPassword());
+			writer.flush();
+			writer.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 }
