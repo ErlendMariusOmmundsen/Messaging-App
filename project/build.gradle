@@ -10,8 +10,8 @@ plugins {
     // Apply the java-library plugin to add support for Java Library
     id 'java-library'
     
-    //Test coverage :)
-    id 'jacoco' 
+    //Test coverage
+    id 'jacoco'
     
     // java application with main method
 	id 'application'
