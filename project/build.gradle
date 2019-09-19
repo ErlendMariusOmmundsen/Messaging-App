@@ -10,7 +10,7 @@ plugins {
     // Apply the java-library plugin to add support for Java Library
     id 'java-library'
     
-    //Added jacoco
+    //Test coverage
     id 'jacoco'
     
     // java application with main method
@@ -24,6 +24,20 @@ mainClassName = 'project.FxApp' // application plugin
 javafx {
     version = "11.0.2"
     modules = [ 'javafx.controls', 'javafx.fxml'  ]
+}
+
+jacoco {
+    toolVersion = "0.8.4"
+    reportsDir = file("$buildDir/customJacocoReportDir")
+    applyTo run
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled false
+        csv.enabled false
+        html.destination file("${buildDir}/jacocoHtml")
+    }
 }
 
 repositories {
