@@ -18,17 +18,6 @@ public class Inbox{
 		this.inboxFilename = this.getAccount().getMail_address() + ".txt";
 	}
 	
-	
-	//Vi trenger ikke denne lengre. -Aleksander (PS! logisk feil: den looper uendelig.)
-	private void setAccount(final Account account) {
-		if(account.getInbox() != null) {
-			throw new IllegalArgumentException("This account is already assosiated with another inbox.");
-		}
-		this.account = account;
-		account.setInbox(this);
-		
-	}
-	
 	public Account getAccount() {
 		return this.account;
 	}

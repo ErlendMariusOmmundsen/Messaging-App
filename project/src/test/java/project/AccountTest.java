@@ -14,5 +14,11 @@ public class AccountTest {
 		Assert.assertEquals("123", testAcc.getPassword());
 		Assert.assertEquals(testAcc, testAcc.getInbox().getAccount());
 	}
+	
+	
+	
+	
+	
+	
 
 }

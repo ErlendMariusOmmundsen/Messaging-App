@@ -21,14 +21,6 @@ public class Account {
 		this(mail_address);
 		this.password = password;
 	}
-	
-	public void setInbox(final Inbox inbox) {
-		if(inbox.getAccount() != null) {
-			throw new IllegalArgumentException("This Inbox is already associated with an account.");
-		}
-		this.inbox = inbox;
-	}
-	
 
 	public String getMail_address() {
 		return mail_address;
