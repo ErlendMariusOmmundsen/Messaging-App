@@ -50,7 +50,7 @@ public class appIO {
 		FileWriter fw = new FileWriter(new File(filepath), true);
 		PrintWriter writer;
 		writer = new PrintWriter(fw);
-		writer.print(account.getMail_address() + "\t" + account.getPassword());
+		writer.println(account.getMail_address() + "\t" + account.getPassword());
 		writer.flush();
 		writer.close();	
 	}
