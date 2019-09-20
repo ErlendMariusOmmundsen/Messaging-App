@@ -25,6 +25,7 @@ public class MessageSerializer {
 		  jsonGen.writeFieldName(MessageSerializer.message);
 		  jsonGen.writeString(message.getMessage());
 		  jsonGen.writeEndObject();
+		  
 	  }
 	
 }
