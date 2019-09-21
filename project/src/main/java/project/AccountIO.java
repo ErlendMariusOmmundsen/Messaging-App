@@ -10,13 +10,13 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.PrintWriter;
 
-public class appIO {
+public class AccountIO {
 	
 	public static final String usersFilename = "users.txt";
 	public static final String resourceFilepath = new File("").getAbsolutePath() + "\\src\\main\\resources\\project\\";
 	
 	public ArrayList<Account> loadData(String filename) throws IOException {
-		String filepath = appIO.resourceFilepath + filename;
+		String filepath = AccountIO.resourceFilepath + filename;
 		FileReader content = new FileReader(filepath);
 		
 		// Counts the lines
@@ -46,7 +46,7 @@ public class appIO {
 	}
 	
 	public void newAccount(Account account) throws IOException {
-		String filepath = appIO.resourceFilepath + usersFilename;
+		String filepath = AccountIO.resourceFilepath + usersFilename;
 		FileWriter fw = new FileWriter(new File(filepath), true);
 		PrintWriter writer;
 		writer = new PrintWriter(fw);

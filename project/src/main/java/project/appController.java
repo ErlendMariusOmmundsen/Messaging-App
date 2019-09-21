@@ -25,7 +25,7 @@ public class appController {
 	@FXML private ListView<String> inbox;
 	@FXML private Button loginButton, logoutButton, newMessageButton, sendButton, btnConfirm;
 	
-	private appIO io = new appIO();
+	private AccountIO io = new AccountIO();
 	
 	private Account currentAccount;
 	

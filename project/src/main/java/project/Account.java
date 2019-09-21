@@ -10,7 +10,7 @@ public class Account {
 	private String password;
 	private Inbox inbox;
 	
-	private appIO io = new appIO();
+	private AccountIO io = new AccountIO();
 	
 	public Account(String mail_address) {
 		this.mail_address = mail_address;
@@ -48,7 +48,7 @@ public class Account {
 	 * @throws IOException if the io can't read from the system
 	 */
 	public boolean exists() throws IOException {
-		return new appIO().loadData(appIO.usersFilename).stream()
+		return new AccountIO().loadData(AccountIO.usersFilename).stream()
 				.map(acc -> acc.getMail_address())
 				.anyMatch(email -> this.mail_address.equals(email));
 	}
@@ -62,7 +62,7 @@ public class Account {
 	public boolean isValid() throws IOException {
 		List<Account> validAccounts;
 		try {			
-			validAccounts = io.loadData(appIO.usersFilename);
+			validAccounts = io.loadData(AccountIO.usersFilename);
 		} catch (IOException e) {
 			throw new IOException("Couldn't access user files");
 		}
