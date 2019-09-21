@@ -75,6 +75,8 @@ public class InboxIOJson implements MailReader {
 		writer.close();
 	}
 	
+	
+	/*
 	// Dette er bare en test man kan kjøre i Eclipse
 	public static void main(String[] args) {
 		InboxIOJson io = new InboxIOJson();
@@ -96,4 +98,5 @@ public class InboxIOJson implements MailReader {
 			System.out.println("Didn't work");
 		}
 	}
+	*/
 }
