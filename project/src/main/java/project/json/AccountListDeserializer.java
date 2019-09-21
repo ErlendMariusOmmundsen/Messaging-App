@@ -7,9 +7,16 @@ import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+
+import project.Account;
+
 import java.io.IOException;
 
-public class AccountDeserializer extends jsonDeserializer<Account>{
-	
+public class AccountListDeserializer extends JsonDeserializer<Account>{
+
+	@Override
+	public Account deserialize(JsonParser p, DeserializationContext ctxt) throws IOException, JsonProcessingException {
+		return null;
+	}
 	
 }

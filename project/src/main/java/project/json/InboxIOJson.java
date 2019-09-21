@@ -75,14 +75,17 @@ public class InboxIOJson implements MailReader {
 		writer.close();
 	}
 	
+	// Dette er bare en test man kan kjøre i Eclipse
 	public static void main(String[] args) {
 		InboxIOJson io = new InboxIOJson();
 		Account acc = new Account("abc");
+		Message testMessage = new Message("hallo", "hallo123", new Account("123"), new Account("143"));
 		acc.getInbox().addMessage(new Message("sub", "123", new Account("bcd"), new Account("jk")));
 		acc.getInbox().addMessage(new Message("sub", "123", new Account("bcd"), new Account("jk")));
 		System.out.println(acc.getInbox().getMessages());
 		try {
 			io.uploadInbox(acc.getInbox(), "test.json");
+			io.uploadMessage(testMessage, "test.json");
 		} catch (IOException e) {
 			System.out.println("Didn't work");
 		}
