@@ -34,6 +34,10 @@ public class Account {
 		return inbox;
 	}
 	
+	public void setPassword(String newPassword) {
+		this.password = newPassword;
+	}
+	
 	public void createAccount() throws IOException, IllegalStateException {
 		if (!this.exists()) {			
 			io.newAccount(this);
