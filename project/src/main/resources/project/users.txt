@@ -6,3 +6,4 @@ abc@1234.no	123
 test@example.com	abc123
 from@ex.no	123
 to@ex.no	ex
+123	123
