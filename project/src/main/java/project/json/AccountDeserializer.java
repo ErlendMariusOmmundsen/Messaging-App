@@ -16,7 +16,13 @@ public class AccountDeserializer extends JsonDeserializer<Account>{
 
 	@Override
 	public Account deserialize(JsonParser p, DeserializationContext ctxt) throws IOException, JsonProcessingException {
-		return null;
+		ObjectCodec codec = parser.getCodec();
+        JsonNode node = codec.readTree(parser);
+        
+        String Email = node.get(AccountSerializer.email).asText();
+        String password = node.get(AccountSerializer.password).asText();
+       
+        return new Account(Email, password);
 	}
 	
 	
