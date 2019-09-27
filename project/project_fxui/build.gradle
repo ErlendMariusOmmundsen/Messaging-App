@@ -40,7 +40,7 @@ repositories {
 dependencies {
 	implementation project(':project_core')
 
-     // brukergrensesnitt
+    // brukergrensesnitt
     //implementation name: 'fx-map-control-1.0'
     
     testImplementation 'junit:junit:4.12'

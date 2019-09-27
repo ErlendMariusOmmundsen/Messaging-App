@@ -13,8 +13,6 @@ public class Account {
 	private String password;
 	private Inbox inbox;
 	
-	private AccountIO io = new AccountIO();
-	
 	public Account(String mail_address) {
 		this.mail_address = mail_address;
 		this.inbox = new Inbox(this);
@@ -42,7 +40,8 @@ public class Account {
 	}
 	
 	public void createAccount() throws IOException, IllegalStateException {
-		if (!this.exists()) {			
+		if (!this.exists()) {
+			AccountIO io = new AccountIO();
 			io.newAccount(this);
 		} else {
 			throw new IllegalStateException("The account already exists");
@@ -68,7 +67,8 @@ public class Account {
 	 */
 	public boolean isValid() throws IOException {
 		List<Account> validAccounts;
-		try {			
+		try {
+			AccountIO io = new AccountIO();
 			validAccounts = io.loadData(AccountIO.usersFilename);
 		} catch (IOException e) {
 			throw new IOException("Couldn't access user files");

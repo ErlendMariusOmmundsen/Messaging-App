@@ -28,8 +28,6 @@ public class appController {
 	@FXML private ListView<String> inbox;
 	@FXML private Button loginButton, logoutButton, newMessageButton, sendButton, btnConfirm;
 	
-	private AccountIO io = new AccountIO();
-	
 	private Account currentAccount;
 	
 	/**
@@ -92,6 +90,7 @@ public class appController {
 		} catch (IOException e) {
 			errorLabel.setText("Error: " + e.getMessage());
 			errorLabel.setVisible(true);
+			System.out.println(AccountIO.resourceFilepath);
 		}
 		
 	}

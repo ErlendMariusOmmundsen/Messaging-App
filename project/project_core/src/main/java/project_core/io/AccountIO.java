@@ -7,6 +7,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.LineNumberReader;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import project_core.Account;
@@ -17,6 +18,7 @@ public class AccountIO {
 	
 	public static final String usersFilename = "users.txt";
 	public static final String resourceFilepath = new File("").getAbsolutePath() + "\\src\\main\\resources\\project_core\\io\\account\\";
+	
 	
 	public ArrayList<Account> loadData(String filename) throws IOException {
 		String filepath = AccountIO.resourceFilepath + filename;
@@ -58,4 +60,16 @@ public class AccountIO {
 		writer.close();	
 	}
 	
+	/*
+	// Bare en enkel test man kan kjøre i eclipse
+	public static void main(String[] args) {
+		try {
+			AccountIO io = new AccountIO();
+			List<Account> data = io.loadData(AccountIO.usersFilename);
+			System.out.println(data);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	*/
 }
