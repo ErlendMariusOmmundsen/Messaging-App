@@ -212,6 +212,12 @@ public class appController {
 		//oppretter nytt Acc object og bruker io til å sende det til txt
 		String mail = txt_C_Email.getText();
 		String password = txt_C_password.getText();
+		/* 
+		 * Må bruke RESTapi til å gjøre linje 221-228 (newAccount og trycatch), setter en 
+		 * if-else/try-catch på responsen slik at vi kan formidle dette 
+		 * til brukeren.
+		 *  
+		 */
 		Account newAccount = new Account(mail, password);
 		try {
 			newAccount.createAccount();
