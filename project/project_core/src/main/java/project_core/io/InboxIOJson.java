@@ -19,7 +19,7 @@ import project_core.json.MessageSerializer;
 
 public class InboxIOJson implements MailReader {
 	
-	public static final String resourceFilepath = new File("").getAbsolutePath() + "\\src\\main\\resources\\project_core\\io\\inbox\\";
+	public static final String resourceFilepath = new File("").getAbsolutePath() + "\\src\\main\\resources\\io\\inbox\\";
 	
 	@Override
 	public void uploadMessage(Message message, String filename) throws IOException {

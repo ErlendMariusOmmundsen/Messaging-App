@@ -17,7 +17,7 @@ import java.io.PrintWriter;
 public class AccountIO {
 	
 	public static final String usersFilename = "users.txt";
-	public static final String resourceFilepath = new File("").getAbsolutePath() + "\\src\\main\\resources\\project_core\\io\\account\\";
+	public static final String resourceFilepath = new File("").getAbsolutePath() + "\\src\\main\\resources\\io\\account\\";
 	
 	
 	public ArrayList<Account> loadData(String filename) throws IOException {

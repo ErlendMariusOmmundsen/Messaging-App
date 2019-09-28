@@ -1,0 +1,9 @@
+lukasnt@ntnu.no	123
+test@hotmail.no	abc
+eksempel@outlook.com	eksempelabc@hotmail.com
+abc@123.no	123
+abc@1234.no	123
+test@example.com	abc123
+from@ex.no	123
+to@ex.no	ex
+123	123
