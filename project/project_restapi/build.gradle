@@ -7,6 +7,10 @@ plugins {
 dependencies {
 	implementation project(':project_core')
 	
+    compile "com.fasterxml.jackson.core:jackson-core:${depVersions.jackson}"
+    compile "com.fasterxml.jackson.core:jackson-databind:${depVersions.jackson}"
+    compile "com.fasterxml.jackson.core:jackson-annotations:${depVersions.jackson}"
+	
     //RESTapi dependencie 
     compile "javax.ws.rs:javax.ws.rs-api:2.1.1"
     compile "javax.inject:javax.inject:1"

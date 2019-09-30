@@ -13,7 +13,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import project.Account;
+import project_core.Account;
 
 @Path(AccountService.ACCOUNT_SERVICE_PATH)
 public class AccountService {
