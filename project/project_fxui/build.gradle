@@ -10,10 +10,16 @@ plugins {
 	// java application with main method
 	id 'application'
 	// use javafx modules
-    id 'org.openjfx.javafxplugin' version '0.0.8'
+    id 'org.openjfx.javafxplugin'
     
 	// test coverage
     id 'jacoco'
+    
+    // code quality with SpotBugs
+	id 'com.github.spotbugs' version '2.0.0'
+	
+	// code quality with checkstyle
+	id 'checkstyle'
 }
 
 application {
@@ -29,6 +35,27 @@ javafx {
     // run with --debug-jvm flag and
     // launch debugger using Remote Java Application debug launch configuration
 }
+
+spotbugs {
+	// see http://gradle.monochromeroad.com/docs/dsl/org.gradle.api.plugins.quality.FindBugsExtension.html
+	toolVersion = '4.0.0-beta4'
+    ignoreFailures = true
+    effort = "max"
+}
+
+// To generate an HTML report instead of XML
+tasks.withType(com.github.spotbugs.SpotBugsTask) {
+  	reports {
+  		xml.enabled = false
+  		html.enabled = true
+  	}
+}
+
+checkstyle {
+	configFile = project.file("../project_core/config/checkstyle/google_checks.xml")
+}
+
+
 
 repositories {
     flatDir {
