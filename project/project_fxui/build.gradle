@@ -10,7 +10,7 @@ plugins {
 	// java application with main method
 	id 'application'
 	// use javafx modules
-    id 'org.openjfx.javafxplugin'
+    id 'org.openjfx.javafxplugin' version '0.0.8'
     
 	// test coverage
     id 'jacoco'
