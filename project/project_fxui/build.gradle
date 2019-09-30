@@ -7,38 +7,6 @@
  */
 
 plugins {
-<<<<<<< project/project_fxui/build.gradle
-    // Apply the java-library plugin to add support for Java Library
-    id 'java-library'
-    
-    // use javafx modules
-    id 'org.openjfx.javafxplugin'
-    
-    // code quality with SpotBugs
-	id 'com.github.spotbugs' version '2.0.0'
-	
-	// code quality with checkstyle
-	id 'checkstyle'
-}
-
-spotbugs {
-	// see http://gradle.monochromeroad.com/docs/dsl/org.gradle.api.plugins.quality.FindBugsExtension.html
-	toolVersion = '4.0.0-beta4'
-    ignoreFailures = true
-    effort = "max"
-}
-
-// To generate an HTML report instead of XML
-tasks.withType(com.github.spotbugs.SpotBugsTask) {
-  	reports {
-  		xml.enabled = false
-  		html.enabled = true
-  	}
-}
-
-checkstyle {
-	configFile = project.file("../project_core/config/checkstyle/google_checks.xml")
-=======
 	// java application with main method
 	id 'application'
 	// use javafx modules
@@ -60,7 +28,6 @@ javafx {
     modules = [ 'javafx.controls', 'javafx.fxml' ]
     // run with --debug-jvm flag and
     // launch debugger using Remote Java Application debug launch configuration
->>>>>>> project/project_fxui/build.gradle
 }
 
 repositories {
@@ -77,18 +44,9 @@ dependencies {
     //implementation name: 'fx-map-control-1.0'
     
     testImplementation 'junit:junit:4.12'
-<<<<<<< project/project_fxui/build.gradle
-    
-    // brukergrensesnitt
-    testImplementation 'org.testfx:testfx-core:4.0.16-alpha'
-    testImplementation 'org.testfx:testfx-junit:4.0.16-alpha'
-    testImplementation 'org.mockito:mockito-core:2.28.2'
-}
-=======
 
     // brukergrensesnitt
     testImplementation 'org.testfx:testfx-core:4.0.16-alpha'
     testImplementation 'org.testfx:testfx-junit:4.0.16-alpha'
 	testImplementation 'org.mockito:mockito-core:2.28.2'
 }
->>>>>>> project/project_fxui/build.gradle
