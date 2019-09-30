@@ -10,6 +10,7 @@ plugins {
     // Apply the java-library plugin to add support for Java Library
     id 'java-library'
     
+<<<<<<< project/project_core/build.gradle
     // code quality with SpotBugs
 	id 'com.github.spotbugs' version '2.0.0'
 	// code quality with checkstyle
@@ -33,23 +34,36 @@ tasks.withType(com.github.spotbugs.SpotBugsTask) {
 
 checkstyle {
 	configFile = project.file("config/checkstyle/google_checks.xml")
+=======
+    //Test coverage
+    id 'jacoco'
+>>>>>>> project/project_core/build.gradle
 }
 
-repositories {
-    // Use jcenter for resolving your dependencies.
-    // You can declare any Maven/Ivy/file repository here.
-    jcenter()
+jacoco {
+    toolVersion = "0.8.4"
+    reportsDir = file("$buildDir/customJacocoReportDir")
 }
+
+jacocoTestReport {
+    reports {
+        xml.enabled false
+        csv.enabled false
+        html.destination file("${buildDir}/jacocoHtml")
+    }
+}
+
 
 dependencies {
-    // This dependency is exported to consumers, that is to say found on their compile classpath.
-    api 'org.apache.commons:commons-math3:3.6.1'
-
-    // This dependency is used internally, and not exposed to consumers on their own compile classpath.
-    implementation 'com.google.guava:guava:27.0.1-jre'
-
+	// api means that those consuming our library 'inherits' this as a compile dependency
+    api "com.fasterxml.jackson.core:jackson-databind:${depVersions.jackson}"
+		
     // Use JUnit test framework
     testImplementation 'junit:junit:4.12'
+<<<<<<< project/project_core/build.gradle
     
     spotbugsPlugins 'com.h3xstream.findsecbugs:findsecbugs-plugin:1.7.1'
 }
+=======
+}
+>>>>>>> project/project_core/build.gradle

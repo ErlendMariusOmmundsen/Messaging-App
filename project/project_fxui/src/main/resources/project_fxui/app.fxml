@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="523.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project_fxui.appController">
+   <children>
+      <SplitPane fx:id="splitPane" prefHeight="523.0" prefWidth="600.0" visible="false">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <ListView fx:id="inbox" layoutY="75.0" onKeyReleased="#displayMessage" onMouseClicked="#displayMessage" prefHeight="446.0" prefWidth="200.0" />
+                  <Label fx:id="inboxLabel" layoutX="63.0" layoutY="14.0" prefHeight="34.0" prefWidth="74.0" text="Inbox">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
+                  <TextArea fx:id="textArea" editable="false" layoutX="227.0" layoutY="100.0" prefHeight="325.0" prefWidth="350.0">
+                     <font>
+                        <Font size="14.0" />
+                     </font></TextArea>
+                  <Label fx:id="toLabel" layoutX="225.0" layoutY="20.0" prefHeight="20.0" prefWidth="357.0" text="To:">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="fromLabel" layoutX="225.0" layoutY="50.0" prefHeight="20.0" prefWidth="358.0" text="From: ">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="225.0" layoutY="75.0" text="Subject: ">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="toField" layoutX="275.0" layoutY="10.0" />
+                  <TextField fx:id="fromField" layoutX="275.0" layoutY="40.0" />
+                  <TextField fx:id="subjectField" layoutX="275.0" layoutY="70.0" />
+                  <Button fx:id="logoutButton" layoutX="525.0" layoutY="10.0" mnemonicParsing="false" onAction="#logout" text="Log out" />
+                  <Button fx:id="newMessageButton" layoutX="225.0" layoutY="450.0" mnemonicParsing="false" onAction="#initNewMessage" text="+">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="sendButton" layoutX="300.0" layoutY="450.0" mnemonicParsing="false" onAction="#sendMessage" text="Send Message">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="deleteButton" layoutX="400.0" layoutY="450.0" mnemonicParsing="false" onAction="#deleteMessage" text="Delete message">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+      <AnchorPane fx:id="loginPane" layoutX="-8.0" layoutY="-8.0" prefHeight="533.0" prefWidth="607.0">
+         <children>
+            <TextField fx:id="emailField" layoutX="174.0" layoutY="193.0" prefHeight="50.0" prefWidth="260.0">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextField>
+            <PasswordField fx:id="passwordField" layoutX="174.0" layoutY="306.0" prefHeight="50.0" prefWidth="260.0">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </PasswordField>
+            <Button fx:id="loginButton" layoutX="276.0" layoutY="391.0" mnemonicParsing="false" onAction="#loginCheck" text="Login">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Label fx:id="welcomeLabel" layoutX="204.0" layoutY="78.0" prefHeight="0.0" prefWidth="200.0" text="Welcome">
+               <font>
+                  <Font size="46.0" />
+               </font>
+            </Label>
+            <Label fx:id="emailLabel" layoutX="52.0" layoutY="205.0" prefHeight="26.0" prefWidth="115.0" text="E-mail address:">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="passwordLabel" layoutX="82.0" layoutY="318.0" prefHeight="26.0" prefWidth="74.0" text="Password:">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label id="errorLabel" fx:id="errorLabel" layoutX="115.0" layoutY="356.0" prefHeight="30.0" prefWidth="391.0" text="Error: " textAlignment="CENTER" textFill="RED" visible="false">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="txt_notmember" layoutX="204.0" layoutY="479.0" text="Not a member?" />
+            <Button fx:id="btnSwitch_CA" layoutX="319.0" layoutY="475.0" mnemonicParsing="false" onAction="#handle_switch_CA" text="Create Account" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="CreateAccountPane" layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="533.0" prefWidth="596.0" visible="false">
+         <children>
+            <TextField fx:id="txt_C_Email" layoutX="160.0" layoutY="216.0" prefHeight="39.0" prefWidth="276.0" />
+            <Text layoutX="200.0" layoutY="114.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Create Account">
+               <font>
+                  <Font size="29.0" />
+               </font>
+            </Text>
+            <Text layoutX="113.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email:" wrappingWidth="32.0" />
+            <Text layoutX="92.0" layoutY="332.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password:" />
+            <Button fx:id="btnConfirm" layoutX="272.0" layoutY="436.0" mnemonicParsing="false" onAction="#handleCreateAccount" text="Confirm" />
+            <PasswordField fx:id="txt_C_password" layoutX="160.0" layoutY="308.0" prefHeight="39.0" prefWidth="276.0" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
