@@ -19,6 +19,7 @@ import junit.framework.TestCase;
 import project_core.Account;
 import project_core.Inbox;
 import project_core.io.InboxIO;
+import project_core.json.CompleteObjectMapper;
 import project_core.json.MessageDeserializer;
 import project_core.json.MessageSerializer;
 import project_core.Message;
@@ -52,10 +53,7 @@ public class InboxIOJsonTest extends TestCase {
 		try {
 			io.uploadInbox(testInbox, testFilename);
 			
-			ObjectMapper mapper = new ObjectMapper();
-			SimpleModule module = new SimpleModule();
-			module.addDeserializer(Message.class, new MessageDeserializer());
-			mapper.registerModule(module);
+			ObjectMapper mapper = new CompleteObjectMapper();
 			Scanner scanner = new Scanner(new File(InboxIO.resourceFilepath + testFilename));
 			
 			Message message = mapper.readValue(scanner.nextLine(), Message.class);
@@ -96,10 +94,7 @@ public class InboxIOJsonTest extends TestCase {
 			FileWriter fr = new FileWriter(new File(InboxIO.resourceFilepath + testFilename), true);
 			PrintWriter writer = new PrintWriter(fr);
 
-			ObjectMapper mapper = new ObjectMapper();
-			SimpleModule module = new SimpleModule();
-			module.addSerializer(Message.class, new MessageSerializer());
-			mapper.registerModule(module);
+			ObjectMapper mapper = new CompleteObjectMapper();
 			
 			String text = mapper.writeValueAsString(testMessage);
 			writer.println(text);
