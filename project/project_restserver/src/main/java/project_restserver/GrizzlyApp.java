@@ -14,7 +14,7 @@ public class GrizzlyApp {
 
 	public static void main(final String[] args) {
 		try {
-			final ResourceConfig resourceConfig = null;
+			final ResourceConfig resourceConfig = new Config();
 			final HttpServer server = GrizzlyHttpServerFactory.createHttpServer(BASE_URI, resourceConfig);
 			Runtime.getRuntime().addShutdownHook(new Thread(server::shutdownNow));
 			Thread.currentThread().join();
