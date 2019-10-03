@@ -10,7 +10,10 @@ import project_core.Message;
 
 public class CompleteObjectMapper extends ObjectMapper {
 	private static final long serialVersionUID = -2806963524455733669L;
-
+	
+	/**
+	 * A ObjectMapper that can serialize and deserialize all of the needed classes in project_core.
+	 */
 	public CompleteObjectMapper() {
 		super();
 		SimpleModule module = new SimpleModule();
