@@ -25,9 +25,9 @@ public class AccountService{
 	public static final String ACCOUNT_SERVICE_PATH = "account";
 	
 	@POST
-	@Path({"/{CreateAccount}"})
+	@Path("/{CreateAccount}")
 	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(Mediatype.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
 	public boolean CreateAccount(Account account) {
 		boolean creationSuccess = false;
 		try {
@@ -44,9 +44,13 @@ public class AccountService{
 	@GET
 	@Path("/{getInboxMessages}")
 	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(Mediatype.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
 	public List<Message> getInboxMessages(Account currentAccount) {
-		currentAccount.getInbox().loadMessages();
+		try {
+			currentAccount.getInbox().loadMessages();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		return currentAccount.getInbox().getMessages();
 	}
 	
@@ -88,14 +92,14 @@ public class AccountService{
 	}
 	
 	@POST
-	@Path("/{accountValid}")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public boolean accountValid(@PathParam("account") Account account) {
-		return account.isValid();
+	public boolean accountValid(Account account) {
+		try {
+			return account.isValid();
+		} catch (IOException e) {
+			return false;
+		}
 	}
-	
-	
-	
 
 }
