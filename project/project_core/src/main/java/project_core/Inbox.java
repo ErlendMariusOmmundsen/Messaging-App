@@ -39,6 +39,9 @@ public class Inbox{
 		io.uploadMessage(message, this.inboxFilename);
 	}
 	
+	/**
+	 * @param messageIndex
+	 */
 	public void deleteMessage(int messageIndex) {
 		this.messages.remove(messageIndex);
 	}
@@ -51,6 +54,9 @@ public class Inbox{
 		return this.messages.get(messageIndex);
 	}
 	
+	/**
+	 * @return A list with all messages in this inbox.
+	 */
 	public List<Message> getMessages() {
 		return this.messages;
 	}
