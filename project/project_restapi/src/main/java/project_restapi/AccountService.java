@@ -22,13 +22,16 @@ import project_core.Message;
 @Path(AccountService.ACCOUNT_SERVICE_PATH)
 public class AccountService{
 	
-	public static final String ACCOUNT_SERVICE_PATH = "account";
+	public static final String ACCOUNT_SERVICE_PATH = "accounts";
 	
 	@POST
-	@Path("/{CreateAccount}")
+	@Path("/createAccount")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public boolean CreateAccount(Account account) {
+	public boolean createAccount(Account account) {
+		System.out.println(account.getMail_address());
+		System.out.println(account.getPassword());
+		
 		boolean creationSuccess = false;
 		try {
 			account.createAccount();
@@ -42,10 +45,11 @@ public class AccountService{
 	}
 
 	@GET
-	@Path("/{getInboxMessages}")
+	@Path("/{accountName}/inbox")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Message> getInboxMessages(Account currentAccount) {
+	public List<Message> getInboxMessages(@PathParam("accountName") String accountName) {
+		Account currentAccount = new Account(accountName);
 		try {
 			currentAccount.getInbox().loadMessages();
 		} catch (IOException e) {
@@ -55,10 +59,11 @@ public class AccountService{
 	}
 	
 	@POST
-	@Path("/{uploadMessage}")
+	@Path("/{accountName}/inbox")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public boolean uploadMessageToInbox(Message message, @PathParam("account") Account account) {
+	public boolean uploadMessageToInbox(Message message, @PathParam("accountName") String accountName) {
+		Account account = new Account(accountName);
 		boolean uploadSuccess = false;
 		try {
 			account.getInbox().uploadMessage(message);
@@ -72,17 +77,15 @@ public class AccountService{
 	}
 	
 	@PUT
-	@Path("/{overwriteMessages}")
+	@Path("/{accountName}/inbox")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public boolean overwriteMessagesToInbox(List<Message> messages, @PathParam("accountEmail") String Email) {
+	public boolean overwriteMessagesToInbox(List<Message> messages, @PathParam("accountName") String Email) {
 		boolean overwriteSuccess = false;
 		Account account = new Account(Email);
 		try {
 			Inbox inbox = account.getInbox();
-			inbox.loadMessages();
-			List<Message> inboxMessages = inbox.getMessages();
-			inboxMessages = messages;
+			inbox.getMessages().addAll(messages);
 			inbox.uploadInbox();
 			overwriteSuccess = true;
 		} catch (IOException e) {
@@ -92,6 +95,7 @@ public class AccountService{
 	}
 	
 	@POST
+	@Path("/isValid")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public boolean accountValid(Account account) {
