@@ -36,6 +36,11 @@ javafx {
     // launch debugger using Remote Java Application debug launch configuration
 }
 
+javafx {
+    version = '12'
+    modules = [ 'javafx.controls', 'javafx.fxml' ]
+}
+
 spotbugs {
 	// see http://gradle.monochromeroad.com/docs/dsl/org.gradle.api.plugins.quality.FindBugsExtension.html
 	toolVersion = '4.0.0-beta4'
@@ -61,6 +66,7 @@ repositories {
     flatDir {
     	dirs 'libs'
     }
+    jcenter()
 }
 
 
