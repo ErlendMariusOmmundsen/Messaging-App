@@ -19,8 +19,6 @@ public class CompleteObjectMapper extends ObjectMapper {
 		SimpleModule module = new SimpleModule();
 		module.addSerializer(Message.class, new MessageSerializer());
 		module.addDeserializer(Message.class, new MessageDeserializer());
-		//module.addSerializer(List.class, new MessageListSerializer());
-		//module.addDeserializer(List.class, new MessageListDeserializer());
 		module.addSerializer(Account.class, new AccountSerializer());
 		module.addDeserializer(Account.class, new AccountDeserializer());
 		this.registerModule(module);
