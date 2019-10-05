@@ -27,7 +27,7 @@ import project_restapi.AccountService;
 // Copied from simpleexample2
 public class GrizzlyApp {
 
-	private static final URI BASE_URI = URI.create("http://localhost:8080/");
+	public static final URI BASE_URI = URI.create("http://localhost:8080/");
 	
 	public static HttpServer startServer(int waitSecondsForServer) {
 	    final ResourceConfig resourceConfig = new Config();
@@ -64,43 +64,5 @@ public class GrizzlyApp {
 	
 	public static void stopServer(HttpServer server) {
 		server.shutdown();
-	}
-	
-	// Dette er et rest-call som man kan kjøre i eclipse for å teste
-	// Det vil gi mye røde errors i starten, men kan bare ignorere det
-	public static void main(final String[] args) {
-		HttpServer server = GrizzlyApp.startServer(5);
-		
-		URI clientURI = null;
-		String jsonMessage = null;
-		try {
-			Account account = new Account("123", "456");
-			Message message = new Message("subjectTest", "messageTest", account, account);
-			jsonMessage = new CompleteObjectMapper().writeValueAsString(message);
-			clientURI = new URI(BASE_URI + AccountService.ACCOUNT_SERVICE_PATH + "/account");
-		} catch (URISyntaxException | JsonProcessingException e1) {
-			e1.printStackTrace();
-		}
-		final HttpRequest request = HttpRequest.newBuilder(clientURI)
-		          .header("Content-Type", "application/json")
-		          .header("Accept", "application/json")
-		          .POST(BodyPublishers.ofString(jsonMessage))
-		          .build();
-	      try {
-	    	  
-	    	  final HttpResponse<String> response = HttpClient.newBuilder()
-			        .build()
-			        .send(request, HttpResponse.BodyHandlers.ofString());
-		      final String responseString = response.body();
-		      Message message = new CompleteObjectMapper().readValue(responseString, Message.class);
-		      System.out.println(message.getMessage());
-		      System.out.println(message.getSubject());
-		      System.out.println(message.getFrom().getMail_address());
-		      System.out.println(message.getTo().getMail_address());
-	      } catch (JsonParseException | JsonMappingException e) {
-	      } catch (IOException | InterruptedException e) {
-	     }
-	      
-	     GrizzlyApp.stopServer(server);
 	}
 }

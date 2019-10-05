@@ -19,6 +19,7 @@ public class Account {
 	 */
 	public Account(String mail_address) {
 		this.mail_address = mail_address;
+		this.password = "";
 		this.inbox = new Inbox(this);
 	}
 	/**

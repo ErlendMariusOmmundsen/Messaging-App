@@ -12,7 +12,7 @@ public class AccountSerializer extends JsonSerializer<Account>{
 	
 	
 	public static final String email = "mail_adress";
-	public static String password = "password";
+	public static final String password = "password";
 	
 	
 	@Override
