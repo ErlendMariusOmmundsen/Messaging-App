@@ -11,8 +11,8 @@ import java.io.IOException;
 public class AccountSerializer extends JsonSerializer<Account>{
 	
 	
-	private static String email = "Email";
-	private static String password = "Password";
+	public static final String email = "mail_adress";
+	public static final String password = "password";
 	
 	
 	@Override

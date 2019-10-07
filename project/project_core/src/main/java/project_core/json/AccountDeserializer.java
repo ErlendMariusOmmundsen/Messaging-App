@@ -20,10 +20,10 @@ public class AccountDeserializer extends JsonDeserializer<Account>{
 		ObjectCodec codec = parser.getCodec();
         JsonNode node = codec.readTree(parser);
         
-        //String Email = node.get(AccountSerializer.email).asText();
-        //String password = node.get(AccountSerializer.password).asText();
+        String email = node.get(AccountSerializer.email).asText();
+        String password = node.get(AccountSerializer.password).asText();
        
-        return new Account("", "");
+        return new Account(email, password);
 	}
 	
 	
