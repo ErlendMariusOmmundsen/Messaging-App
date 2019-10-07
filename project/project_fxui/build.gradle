@@ -76,6 +76,13 @@ dependencies {
     // brukergrensesnitt
     //implementation name: 'fx-map-control-1.0'
     
+    // rest-server (siden den foreløpig må startes av app-en)
+	implementation project(':project_restserver')
+	
+	// rest-server
+	testCompile project(':project_restapi')
+	testImplementation project(':project_restserver')
+    
     testImplementation 'junit:junit:4.12'
 
     // brukergrensesnitt

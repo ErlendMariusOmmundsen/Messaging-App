@@ -12,7 +12,7 @@ public interface AccountDataAccess {
 	 * @param account - The account that we want to get the inbox messages from.
 	 * @return The messages of the accounts inbox in the system.
 	 */
-	// As a REST call could be: GET accounts/{SerializedAccount}/inbox
+	// As a REST call could be: GET accounts/{AccountName}/inbox
 	List<Message> getInboxMessages(Account account);
 	
 	
@@ -21,7 +21,7 @@ public interface AccountDataAccess {
 	 * @param message - The message to upload.
 	 * @param account - The account to the inbox we want to upload to.
 	 */
-	// As a REST call could be: POST accounts/{SerializedAccount}/inbox/{SerializedMessage}
+	// As a REST call could be: POST accounts/{AccountName}/inbox/ | {SerializedMessage} JSON
 	void uploadMessageToInbox(Message message, Account account);
 	
 	
@@ -30,7 +30,7 @@ public interface AccountDataAccess {
 	 * @param messages - All the messages to upload.
 	 * @param account - The account that we want to overwrite the inbox of.
 	 */
-	// As a REST call could be: PUT accounts/{SerializedAccount}/inbox/{SerializedMessageList}
+	// As a REST call could be: PUT accounts/{AccountName}/inbox/ | {SerializedMessageList} JSON
 	void overwriteMessagesToInbox(List<Message> messages, Account account);
 	
 	
@@ -38,7 +38,7 @@ public interface AccountDataAccess {
 	 * Will upload the account 
 	 * @param account - The account to upload
 	 */
-	// As a REST call could be: POST accounts/{SerializedAccount}
+	// As a REST call could be: POST accounts/ | {SerializedAccount} JSON
 	void uploadAccount(Account account);
 	
 	
@@ -47,7 +47,7 @@ public interface AccountDataAccess {
 	 * @param account - The account to check if is valid.
 	 * @return true if it is valid, false if not.
 	 */
-	// As a REST call could be: GET accounts/{SerializedAccount}
+	// As a REST call could be: GET accounts/ | {SerializedAccount} JSON
 	boolean accountValid(Account account);
 	
 }

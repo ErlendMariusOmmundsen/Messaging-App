@@ -13,11 +13,21 @@ public class Account {
 	private String password;
 	private Inbox inbox;
 	
+	/**
+	 * 
+	 * @param mail_address
+	 */
 	public Account(String mail_address) {
 		this.mail_address = mail_address;
+		this.password = "";
 		this.inbox = new Inbox(this);
 	}
-	
+	/**
+	 * 
+	 * @param mail_address
+	 * @param password
+	 * @throws IllegalArgumentException
+	 */
 	public Account(String mail_address, String password) throws IllegalArgumentException{
 		this(mail_address);
 		this.password = password;

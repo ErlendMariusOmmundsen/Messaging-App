@@ -25,7 +25,7 @@ Step 1: Clone the repository at: [Gitlab](https://gitlab.stud.idi.ntnu.no/it1901
 		
 Step 2: Go to /project in CMD and write the command. 
 ``` 
-gradle run 
+gradle run
 
 ```
 Step 3: Use the pre-registered user to login. Email: eksempel@outlook.com | Password: eksempel
@@ -35,8 +35,8 @@ Step 3: Use the pre-registered user to login. Email: eksempel@outlook.com | Pass
 
 Step 1: Go to /project in CMD and write the command. For example:
 ``` 
-gradle test 
- 
+gradle test
+
 ```
 
 ## Built With
