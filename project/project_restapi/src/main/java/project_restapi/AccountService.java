@@ -36,10 +36,8 @@ public class AccountService{
 		try {
 			account.createAccount();
 			creationSuccess = true;
-		} catch (IOException e) {
+		} catch (IOException | IllegalStateException e) {
 			e.printStackTrace();
-		} catch (IllegalStateException e) {
-			System.out.println(e.getMessage());
 		}
 		return creationSuccess;
 	}
@@ -68,9 +66,7 @@ public class AccountService{
 		try {
 			account.getInbox().uploadMessage(message);
 			uploadSuccess = true;
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (IllegalStateException e) {
+		} catch (IOException | IllegalStateException e) {
 			e.printStackTrace();
 		}
 		return uploadSuccess;
