@@ -50,7 +50,6 @@ public class AccountService{
 		try {
 			currentAccount.getInbox().loadMessages();
 		} catch (IOException e) {
-			e.printStackTrace();
 		}
 		return currentAccount.getInbox().getMessages();
 	}
@@ -78,9 +77,10 @@ public class AccountService{
 	public boolean overwriteMessagesToInbox(List<Message> messages, @PathParam("accountName") String Email) {
 		boolean overwriteSuccess = false;
 		Account account = new Account(Email);
+		Inbox inbox = account.getInbox();
 		try {
-			Inbox inbox = account.getInbox();
-			inbox.getMessages().addAll(messages);
+			if (!(messages.size() == 1 && messages.get(0).equals(Message.emptyMessage)))
+				inbox.getMessages().addAll(messages);
 			inbox.uploadInbox();
 			overwriteSuccess = true;
 		} catch (IOException e) {

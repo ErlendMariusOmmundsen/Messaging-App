@@ -181,10 +181,7 @@ public class appController {
 			System.out.println("Couldn't edit the Inbox file");
 		}
 		
-		this.updateInbox();
 		List<String> subjects = currentAccount.getInbox().getMessages().stream().map(m -> m.getSubject()).collect(Collectors.toList());
-		System.out.println(subjects);
-		System.out.println(currentAccount.getInbox().getMessages());
 		inbox.getItems().clear();
 		inbox.getItems().addAll(subjects);
 	}

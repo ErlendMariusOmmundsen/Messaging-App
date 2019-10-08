@@ -37,6 +37,7 @@ public class InboxIO implements MailReader{
 	@Override
 	public void uploadInbox(Inbox inbox, String filename) throws IOException {
 		this.clearFile(filename);
+		System.out.println(inbox.getMessages().size());
 		for (Message message : inbox.getMessages()) {
 			this.uploadMessage(message, filename);
 		}

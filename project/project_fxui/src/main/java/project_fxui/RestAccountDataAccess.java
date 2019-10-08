@@ -67,6 +67,8 @@ public class RestAccountDataAccess implements AccountDataAccess {
 
 	@Override
 	public void overwriteMessagesToInbox(List<Message> messages, Account account) throws IOException {
+		// Add a empty message so the api will know it is a List<Message> object, so the right call will be made.
+		if (messages.isEmpty()) messages.add(Message.emptyMessage);
 		try {
 			URI clientURI = new URI(getBaseURI() + "/" + account.getMail_address() + "/inbox/");
 			System.out.println("PUT " + clientURI.toString());
