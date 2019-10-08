@@ -132,7 +132,7 @@ public class appController {
 		Message message = new Message(subject , text, toAccount, currentAccount);
 		
 		try {
-			currentAccount.sendMessage(message, toAccount);
+			dataAccess.sendMessage(message, currentAccount);
 		} catch (IllegalStateException e) {
 			System.out.println(e.getMessage());
 		} catch (IOException e) {

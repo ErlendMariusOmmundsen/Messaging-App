@@ -58,14 +58,16 @@ public class AccountService{
 	@Path("/{accountName}/inbox")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public boolean uploadMessageToInbox(Message message, @PathParam("accountName") String accountName) {
-		Account account = new Account(accountName);
+	public boolean sendMessage(Message message, @PathParam("accountName") String toName) {
+		Account toAccount = new Account(toName);
 		boolean uploadSuccess = false;
 		try {
-			account.getInbox().uploadMessage(message);
+			message.getFrom().sendMessage(message, toAccount);
 			uploadSuccess = true;
-		} catch (IOException | IllegalStateException e) {
+		} catch (IOException e) {
 			e.printStackTrace();
+		} catch (IllegalStateException e) {
+			uploadSuccess = false;
 		}
 		return uploadSuccess;
 	}

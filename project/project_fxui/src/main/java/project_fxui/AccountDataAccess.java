@@ -26,7 +26,7 @@ public interface AccountDataAccess {
 	 * @throws IOException - If something goes wrong with the communication with the system.
 	 */
 	// As a REST call could be: POST accounts/{AccountName}/inbox/ | {SerializedMessage} JSON
-	void uploadMessageToInbox(Message message, Account account) throws IOException;
+	void sendMessage(Message message, Account from) throws IOException;
 	
 	
 	/**

@@ -47,9 +47,10 @@ public class RestAccountDataAccess implements AccountDataAccess {
 	}
 
 	@Override
-	public void uploadMessageToInbox(Message message, Account account) throws IOException {
+	public void sendMessage(Message message, Account from) throws IOException {
+		boolean responseValue = false;
 		try {
-			URI clientURI = new URI(getBaseURI() + "/" + account.getMail_address() + "/inbox/");
+			URI clientURI = new URI(getBaseURI() + "/" + message.getTo().getMail_address() + "/inbox/");
 			System.out.println("POST: " + clientURI.toString());
 			final HttpRequest request = HttpRequest.newBuilder(clientURI)
 					.header("Content-Type", "application/json")
@@ -59,10 +60,12 @@ public class RestAccountDataAccess implements AccountDataAccess {
 			final HttpResponse<InputStream> response = HttpClient.newBuilder()
 					.build()
 					.send(request, HttpResponse.BodyHandlers.ofInputStream());
+			responseValue = new CompleteObjectMapper().readValue(response.body(), Boolean.class);
 		} catch(IOException | InterruptedException | URISyntaxException e) {
 			throw new IOException(e);
 		}
 		
+		if (!responseValue) throw new IllegalStateException("Both accounts in the transaction needs to exist in the system");
 	}
 
 	@Override

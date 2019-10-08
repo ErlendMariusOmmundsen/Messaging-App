@@ -16,8 +16,8 @@ public class LocalAccountDataAccess implements AccountDataAccess {
 	}
 
 	@Override
-	public void uploadMessageToInbox(Message message, Account account) throws IOException {
-		account.getInbox().uploadMessage(message);
+	public void sendMessage(Message message, Account from) throws IOException {
+		from.sendMessage(message, message.getTo());
 	}
 
 	@Override
