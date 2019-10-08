@@ -27,7 +27,6 @@ public class Inbox{
 	}
 	
 	public void loadMessages() throws IOException {
-		// I starten bare 1 felles Inbox, men etter hvert får hver account en inbox.
 		this.messages = io.getMessages(this.inboxFilename);
 	}
 	

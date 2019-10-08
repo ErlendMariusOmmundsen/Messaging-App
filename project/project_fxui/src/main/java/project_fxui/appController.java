@@ -29,6 +29,11 @@ public class appController {
 	@FXML private Button loginButton, logoutButton, newMessageButton, sendButton, btnConfirm;
 	
 	private Account currentAccount;
+	private AccountDataAccess dataAccess;
+	
+	public appController() {
+		dataAccess = new RestAccountDataAccess();
+	}
 	
 	/**
 	 * Makes the app visible
@@ -77,7 +82,7 @@ public class appController {
 		String passwordInput = passwordField.getText();
 		Account account = new Account(emailInput, passwordInput);
 		try {
-			if (account.isValid()) {
+			if (dataAccess.accountValid(account)) {
 				currentAccount = account;
 				clear();
 				appVisibility();
@@ -147,7 +152,9 @@ public class appController {
 	public void updateInbox() {
 		
 		try {
-			currentAccount.getInbox().loadMessages();
+			List<Message> messages = dataAccess.getInboxMessages(currentAccount);
+			currentAccount.getInbox().getMessages().clear();
+			currentAccount.getInbox().getMessages().addAll(messages);
 		} catch (IOException e) {
 			System.out.println("Couldn't load new messages.");
 		}
@@ -169,7 +176,7 @@ public class appController {
 		
 		currentAccount.getInbox().deleteMessage(messageIndex);
 		try {
-			currentAccount.getInbox().uploadInbox();
+			dataAccess.overwriteMessagesToInbox(currentAccount.getInbox().getMessages(), currentAccount);
 		} catch (IOException e) {
 			System.out.println("Couldn't edit the Inbox file");
 		}
@@ -216,7 +223,7 @@ public class appController {
 		String password = txt_C_password.getText();
 		Account newAccount = new Account(mail, password);
 		try {
-			newAccount.createAccount();
+			dataAccess.createAccount(newAccount);
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (IllegalStateException e) {

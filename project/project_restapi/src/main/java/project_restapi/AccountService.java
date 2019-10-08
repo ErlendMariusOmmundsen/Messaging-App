@@ -29,15 +29,14 @@ public class AccountService{
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public boolean createAccount(Account account) {
-		System.out.println(account.getMail_address());
-		System.out.println(account.getPassword());
-		
 		boolean creationSuccess = false;
 		try {
 			account.createAccount();
 			creationSuccess = true;
-		} catch (IOException | IllegalStateException e) {
+		} catch (IOException e) {
 			e.printStackTrace();
+		} catch (IllegalStateException e) {
+			creationSuccess = false;
 		}
 		return creationSuccess;
 	}
