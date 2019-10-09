@@ -29,15 +29,14 @@ public class AccountService{
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public boolean createAccount(Account account) {
-		System.out.println(account.getMail_address());
-		System.out.println(account.getPassword());
-		
 		boolean creationSuccess = false;
 		try {
 			account.createAccount();
 			creationSuccess = true;
-		} catch (IOException | IllegalStateException e) {
+		} catch (IOException e) {
 			e.printStackTrace();
+		} catch (IllegalStateException e) {
+			creationSuccess = false;
 		}
 		return creationSuccess;
 	}
@@ -51,7 +50,6 @@ public class AccountService{
 		try {
 			currentAccount.getInbox().loadMessages();
 		} catch (IOException e) {
-			e.printStackTrace();
 		}
 		return currentAccount.getInbox().getMessages();
 	}
@@ -60,14 +58,16 @@ public class AccountService{
 	@Path("/{accountName}/inbox")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public boolean uploadMessageToInbox(Message message, @PathParam("accountName") String accountName) {
-		Account account = new Account(accountName);
+	public boolean sendMessage(Message message, @PathParam("accountName") String toName) {
+		Account toAccount = new Account(toName);
 		boolean uploadSuccess = false;
 		try {
-			account.getInbox().uploadMessage(message);
+			message.getFrom().sendMessage(message, toAccount);
 			uploadSuccess = true;
-		} catch (IOException | IllegalStateException e) {
+		} catch (IOException e) {
 			e.printStackTrace();
+		} catch (IllegalStateException e) {
+			uploadSuccess = false;
 		}
 		return uploadSuccess;
 	}
@@ -79,9 +79,10 @@ public class AccountService{
 	public boolean overwriteMessagesToInbox(List<Message> messages, @PathParam("accountName") String Email) {
 		boolean overwriteSuccess = false;
 		Account account = new Account(Email);
+		Inbox inbox = account.getInbox();
 		try {
-			Inbox inbox = account.getInbox();
-			inbox.getMessages().addAll(messages);
+			if (!(messages.size() == 1 && messages.get(0).equals(Message.emptyMessage)))
+				inbox.getMessages().addAll(messages);
 			inbox.uploadInbox();
 			overwriteSuccess = true;
 		} catch (IOException e) {

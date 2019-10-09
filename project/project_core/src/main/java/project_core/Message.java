@@ -3,6 +3,8 @@ package project_core;
 
 public class Message {
 	
+	public static final Message emptyMessage = new Message("", "", new Account(""), new Account(""));
+	
 	private String subject, message;
 	private Account to, from;
 	
@@ -31,6 +33,13 @@ public class Message {
 	
 	public String toString() {
 		return this.getMessage();
+	}
+	
+	public boolean equals(Message message) {
+		return this.from.getMail_address().equals(message.from.getMail_address())
+			&& this.to.getMail_address().equals(message.to.getMail_address())
+			&& this.message.equals(message.message)
+			&& this.subject.equals(message.subject);
 	}
 	
 }

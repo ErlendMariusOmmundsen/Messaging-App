@@ -29,6 +29,11 @@ public class appController {
 	@FXML private Button loginButton, logoutButton, newMessageButton, sendButton, btnConfirm;
 	
 	private Account currentAccount;
+	private AccountDataAccess dataAccess;
+	
+	public appController() {
+		dataAccess = new RestAccountDataAccess();
+	}
 	
 	/**
 	 * Makes the app visible
@@ -77,7 +82,7 @@ public class appController {
 		String passwordInput = passwordField.getText();
 		Account account = new Account(emailInput, passwordInput);
 		try {
-			if (account.isValid()) {
+			if (dataAccess.accountValid(account)) {
 				currentAccount = account;
 				clear();
 				appVisibility();
@@ -127,7 +132,7 @@ public class appController {
 		Message message = new Message(subject , text, toAccount, currentAccount);
 		
 		try {
-			currentAccount.sendMessage(message, toAccount);
+			dataAccess.sendMessage(message, currentAccount);
 		} catch (IllegalStateException e) {
 			System.out.println(e.getMessage());
 		} catch (IOException e) {
@@ -147,7 +152,9 @@ public class appController {
 	public void updateInbox() {
 		
 		try {
-			currentAccount.getInbox().loadMessages();
+			List<Message> messages = dataAccess.getInboxMessages(currentAccount);
+			currentAccount.getInbox().getMessages().clear();
+			currentAccount.getInbox().getMessages().addAll(messages);
 		} catch (IOException e) {
 			System.out.println("Couldn't load new messages.");
 		}
@@ -169,15 +176,12 @@ public class appController {
 		
 		currentAccount.getInbox().deleteMessage(messageIndex);
 		try {
-			currentAccount.getInbox().uploadInbox();
+			dataAccess.overwriteMessagesToInbox(currentAccount.getInbox().getMessages(), currentAccount);
 		} catch (IOException e) {
 			System.out.println("Couldn't edit the Inbox file");
 		}
 		
-		this.updateInbox();
 		List<String> subjects = currentAccount.getInbox().getMessages().stream().map(m -> m.getSubject()).collect(Collectors.toList());
-		System.out.println(subjects);
-		System.out.println(currentAccount.getInbox().getMessages());
 		inbox.getItems().clear();
 		inbox.getItems().addAll(subjects);
 	}
@@ -216,7 +220,7 @@ public class appController {
 		String password = txt_C_password.getText();
 		Account newAccount = new Account(mail, password);
 		try {
-			newAccount.createAccount();
+			dataAccess.createAccount(newAccount);
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (IllegalStateException e) {

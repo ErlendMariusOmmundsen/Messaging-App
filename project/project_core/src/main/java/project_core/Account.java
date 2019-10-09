@@ -22,6 +22,7 @@ public class Account {
 		this.password = "";
 		this.inbox = new Inbox(this);
 	}
+	
 	/**
 	 * 
 	 * @param mail_address
@@ -49,6 +50,11 @@ public class Account {
 		this.password = newPassword;
 	}
 	
+	/**
+	 * Creates the account in the system.
+	 * @throws IOException - If something goes wrong with communication with the system.
+	 * @throws IllegalStateException - If the account already exists in the system.
+	 */
 	public void createAccount() throws IOException, IllegalStateException {
 		if (!this.exists()) {
 			AccountIO io = new AccountIO();

@@ -26,36 +26,58 @@ public class Inbox{
 		return this.account;
 	}
 	
+	/**
+	 * Loads in all the messages of the inbox in the system to this inbox-object.
+	 * @throws IOException - If something goes wrong with communication with the system.
+	 */
 	public void loadMessages() throws IOException {
-		// I starten bare 1 felles Inbox, men etter hvert får hver account en inbox.
 		this.messages = io.getMessages(this.inboxFilename);
 	}
 	
+	/**
+	 * Overwrites the inbox in the system with this inbox-objects messages.
+	 * @throws IOException - If something goes wrong with communication with the system.
+	 */
 	public void uploadInbox() throws IOException {
 		io.uploadInbox(this, this.inboxFilename);
 	}
 	
-	public void uploadMessage(Message message) throws IOException, IllegalStateException {			
+	/**
+	 * Adds a message to the inbox in the system
+	 * @param message - Message to be added.
+	 * @throws IOException - If something goes wrong with communication with the system.
+	 */
+	public void uploadMessage(Message message) throws IOException {			
 		io.uploadMessage(message, this.inboxFilename);
 	}
 	
 	/**
-	 * @param messageIndex
+	 * Deletes the inbox-object's message at the specified index
+	 * @param messageIndex - index of the message to be deleted
 	 */
 	public void deleteMessage(int messageIndex) {
 		this.messages.remove(messageIndex);
 	}
 	
+	/**
+	 * Adds a message to the inbox-object's messages
+	 * @param message - The message to be added
+	 */
 	public void addMessage(Message message) {
 		this.messages.add(message);
 	}
 	
+	/**
+	 * Gets the inbox-object's message specified at the index
+	 * @param messageIndex - index of the message to get
+	 * @return the message at the index.
+	 */
 	public Message getMessage(int messageIndex) {
 		return this.messages.get(messageIndex);
 	}
 	
 	/**
-	 * @return A list with all messages in this inbox.
+	 * @return A list with all messages in this inbox-object.
 	 */
 	public List<Message> getMessages() {
 		return this.messages;
