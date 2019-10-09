@@ -23,6 +23,7 @@ public class RestAccountDataAccess implements AccountDataAccess {
 		return GrizzlyApp.BASE_URI + "accounts";
 	}
 	
+	// REST CALL: GET {GET BASE_URI}/accounts/{accountName}/inbox/
 	@Override
 	public List<Message> getInboxMessages(Account account) throws IOException {
 		try {
@@ -46,6 +47,8 @@ public class RestAccountDataAccess implements AccountDataAccess {
 		}
 	}
 
+	// REST CALL: POST {GET BASE_URI}/accounts/{accountName}/inbox/
+	// (JSON serialized Message in body)
 	@Override
 	public void sendMessage(Message message, Account from) throws IOException {
 		boolean responseValue = false;
@@ -67,7 +70,9 @@ public class RestAccountDataAccess implements AccountDataAccess {
 		
 		if (!responseValue) throw new IllegalStateException("Both accounts in the transaction needs to exist in the system");
 	}
-
+	
+	// REST CALL: PUT {GET BASE_URI}/accounts/{accountName}/inbox/ 
+	// (JSON serialized List<Message> in body)
 	@Override
 	public void overwriteMessagesToInbox(List<Message> messages, Account account) throws IOException {
 		// Add a empty message so the api will know it is a List<Message> object, so the right call will be made.
@@ -87,7 +92,9 @@ public class RestAccountDataAccess implements AccountDataAccess {
 			throw new IOException(e);
 		}
 	}
-
+	
+	// REST CALL: POST {GET BASE_URI}/accounts/createAccount 
+	// (JSON serialized Account in body)
 	@Override
 	public void createAccount(Account account) throws IOException, IllegalStateException {
 		try {			
@@ -107,7 +114,10 @@ public class RestAccountDataAccess implements AccountDataAccess {
 			throw new IOException(e);
 		}
 	}
-
+	
+	
+	// REST CALL: POST {GET BASE_URI}/accounts/isValid 
+	// (JSON serialized Account in body)
 	@Override
 	public boolean accountValid(Account account) throws IOException {
 		try {

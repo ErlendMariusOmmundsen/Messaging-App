@@ -39,13 +39,13 @@ public interface AccountDataAccess {
 	void overwriteMessagesToInbox(List<Message> messages, Account account) throws IOException;
 	
 
-	// As a REST call could be: POST accounts/ | {SerializedAccount} JSON
 	/**
 	 * Will upload the account 
 	 * @param account - The account to upload
 	 * @throws IOException - If something goes wrong with the communication with the system.
 	 * @throws IllegalStateException - If the account already exists in the system.
 	 */
+	// As a REST call could be: POST accounts/ | {SerializedAccount} JSON
 	void createAccount(Account account) throws IOException, IllegalStateException;
 	
 	
