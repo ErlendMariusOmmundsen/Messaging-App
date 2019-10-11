@@ -57,6 +57,11 @@ gradle test
 ## Project Status
 
 We have completed the main functionality of the service, as described in the user story, and made the application restfull.
+Features:
+* Sending messages
+* Recieving messages in inbox
+* Creating a user
+* Logging in
 
 
 ## Authors
