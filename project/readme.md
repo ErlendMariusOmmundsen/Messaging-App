@@ -1,5 +1,7 @@
 # Group gr1922 repository
 
+This is currently a messaging application. With the use of REST, it can send messages over the internet if you have a server to spare. 
+
 About the repository: The project is in /project. The project folder has different modules for all the different part of the code. The modules are:
 * project_core
 * project_fxui
