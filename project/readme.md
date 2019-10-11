@@ -63,6 +63,7 @@ Features:
 * Recieving messages in inbox
 * Creating a user
 * Logging in
+* Deleting messages in inbox
 
 
 ## Authors
