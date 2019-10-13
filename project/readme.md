@@ -8,13 +8,12 @@ About the repository: The project is in /project. The project folder has differe
 * project_restapi
 * project_restserver
 
+This link takes you to some mockups of the app: [Mockups](https://gitlab.stud.idi.ntnu.no/it1901/gr1922/gr1922/tree/master/project/Illustrations)
+
 ## Building with Gradle
 
 Because we are working with multiple modules the settings.gradle in /project is configured to include the other modules. Each of the modules got their own build.gradle because they are their own gradle project, hence we only need to import the dependencies if they are needed in a project. 
 
-
-This is currently an offline messaging app for users of the same computer. 
-This link takes you to some mockups of the app: [Mockups](https://gitlab.stud.idi.ntnu.no/it1901/gr1922/gr1922/tree/master/project/Illustrations)
 
 ## Getting Started
 
@@ -34,7 +33,7 @@ Java
 
 Step 1: Clone the repository at: [Gitlab](https://gitlab.stud.idi.ntnu.no/it1901/gr1922/gr1922.git):
 		
-Step 2: Go to /project in CMD and write the command. 
+Step 2: Go to /project in any Terminal and write the command. 
 ``` 
 gradle run
 
@@ -56,7 +55,7 @@ gradle test
 
 ## Project Status
 
-We have completed the main functionality of the service, as described in the user story, and made the application restfull.
+We have completed the main functionality of the service, as described in the user story, and made the application restful.
 
 Features:
 * Sending messages
@@ -68,7 +67,7 @@ Features:
 
 ## Authors
 
-* **Lukas** - *Gradle and IO  * - [lukasnt](https://gitlab.stud.idi.ntnu.no/lukasnt)
+* **Lukas** - *Gradle and IO* - [lukasnt](https://gitlab.stud.idi.ntnu.no/lukasnt)
 * **Brage** - *Gradle, JUNIT tests* - [bragesc](https://gitlab.stud.idi.ntnu.no/bragesc)
 * **Aleksander** - *Domainlogic* - [aleksawk](https://gitlab.stud.idi.ntnu.no/aleksawk)
 * **Erlend** - *FXML og App-controller* - [erlenmom](https://gitlab.stud.idi.ntnu.no/erlenmom)
