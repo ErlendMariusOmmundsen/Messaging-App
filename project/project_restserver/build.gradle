@@ -1,5 +1,33 @@
 plugins {
 	id 'java-library'
+	
+	//Test coverage
+    id 'jacoco'
+    
+    // code quality with SpotBugs
+	id 'com.github.spotbugs' version '2.0.0'
+	
+	// code quality with checkstyle
+	id 'checkstyle'
+}
+
+spotbugs {
+	// see http://gradle.monochromeroad.com/docs/dsl/org.gradle.api.plugins.quality.FindBugsExtension.html
+	toolVersion = '4.0.0-beta4'
+    ignoreFailures = true
+    effort = "max"
+}
+
+// To generate an HTML report instead of XML
+tasks.withType(com.github.spotbugs.SpotBugsTask) {
+  	reports {
+  		xml.enabled = false
+  		html.enabled = true
+  	}
+}
+
+checkstyle {
+	configFile = project.file("../project_core/config/checkstyle/google_checks.xml")
 }
 
 ext {
@@ -10,7 +38,7 @@ ext {
 dependencies {
 	implementation project(':project_core')
 	implementation project(':project_restapi')
-
+	
     compile "org.slf4j:slf4j-api:$slf4jVersion"
     compile "org.slf4j:slf4j-simple:$slf4jVersion"
 
