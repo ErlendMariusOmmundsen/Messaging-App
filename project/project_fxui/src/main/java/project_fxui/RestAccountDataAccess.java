@@ -109,7 +109,7 @@ public class RestAccountDataAccess implements AccountDataAccess {
 					.build()
 					.send(request, HttpResponse.BodyHandlers.ofInputStream());
 			boolean responseValue = new CompleteObjectMapper().readValue(response.body(), Boolean.class);
-			if (!responseValue) throw new IllegalStateException("Account already exists");
+			if (!responseValue) throw new IllegalStateException("Couldn't create that account");
 		} catch (IOException | URISyntaxException | InterruptedException e) {
 			throw new IOException(e);
 		}

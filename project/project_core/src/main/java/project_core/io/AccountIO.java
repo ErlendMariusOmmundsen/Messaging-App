@@ -50,7 +50,10 @@ public class AccountIO {
 		
 	}
 	
-	public void newAccount(Account account) throws IOException {
+	public void newAccount(Account account) throws IOException, IllegalStateException {
+		if (account.getMail_address().isEmpty() || account.getPassword().isEmpty())
+			throw new IllegalStateException("Can't write empty account to system");
+		
 		String filepath = AccountIO.resourceFilepath + usersFilename;
 		FileWriter fw = new FileWriter(new File(filepath), true);
 		PrintWriter writer;
