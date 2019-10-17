@@ -102,5 +102,13 @@ public class AccountService{
 			return false;
 		}
 	}
+	
+	@GET
+	@Path("{/accountName}")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Accounts> getContacts(@PathParam("accountName") Account account){
+		
+	}
 
 }
