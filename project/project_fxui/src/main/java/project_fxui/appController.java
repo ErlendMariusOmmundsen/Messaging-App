@@ -22,7 +22,7 @@ public class appController {
 	@FXML private AnchorPane loginPane, CreateAccountPane;
 	@FXML private SplitPane splitPane;
 	@FXML private Label inboxLabel, welcomeLabel, emailLabel, errorLabel, toLabel, fromLabel;
-	@FXML private java.awt.TextField emailField, toField, fromField, subjectField, txt_C_Email;
+	@FXML private TextField emailField, toField, fromField, subjectField, txt_C_Email;
 	@FXML private PasswordField passwordField, txt_C_password;
 	@FXML private TextArea textArea;
 	@FXML private ListView<String> inbox;
