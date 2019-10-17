@@ -107,7 +107,7 @@ public class AccountService{
 	@Path("{/accountName}")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Accounts> getContacts(@PathParam("accountName") Account account){
+	public List<Account> getContacts(@PathParam("accountName") Account account){
 		
 	}
 
