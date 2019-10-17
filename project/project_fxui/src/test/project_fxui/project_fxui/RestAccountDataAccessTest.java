@@ -8,20 +8,25 @@ import project_restserver.GrizzlyApp;
 
 public class RestAccountDataAccessTest extends AccountDataAccessTest {
 	
-	private HttpServer server;
-
-	@Before
-	public void setUp() {
-		server = GrizzlyApp.startServer(5);
-	}
+	private HttpServer server;	
 	
 	@Override
 	public AccountDataAccess getDataAccess() {
 		return new RestAccountDataAccess();
 	}
 	
-	@After
-	public void shutDown() {
+	@Override
+	public void testCreateEmptyAccount() {
+		server = GrizzlyApp.startServer(5);
+		super.testCreateEmptyAccount();
 		GrizzlyApp.stopServer(server);
 	}
+	
+	@Override
+	public void testGetInboxMessages() {
+		server = GrizzlyApp.startServer(5);
+		super.testGetInboxMessages();
+		GrizzlyApp.stopServer(server);
+	}
+	
 }
