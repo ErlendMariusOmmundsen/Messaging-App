@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="523.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project_fxui.appController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="523.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project_fxui.appController">
    <children>
       <SplitPane fx:id="splitPane" prefHeight="523.0" prefWidth="600.0" visible="false">
         <items>
@@ -43,7 +43,7 @@
                      </font>
                   </Label>
                   <TextField fx:id="toField" layoutX="275.0" layoutY="10.0" />
-                  <TextField fx:id="fromField" layoutX="275.0" layoutY="40.0" />
+                  <TextField fx:id="fromField" editable="false" layoutX="275.0" layoutY="40.0" />
                   <TextField fx:id="subjectField" layoutX="275.0" layoutY="70.0" />
                   <Button fx:id="logoutButton" layoutX="525.0" layoutY="10.0" mnemonicParsing="false" onAction="#logout" text="Log out" />
                   <Button fx:id="newMessageButton" layoutX="225.0" layoutY="450.0" mnemonicParsing="false" onAction="#initNewMessage" text="+">
@@ -51,12 +51,12 @@
                         <Font size="16.0" />
                      </font>
                   </Button>
-                  <Button fx:id="sendButton" layoutX="300.0" layoutY="450.0" mnemonicParsing="false" onAction="#sendMessage" text="Send Message">
+                  <Button fx:id="sendButton" layoutX="285.0" layoutY="450.0" mnemonicParsing="false" onAction="#sendMessage" text="Send Message">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Button>
-                  <Button fx:id="deleteButton" layoutX="400.0" layoutY="450.0" mnemonicParsing="false" onAction="#deleteMessage" text="Delete message">
+                  <Button fx:id="deleteButton" layoutX="415.0" layoutY="450.0" mnemonicParsing="false" onAction="#deleteMessage" text="Delete message">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -118,6 +118,16 @@
             <Text layoutX="92.0" layoutY="332.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password:" />
             <Button fx:id="btnConfirm" layoutX="272.0" layoutY="436.0" mnemonicParsing="false" onAction="#handleCreateAccount" text="Confirm" />
             <PasswordField fx:id="txt_C_password" layoutX="160.0" layoutY="308.0" prefHeight="39.0" prefWidth="276.0" />
+            <Button fx:id="backButton" layoutX="73.0" layoutY="71.0" mnemonicParsing="false" onAction="#handle_switch_LI" prefHeight="50.0" prefWidth="58.0" text="←">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Button>
+            <Label id="errorLabel" fx:id="errorLabel2" layoutX="125.0" layoutY="366.0" prefHeight="30.0" prefWidth="391.0" textFill="RED">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </children>
