@@ -22,6 +22,19 @@ public abstract class AccountDataAccessTest extends TestCase {
 		}
 	}
 	
+	@Test
+	public void testCreateEmptyAccount() {
+		Account emptyAcc = new Account("", "");
+		try {
+			getDataAccess().createAccount(emptyAcc);
+			fail();
+		} catch (IllegalStateException e) {
+			
+		} catch (IOException e) {
+			fail(e.getMessage());
+		}
+	}
+	
 	// Could test all of them, but they are already tested in the server part.
 	
 }
