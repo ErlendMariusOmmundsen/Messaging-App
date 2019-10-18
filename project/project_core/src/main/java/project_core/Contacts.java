@@ -13,6 +13,9 @@ public class Contacts implements InboxListener {
 		account.getInbox().addListener(this);
 	}
 
+	/**
+	 * The contatcs will be updated so that every account that has sent to Message to Inbox will be added
+	 */
 	@Override
 	public void inboxChanged(List<Message> messages) {
 		accounts.clear();

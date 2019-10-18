@@ -24,8 +24,31 @@ public class Inbox{
 		this.inboxFilename = this.getAccount().getMail_address() + ".txt";
 	}
 	
+	
+	/**
+	 *  
+	 * @return The account associated with this Inbox.
+	 */
 	public Account getAccount() {
 		return this.account;
+	}
+
+	
+	/**
+	 * Gets the inbox-object's message specified at the index
+	 * @param messageIndex - index of the message to get
+	 * @return the message at the index.
+	 */
+	public Message getMessage(int messageIndex) {
+		return this.messages.get(messageIndex);
+	}
+	
+	
+	/**
+	 * @return A list with all messages in this inbox-object.
+	 */
+	public List<Message> getMessages() {
+		return this.messages;
 	}
 	
 	
@@ -40,8 +63,8 @@ public class Inbox{
 	
 	
 	/**
-	 * 
-	 * @param messages
+	 * Add a message to the inbox
+	 * @param messages - The message to be added
 	 */
 	public void addMessages(Collection<Message> messages) {
 		this.messages.addAll(messages);
@@ -65,24 +88,6 @@ public class Inbox{
 	public void clear() {
 		this.messages.clear();
 		listeners.forEach(listener -> listener.inboxChanged(this.messages));
-	}
-	
-	
-	/**
-	 * Gets the inbox-object's message specified at the index
-	 * @param messageIndex - index of the message to get
-	 * @return the message at the index.
-	 */
-	public Message getMessage(int messageIndex) {
-		return this.messages.get(messageIndex);
-	}
-	
-	
-	/**
-	 * @return A list with all messages in this inbox-object.
-	 */
-	public List<Message> getMessages() {
-		return this.messages;
 	}
 	
 	
@@ -113,8 +118,6 @@ public class Inbox{
 	public void uploadInbox() throws IOException {
 		io.uploadInbox(this, this.inboxFilename);
 	}
-	
-	
 
 	
 	/**

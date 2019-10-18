@@ -6,7 +6,7 @@ public interface InboxListener {
 	
 	/**
 	 * The entire inbox have been changed somehow.
-	 * @param messages - hHow all the messages look now
+	 * @param messages - How all the messages look now
 	 */
 	void inboxChanged(List<Message> messages);
 	

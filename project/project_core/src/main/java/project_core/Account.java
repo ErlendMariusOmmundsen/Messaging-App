@@ -71,6 +71,7 @@ public class Account {
 		}
 	}
 	
+	
 	/**
 	 * 
 	 * @return true if the email adress of this account exists in the system, else return false.
@@ -101,6 +102,7 @@ public class Account {
 			.anyMatch(acc -> this.password.equals(acc.getPassword()) 
 					      && this.mail_address.equals(acc.getMail_address()));
 	}
+	
 	
 	/**
 	 * This account sends a message to another account. This is an transaction with the system.
