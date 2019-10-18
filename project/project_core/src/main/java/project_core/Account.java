@@ -13,6 +13,7 @@ public class Account {
 	private String mail_address;
 	private String password;
 	private Inbox inbox;
+	private Contacts contacts;
 	
 	/**
 	 * 
@@ -22,6 +23,7 @@ public class Account {
 		this.mail_address = mail_address;
 		this.password = "";
 		this.inbox = new Inbox(this);
+		this.contacts = new Contacts(this);
 	}
 	
 	/**
@@ -39,12 +41,16 @@ public class Account {
 		return mail_address;
 	}
 	
-	public String getPassword() {
-		return this.password;
-	}
-	
 	public Inbox getInbox() {
 		return inbox;
+	}
+	
+	public Contacts getContacts() {
+		return contacts;
+	}
+	
+	public String getPassword() {
+		return this.password;
 	}
 	
 	public void setPassword(String newPassword) {
