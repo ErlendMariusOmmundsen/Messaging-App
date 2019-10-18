@@ -53,8 +53,8 @@ public class Inbox{
 	
 	
 	/**
-	 * Adds a message to the inbox-object's messages
-	 * @param message - The message to be added
+	 * Add new messages to the inbox.
+	 * @param messages - The message to be added
 	 */
 	public void addMessage(Message message) {
 		this.messages.add(message);
@@ -63,8 +63,8 @@ public class Inbox{
 	
 	
 	/**
-	 * Add a message to the inbox
-	 * @param messages - The message to be added
+	 * Adds new messages to the inbox-object.
+	 * @param messages - The messages to be added
 	 */
 	public void addMessages(Collection<Message> messages) {
 		this.messages.addAll(messages);
@@ -120,19 +120,11 @@ public class Inbox{
 	}
 
 	
-	/**
-	 * Adds a listener
-	 * @param listener - The listener
-	 */
 	public void addListener(InboxListener listener) {
 		listeners.add(listener);
 	}
 	
 	
-	/**
-	 * removes a listener
-	 * @param listener - The listener
-	 */
 	public void removeListener(InboxListener listener) {
 		listeners.remove(listener);
 	}

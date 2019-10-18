@@ -2,6 +2,11 @@ package project_core;
 
 import java.util.List;
 
+/**
+ * Interface to listen to changes that happend in a Inbox.
+ * @author Lukas Tveiten
+ *
+ */
 public interface InboxListener {
 	
 	/**

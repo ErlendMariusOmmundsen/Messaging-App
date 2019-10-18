@@ -4,6 +4,17 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 
+
+/**
+ * This class will be automatically added in the accounts class and can be used there by account.getContacts(). <br> 
+ * <br>
+ * A simple use case: <br>
+ * account.getInbox().loadMessages() // need to catch exceptions too <br>
+ * account.getContacts().getAccounts() // should now have all the account contacts with this line <br>
+ * 
+ * @author Lukas Tveiten
+ *
+ */
 public class Contacts implements InboxListener {
 	
 	private Collection<Account> accounts;
@@ -25,7 +36,11 @@ public class Contacts implements InboxListener {
 			.distinct()
 			.forEach(acc -> accounts.add(acc));
 	}
-
+	
+	
+	/**
+	 * The contacts will be updated if the added message have a contact that isn't yet in the contacts.
+	 */
 	@Override
 	public void addedMessage(Message message) {
 		Account from = message.getFrom();
