@@ -78,4 +78,21 @@ public class ContactsTest extends TestCase {
 			fail();
 		}
 	}
+	
+	
+	@Test
+	public void testDuplicate() {
+		Account from = new Account("fromAcc");
+		Account testAcc = new Account("testAcc", "123");
+		Message testMessage = new Message("testSubject", "testMessage", testAcc, from);
+		
+		// Tester med flere meldinger i inboxen fra samme account
+		testAcc.getInbox().addMessage(testMessage);
+		testAcc.getInbox().addMessage(testMessage);
+		testAcc.getInbox().addMessage(new Message("testSubject2", "testMessage2", testAcc, from));
+		
+		// Da skal det fortsatt bare være 1 account med navn fromAcc
+		assertEquals(1, testAcc.getContacts().getAccounts().size());
+		assertTrue(testAcc.getContacts().getAccounts().iterator().next().getMail_address().equals("fromAcc"));
+	}
 }

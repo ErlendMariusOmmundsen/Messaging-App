@@ -10,7 +10,7 @@ import java.util.List;
  * <br>
  * A simple use case: <br>
  * account.getInbox().loadMessages() // need to catch exceptions too <br>
- * account.getContacts().getAccounts() // should now have all the account contacts with this line <br>
+ * account.getContacts().getAccounts() // should now have a Collection of all the account contacts with this line <br>
  * 
  * @author Lukas Tveiten
  *
@@ -31,9 +31,11 @@ public class Contacts implements InboxListener {
 	public void inboxChanged(List<Message> messages) {
 		accounts.clear();
 		// Adds all the accounts you have gotten messages from to the contacts
+		// Make also sure to not get any duplicates by first mapping to the names
 		messages.stream()
-			.map(message -> message.getFrom())
+			.map(message -> message.getFrom().getMail_address())
 			.distinct()
+			.map(name -> new Account(name))
 			.forEach(acc -> accounts.add(acc));
 	}
 	
@@ -44,7 +46,9 @@ public class Contacts implements InboxListener {
 	@Override
 	public void addedMessage(Message message) {
 		Account from = message.getFrom();
-		if (!accounts.contains(from))
+		if (!accounts.stream()
+				.map(acc -> acc.getMail_address())
+				.anyMatch(name -> name.equals(from.getMail_address())))
 			accounts.add(from);
 	}
 
