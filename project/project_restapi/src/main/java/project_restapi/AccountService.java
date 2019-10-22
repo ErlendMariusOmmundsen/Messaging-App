@@ -1,6 +1,7 @@
 package project_restapi;
 
 import java.io.IOException;
+import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -104,11 +105,17 @@ public class AccountService{
 	}
 	
 	@GET
-	@Path("{/accountName}")
+	@Path("/{accountName}/Contacts")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Account> getContacts(@PathParam("accountName") Account account){
-		
+	public Collection<Account> getContacts(@PathParam("accountName") Account account){
+		try {
+			account.getInbox().loadMessages();
+			Collection<Account> accounts = account.getContacts().getAccounts();
+			return accounts;
+		} catch (IOException e) {
+			return null;
+		}
 	}
 
 }
