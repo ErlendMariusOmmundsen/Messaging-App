@@ -159,8 +159,8 @@ public class appController {
 		
 		try {
 			List<Message> messages = dataAccess.getInboxMessages(currentAccount);
-			currentAccount.getInbox().getMessages().clear();
-			currentAccount.getInbox().getMessages().addAll(messages);
+			currentAccount.getInbox().clear();
+			currentAccount.getInbox().addMessages(messages);
 		} catch (IOException e) {
 			System.out.println("Couldn't load new messages.");
 		}
@@ -220,6 +220,8 @@ public class appController {
 		toComboBox.setValue(message.getTo().getMail_address());
 		fromField.setText(message.getFrom().getMail_address());
 		subjectField.setText(message.getSubject());
+		
+		System.out.println(currentAccount.getContacts().getAccounts().stream().map(a -> a.getMail_address()).collect(Collectors.toList()));
 	}
 	
 	/**
