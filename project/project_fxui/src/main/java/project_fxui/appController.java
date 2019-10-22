@@ -69,6 +69,7 @@ public class appController {
 		fromLabel.setText("From: ");
 		passwordField.setText("");
 		errorLabel.setText("");
+		errorLabel2.setText("");
 		toField.setText("");
 		fromField.setText("");
 		subjectField.setText("");
