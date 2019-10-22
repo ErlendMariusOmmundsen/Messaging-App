@@ -16,6 +16,9 @@ public class MessageTest {
 		Assert.assertEquals("Greetings", message.getSubject());
 		Assert.assertEquals(exAcc0, message.getTo());
 		Assert.assertEquals(exAcc1, message.getFrom());
+		
+		final Message message2 = new Message("Greetings", "Some message", new Account("example@example.no", "123abc"), new Account("examplee@example.no", "123abc"));
+		Assert.assertTrue(message.equals(message2));
 	}
 	
 }
