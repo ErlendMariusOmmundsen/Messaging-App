@@ -21,12 +21,12 @@ public class appController {
 	
 	@FXML private AnchorPane loginPane, CreateAccountPane;
 	@FXML private SplitPane splitPane;
-	@FXML private Label inboxLabel, welcomeLabel, emailLabel, errorLabel, toLabel, fromLabel;
+	@FXML private Label inboxLabel, welcomeLabel, emailLabel, errorLabel, errorLabel2, toLabel, fromLabel;
 	@FXML private TextField emailField, toField, fromField, subjectField, txt_C_Email;
 	@FXML private PasswordField passwordField, txt_C_password;
 	@FXML private TextArea textArea;
 	@FXML private ListView<String> inbox;
-	@FXML private Button loginButton, logoutButton, newMessageButton, sendButton, btnConfirm;
+	@FXML private Button loginButton, logoutButton, newMessageButton, sendButton, btnConfirm, backButton;
 	
 	private Account currentAccount;
 	private AccountDataAccess dataAccess;
@@ -69,6 +69,7 @@ public class appController {
 		fromLabel.setText("From: ");
 		passwordField.setText("");
 		errorLabel.setText("");
+		errorLabel2.setText("");
 		toField.setText("");
 		fromField.setText("");
 		subjectField.setText("");
@@ -211,6 +212,10 @@ public class appController {
 		createAccountVisiblity();
 	}
 	
+	public void handle_switch_LI() {
+		loginVisibility();
+	}
+	
 	/**
 	 * Creates a new account object and checks if it is nonempty.
 	 * 
@@ -220,11 +225,10 @@ public class appController {
 		String mail = txt_C_Email.getText();
 		String password = txt_C_password.getText();
 		if(mail.length() < 1) {
-			txt_C_Email.setText("The field cant be empty");
-			
+			errorLabel2.setText("Error. The mail field cant be empty");
 		}
 		else if(password.length() < 1) {
-			txt_C_password.setText("The field cant be empty");
+			errorLabel2.setText("Error. The password field cant be empty");
 		}
 		else {
 			Account newAccount = new Account(mail, password);
