@@ -1,11 +1,15 @@
 package project_fxui;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.PasswordField;
@@ -23,6 +27,7 @@ public class appController {
 	@FXML private SplitPane splitPane;
 	@FXML private Label inboxLabel, welcomeLabel, emailLabel, errorLabel, errorLabel2, toLabel, fromLabel;
 	@FXML private TextField emailField, toField, fromField, subjectField, txt_C_Email;
+	@FXML private ComboBox<String> toComboBox;	
 	@FXML private PasswordField passwordField, txt_C_password;
 	@FXML private TextArea textArea;
 	@FXML private ListView<String> inbox;
@@ -127,7 +132,7 @@ public class appController {
 	 * Sends the message with the current information filled in.
 	 */
 	public void sendMessage() {
-		Account toAccount = new Account(toField.getText());
+		Account toAccount = new Account(toComboBox.getValue());
 		String subject = subjectField.getText();
 		String text = textArea.getText();
 		Message message = new Message(subject , text, toAccount, currentAccount);
@@ -165,6 +170,21 @@ public class appController {
 		inbox.getItems().addAll(subjects);
 	}
 	
+	public void updateContacts() {
+		Collection<String> contacts = new ArrayList<String>();
+		try {
+			List<Message> messages = dataAccess.getInboxMessages(currentAccount);
+			currentAccount.getInbox().getMessages().clear();
+			currentAccount.getInbox().getMessages().addAll(messages);
+		} catch (IOException e) {
+			System.out.println("Couldn't load new messages.");
+		}
+		
+	}
+	
+	
+	
+	
 	/**
 	 * Deletes the current selected message in the Inbox-UI.
 	 * Then it uploads the new inbox to the system. (only to a test file right now)
@@ -197,7 +217,7 @@ public class appController {
 		
 		textArea.setText(message.getMessage());
 		textArea.setEditable(false);
-		toField.setText(message.getTo().getMail_address());
+		toComboBox.setValue(message.getTo().getMail_address());
 		fromField.setText(message.getFrom().getMail_address());
 		subjectField.setText(message.getSubject());
 	}
