@@ -34,20 +34,36 @@ Java
 Step 1: Clone the repository at: [Gitlab](https://gitlab.stud.idi.ntnu.no/it1901/gr1922/gr1922.git):
 		
 Step 2: Go to /project in any Terminal and write the command. 
-``` 
-gradle run
 
 ```
+gradle run
+```
+
 Step 3: Use the pre-registered user to login. Email: eksempel@outlook.com | Password: eksempel
+
+Other accounts you can also test with are: <br>
+Email: lukasnt@ntnu.no | Password: 123 <br>
+Email: test@123.no | Password: abc <br>
+
+Or of course make your own account with the create-account menu. (Account name doesn't have to be on email format at all).
 
 
 ## Running the tests
 
 Step 1: Go to /project in CMD and write the command. For example:
-``` 
-gradle test
 
 ```
+gradle test
+```
+
+Step 2: If you want to generate test reports with jacoco write the following command:
+
+```
+gradle jacocoTestReport
+```
+
+They will be generated in each module (except api tests are in server) and can be found in /build/jacocoHtml or /build/reports/jacoco/test/html folder relative to the submodule.
+
 
 ## Built With
 
@@ -75,5 +91,7 @@ Features:
 ## User Stories  
 
 Nr. 1: "As a user, i want to read messages from other people."
+
+Nr. 2: "As a user I want to have a contacts list that automaticly keeps track of everyone I have communicated with, so that I can easly contact them"
 
 
