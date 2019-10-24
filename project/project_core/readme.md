@@ -39,10 +39,18 @@ interface InboxListener {
 	
 }
 
-Account *--> "1" Inbox: "inbox"
+class Contacts {
+	
+}
+
+Account "account" -- "inbox" Inbox
+Message *-->
+
 Inbox *--> "1" Account: "account"
 Inbox *--> "*" InboxListener: "listeners"
-Inbox *--> "*" Message: "messages"
+Inbox *--> "*" Message: "messages
+
+Contacts *--> "*" Account: "accounts"
 ```
 
 
