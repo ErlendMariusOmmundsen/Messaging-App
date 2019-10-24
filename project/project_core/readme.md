@@ -24,9 +24,25 @@ class Message {
 }
 
 class Inbox {
-	List<Message> messages
+	
 }
 
+interface MailReader {
+	
+}
+
+class InboxIO {
+
+}
+
+interface InboxListener {
+	
+}
+
+Account *--> "1" Inbox: "inbox"
+Inbox *--> "1" Account: "account"
+Inbox *--> "*" InboxListener: "listeners"
+Inbox *--> "*" Message: "messages"
 ```
 
 
