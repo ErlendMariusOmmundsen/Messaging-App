@@ -14,7 +14,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="523.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project_fxui.appController">
    <children>
-      <SplitPane fx:id="splitPane" prefHeight="523.0" prefWidth="600.0">
+      <SplitPane fx:id="splitPane" prefHeight="523.0" prefWidth="600.0" visible="false">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
@@ -61,6 +61,7 @@
                         <Font size="14.0" />
                      </font>
                   </Button>
+                  <ComboBox fx:id="toComboBox" editable="true" layoutX="294.0" layoutY="28.0" prefHeight="26.0" prefWidth="149.0" promptText="Email" />
                </children>
             </AnchorPane>
         </items>
@@ -104,7 +105,6 @@
             </Label>
             <Label fx:id="txt_notmember" layoutX="204.0" layoutY="479.0" text="Not a member?" />
             <Button fx:id="btnSwitch_CA" layoutX="319.0" layoutY="475.0" mnemonicParsing="false" onAction="#handle_switch_CA" text="Create Account" />
-            <ComboBox fx:id="toComboBox" editable="true" layoutX="284.0" layoutY="18.0" prefHeight="26.0" prefWidth="149.0" promptText="Email" />
          </children>
       </AnchorPane>
       <AnchorPane fx:id="CreateAccountPane" layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="533.0" prefWidth="596.0" visible="false">
