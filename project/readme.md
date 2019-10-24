@@ -94,4 +94,11 @@ Nr. 1: "As a user, i want to read messages from other people."
 
 Nr. 2: "As a user I want to have a contacts list that automaticly keeps track of everyone I have communicated with, so that I can easly contact them"
 
+@startuml
 
+component core {
+	package simpleex.core
+	package simpleex.json
+}
+
+@enduml
