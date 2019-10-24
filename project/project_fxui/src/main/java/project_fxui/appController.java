@@ -93,6 +93,7 @@ public class appController {
 				clear();
 				appVisibility();
 				updateInbox();
+				updateContacts();
 			}
 			else {
 				errorLabel.setText("Error: No username/password combination like that.");
@@ -171,15 +172,9 @@ public class appController {
 	}
 	
 	public void updateContacts() {
-		Collection<String> contacts = new ArrayList<String>();
-		try {
-			List<Message> messages = dataAccess.getInboxMessages(currentAccount);
-			currentAccount.getInbox().getMessages().clear();
-			currentAccount.getInbox().getMessages().addAll(messages);
-		} catch (IOException e) {
-			System.out.println("Couldn't load new messages.");
-		}
-		
+		Collection<Account> contacts = currentAccount.getContacts().getAccounts();
+		List<String> strings = contacts.stream().map(a -> a.getMail_address()).collect(Collectors.toList());
+		toComboBox.getItems().addAll(strings);
 	}
 	
 	
