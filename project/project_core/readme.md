@@ -19,8 +19,6 @@ class Account {
 class Message {
 	String subject
 	String message
-	Account from
-	Account to
 }
 
 class Inbox {
@@ -44,7 +42,7 @@ class Contacts {
 }
 
 Account "account" -- "inbox" Inbox
-Message *-->
+Message *--> Account: "to/from"
 
 Inbox *--> "1" Account: "account"
 Inbox *--> "*" InboxListener: "listeners"
