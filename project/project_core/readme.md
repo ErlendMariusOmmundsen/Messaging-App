@@ -38,8 +38,7 @@ class AccountIO {
 }
 
 interface InboxListener {
-	void inboxChanged(List<Message> messages)
-	void addedMessage(Message message)
+	
 }
 
 class Contacts {
@@ -55,7 +54,7 @@ Inbox *--> "*" InboxListener: "listeners"
 Inbox *--> "*" Message: "messages"
 Inbox *--> "1" InboxIO: "io"
 
-Contacts *--> "*" Account: "accounts"
+Contacts "contacts" -- "accounts" Account
 InboxListener <|-- Contacts
 
 MailReader <|-- InboxIO
