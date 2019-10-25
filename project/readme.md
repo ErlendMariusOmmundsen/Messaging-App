@@ -103,5 +103,22 @@ component core {
 	package project_core.json
 }
 
+component jackson {
+}
+
+project_core.json ..> jackson
+
+component fxui {
+	package project_fxui.ui
+}
+
+project_fxui.ui ..> project_core.core
+project_fxui.ui ..> project_core.json
+
+component restapi {
+	package project_restapi.restapi
+}
+
+
 ```
 
