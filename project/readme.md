@@ -98,8 +98,9 @@ Nr. 2: "As a user I want to have a contacts list that automaticly keeps track of
 ```plantuml
 
 component core {
-	package simpleex.core
-	package simpleex.json
+	package project_core.core
+	package project_core.io
+	package project_core.json
 }
 
 ```
