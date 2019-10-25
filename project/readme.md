@@ -119,6 +119,34 @@ component restapi {
 	package project_restapi.restapi
 }
 
+component javafx {
+	component fxml {
+	}
+}
+
+fxui ..> javafx
+fxui ..> fxml
+
+project_restapi.restapi ..> project_core.core
+project_restapi.restapi ..> project_core.json
+
+component jaxrs {
+}
+
+project_restapi ..> jaxrs
+
+component restserver {
+	package project_restserver.restserver
+}
+
+project_restserver.restserver ..> project_core.core
+project_restserver.restserver ..> project_restapi.restapi
+
+component grizzly2 {
+}
+
+project_restserver ..> grizzly2
+
 
 ```
 
