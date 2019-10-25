@@ -1,11 +1,16 @@
 package project_fxui;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.PasswordField;
@@ -22,8 +27,9 @@ public class appController {
 	@FXML private AnchorPane loginPane, CreateAccountPane;
 	@FXML private SplitPane splitPane;
 	@FXML private Label inboxLabel, welcomeLabel, emailLabel, errorLabel, errorLabel2, toLabel, fromLabel;
-	@FXML private TextField emailField, toField, fromField, subjectField, txt_C_Email;
+	@FXML private TextField emailField, fromField, subjectField, txt_C_Email;
 	@FXML private PasswordField passwordField, txt_C_password;
+	@FXML private ComboBox<String> toComboBox;	
 	@FXML private TextArea textArea;
 	@FXML private ListView<String> inbox;
 	@FXML private Button loginButton, logoutButton, newMessageButton, sendButton, btnConfirm, backButton;
@@ -70,7 +76,7 @@ public class appController {
 		passwordField.setText("");
 		errorLabel.setText("");
 		errorLabel2.setText("");
-		toField.setText("");
+		toComboBox.setValue("");
 		fromField.setText("");
 		subjectField.setText("");
 	}
@@ -117,7 +123,6 @@ public class appController {
 	 */
 	public void initNewMessage() {
 		textArea.setText("");
-		toField.setText("");
 		fromField.setText("");
 		subjectField.setText("");
 		textArea.setEditable(true);
@@ -127,7 +132,7 @@ public class appController {
 	 * Sends the message with the current information filled in.
 	 */
 	public void sendMessage() {
-		Account toAccount = new Account(toField.getText());
+		Account toAccount = new Account(toComboBox.getValue());
 		String subject = subjectField.getText();
 		String text = textArea.getText();
 		Message message = new Message(subject , text, toAccount, currentAccount);
@@ -165,6 +170,21 @@ public class appController {
 		inbox.getItems().addAll(subjects);
 	}
 	
+	public void updateContacts() {
+		Collection<Account> contacts = currentAccount.getContacts().getAccounts();
+		toComboBox.getItems().clear();
+		List<String> mailAddresses = contacts.stream().map(a -> a.getMail_address()).collect(Collectors.toList());		
+		ObservableList<String> noDupsObservable = FXCollections.observableArrayList();
+		
+		for (String address : mailAddresses) {
+			if (!noDupsObservable.contains(address)) {
+				noDupsObservable.add(address);
+			}
+		}
+		toComboBox.setItems(noDupsObservable);
+	}
+
+	
 	/**
 	 * Deletes the current selected message in the Inbox-UI.
 	 * Then it uploads the new inbox to the system. (only to a test file right now)
@@ -197,7 +217,7 @@ public class appController {
 		
 		textArea.setText(message.getMessage());
 		textArea.setEditable(false);
-		toField.setText(message.getTo().getMail_address());
+		toComboBox.setValue(message.getTo().getMail_address());
 		fromField.setText(message.getFrom().getMail_address());
 		subjectField.setText(message.getSubject());
 		
