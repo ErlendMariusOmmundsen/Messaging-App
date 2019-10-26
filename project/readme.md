@@ -124,8 +124,8 @@ component javafx {
 	}
 }
 
-fxui ..> javafx
-fxui ..> fxml
+project_fxui ..> javafx
+project_fxui ..> fxml
 
 project_restapi.restapi ..> project_core.core
 project_restapi.restapi ..> project_core.json
@@ -146,7 +146,4 @@ component grizzly2 {
 }
 
 project_restserver ..> grizzly2
-
-
 ```
-
