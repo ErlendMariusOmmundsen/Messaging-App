@@ -1,6 +1,6 @@
 # Modul for web-serveren
 
-Dette prosjektet inneholder web-serveren til REST-api-et for [Mailprosjektet]()
+Dette prosjektet inneholder web-serveren til REST-api-et for [Mailprosjektet](../readme.md)
 
 ## Web-serveren
 
