@@ -194,40 +194,6 @@ public class RestServerTest extends TestCase {
 		
 	}
 	
-	@Test
-	public void getContacts() {
-		server = GrizzlyApp.startServer(5);
-		try {
-			Account a1 = new Account("Testcase1@getContacts.no", "123");
-			Account a2 = new Account("Testcase2@getContacts.no", "123");
-			Message m1 = new Message("Testmelding 1", "Dette er en testmelding", a1, a2);
-			Message m2 = new Message("Testmelding 2", "Dette er en testmelding", a1, a2);
-			a1.getInbox().addMessage(m1);
-			a1.getInbox().addMessage(m2);
-			
-			URI clientURI = new URI(GrizzlyApp.BASE_URI + AccountService.ACCOUNT_SERVICE_PATH 
-					+ "/" + a2.getMail_address() + "/Contacts/");
-			System.out.println(clientURI);
-			final HttpRequest request = HttpRequest.newBuilder(clientURI)
-					.header("Accept", "application/json")
-					.GET()
-					.build();
-			final HttpResponse<InputStream> response = HttpClient.newBuilder()
-					.build()
-					.send(request, HttpResponse.BodyHandlers.ofInputStream());
-			assertEquals(200, response.statusCode());
-			@SuppressWarnings("unchecked")
-			List<Account> accounts = (List<Account>) new CompleteObjectMapper().readValue(response.body(), new TypeReference<List<Account>>() 
-			{ /* Dette er en tom implementasjon av compareTo i TyepReference, som man bare må ha */ });
-			assertEquals(1, accounts.size());
-			assertEquals(a2, accounts.get(0));
-		} catch (IOException | InterruptedException | URISyntaxException e) {
-			fail(e.getClass() + ":" + e.getMessage());
-		}
-		
-	}
-	
-	
 	@After
 	public void tearDown() {
 		GrizzlyApp.stopServer(server);
