@@ -145,5 +145,7 @@ project_restserver.restserver ..> project_restapi.restapi
 component grizzly2 {
 }
 
+projecct_restserver.restserver ..> jersey
 project_restserver ..> grizzly2
+
 ```
