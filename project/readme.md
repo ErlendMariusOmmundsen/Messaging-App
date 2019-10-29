@@ -124,8 +124,8 @@ component javafx {
 	}
 }
 
-project_fxui ..> javafx
-project_fxui ..> fxml
+fxui ..> javafx
+fxui ..> fxml
 
 project_restapi.restapi ..> project_core.core
 project_restapi.restapi ..> project_core.json
