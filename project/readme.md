@@ -133,7 +133,7 @@ project_restapi.restapi ..> project_core.json
 component jaxrs {
 }
 
-project_restapi ..> jaxrs
+restapi ..> jaxrs
 
 component restserver {
 	package project_restserver.restserver
@@ -145,5 +145,5 @@ project_restserver.restserver ..> project_restapi.restapi
 component grizzly2 {
 }
 
-project_restserver ..> grizzly2
+restserver ..> grizzly2
 ```
