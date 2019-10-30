@@ -59,6 +59,9 @@ public class appController {
 		CreateAccountPane.setVisible(false);
 	}
 	
+	/**
+	 * Makes the create account page visible
+	 */
 	private void createAccountVisiblity() {
 		loginPane.setVisible(false);
 		splitPane.setVisible(false);
@@ -170,6 +173,9 @@ public class appController {
 		inbox.getItems().addAll(subjects);
 	}
 	
+	/**
+	 * Updates contact list 
+	 */
 	public void updateContacts() {
 		Collection<Account> contacts = currentAccount.getContacts().getAccounts();
 		toComboBox.getItems().clear();
@@ -224,17 +230,7 @@ public class appController {
 		System.out.println(currentAccount.getContacts().getAccounts().stream().map(a -> a.getMail_address()).collect(Collectors.toList()));
 	}
 	
-	/**
-	 * Makes the CA pane visible when the user clicks on the "Create Account" button on the login pane
-	 */
-	
-	public void handle_switch_CA() {
-		createAccountVisiblity();
-	}
-	
-	public void handle_switch_LI() {
-		loginVisibility();
-	}
+
 	
 	/**
 	 * Creates a new account object and checks if it is nonempty.
