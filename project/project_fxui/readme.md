@@ -2,7 +2,7 @@
 
 This sub project contains the ui-related files in our project. Among them are the app launcher file, the app controller file, the fxml file, IO files and data access files.
 
-##User interface
+## User interface
 
 The user interface module contains all files that have a direct connection to how the user sees our app and the data shown in the app.
 First, the user is taken to a login where the user can either login with an already existing account, or press the
@@ -16,7 +16,7 @@ while the fxml file are located in project\_fxui/src/resources/project\_fxui. Th
 
 
 
-##Gradle
+## Gradle
 
 Our Gradle build uses several plugins. Among them are "application", which is used to create an executable JVM application,
 and "org.openjfx.javafxplugin", which simplifies working with JavaFX 11+ in Gradle projects. 
