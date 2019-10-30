@@ -9,6 +9,8 @@ import java.util.stream.Collectors;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -82,6 +84,16 @@ public class appController {
 	}
 	
 	/**
+	 * Displays an alert box with relevant information.
+	 */
+	private void displayAlert(AlertType type, String message, String header) {
+		Alert alert = new Alert(type);
+		alert.setHeaderText(header);
+		alert.setContentText(message);
+		alert.showAndWait();
+	}
+	
+	/**
 	 * Checks if the login is valid with accounts in the system. If so the mail application will be visible.
 	 */
 	public void loginCheck() {
@@ -139,16 +151,18 @@ public class appController {
 		
 		try {
 			dataAccess.sendMessage(message, currentAccount);
+			displayAlert(AlertType.INFORMATION, "Message Sent!", null);
 		} catch (IllegalStateException e) {
+			displayAlert(AlertType.ERROR, "Oops, there was an error!", null);
 			System.out.println(e.getMessage());
 		} catch (IOException e) {
+			displayAlert(AlertType.ERROR, "Oops, there was an error!", null);
 			System.out.println(e.getMessage());
 		}
 		
 		// Bare for å teste
 		updateInbox();
 		
-		System.out.println("Message sent");
 	}
 	
 	/**
@@ -162,6 +176,7 @@ public class appController {
 			currentAccount.getInbox().clear();
 			currentAccount.getInbox().addMessages(messages);
 		} catch (IOException e) {
+			displayAlert(AlertType.ERROR, "Couldn't load new messages.", null);
 			System.out.println("Couldn't load new messages.");
 		}
 		
@@ -199,6 +214,7 @@ public class appController {
 		try {
 			dataAccess.overwriteMessagesToInbox(currentAccount.getInbox().getMessages(), currentAccount);
 		} catch (IOException e) {
+			displayAlert(AlertType.ERROR, "Couldn't edit the Inbox file", null);
 			System.out.println("Couldn't edit the Inbox file");
 		}
 		
@@ -220,8 +236,6 @@ public class appController {
 		toComboBox.setValue(message.getTo().getMail_address());
 		fromField.setText(message.getFrom().getMail_address());
 		subjectField.setText(message.getSubject());
-		
-		System.out.println(currentAccount.getContacts().getAccounts().stream().map(a -> a.getMail_address()).collect(Collectors.toList()));
 	}
 	
 	/**
