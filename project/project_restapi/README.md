@@ -15,6 +15,7 @@ Serveren tilbyr fem metoder i APIet:
 * Legge til **Message**-objekt i en gitt account sin inboks, og laste opp denne nye versjonen av inboksen til presistenslaget. 
 * Endre messages i inboksen til en account.
 * Sjekke om en account er gyldig
+* Få alle contacts til et gitt **Account**-objekt
 
 ## Bygging med Gradle
 

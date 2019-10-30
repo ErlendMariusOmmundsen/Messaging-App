@@ -98,9 +98,57 @@ Nr. 2: "As a user I want to have a contacts list that automaticly keeps track of
 ```plantuml
 
 component core {
-	package simpleex.core
-	package simpleex.json
+	package project_core.core
+	package project_core.io
+	package project_core.json
 }
 
-```
+component jackson {
+}
 
+project_core.json ..> jackson
+
+component fxui {
+	package project_fxui.ui
+}
+
+project_fxui.ui ..> project_core.core
+project_fxui.ui ..> project_core.json
+
+component restapi {
+	package project_restapi.restapi
+}
+
+component javafx {
+	component fxml {
+	}
+}
+
+fxui ..> javafx
+fxui ..> fxml
+
+project_restapi.restapi ..> project_core.core
+project_restapi.restapi ..> project_core.json
+
+component jaxrs {
+}
+
+restapi ..> jaxrs
+
+component restserver {
+	package project_restserver.restserver
+}
+
+project_restserver.restserver ..> project_core.core
+project_restserver.restserver ..> project_restapi.restapi
+
+component grizzly2 {
+}
+
+component jersey {
+}
+
+
+restserver ..> grizzly2
+restserver ..> jersey
+```
