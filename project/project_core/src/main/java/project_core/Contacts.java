@@ -28,7 +28,7 @@ public class Contacts implements InboxListener {
 
   /**
    * The contatcs will be updated so that every account that has sent to Message to Inbox will be
-   * added
+   * added.
    */
   @Override
   public void inboxChanged(List<Message> messages) {
