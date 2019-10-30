@@ -108,7 +108,8 @@ public class AccountService{
 	@Path("/{accountName}/Contacts")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Collection<Account> getContacts(@PathParam("accountName") Account account){
+	public Collection<Account> getContacts(@PathParam("accountName") String accountName){
+		Account account = new Account(accountName);
 		try {
 			account.getInbox().loadMessages();
 			Collection<Account> accounts = account.getContacts().getAccounts();

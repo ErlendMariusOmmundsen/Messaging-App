@@ -194,7 +194,6 @@ public class RestServerTest extends TestCase {
 		
 	}
 	
-	
 	@After
 	public void tearDown() {
 		GrizzlyApp.stopServer(server);
