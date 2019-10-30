@@ -135,7 +135,7 @@ public class appController {
 	 */
 	public void initNewMessage() {
 		textArea.setText("");
-		fromField.setText("");
+		fromField.setText(currentAccount.getMail_address());
 		subjectField.setText("");
 		textArea.setEditable(true);
 	}
