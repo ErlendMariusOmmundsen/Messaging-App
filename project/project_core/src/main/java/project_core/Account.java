@@ -12,11 +12,13 @@ public class Account {
   private String password;
   private Inbox inbox;
   private Contacts contacts;
-  
+
   /**
-   * Makes an account with account with only username. The password has to be set in setPassword 
+   * Makes an account with account with only username. The password has to be set in setPassword
    * eventually if needed.
-   * @param mailAddress - username to give Account
+   * 
+   * @param mailAddress
+   *        - username to give Account
    */
   public Account(String mailAddress) {
     this.mailAddress = mailAddress;
@@ -25,7 +27,15 @@ public class Account {
     this.contacts = new Contacts(this);
   }
 
-  public Account(String mailAddress, String password) throws IllegalArgumentException {
+  /**
+   * Makes an account with username and password.
+   * 
+   * @param mailAddress
+   *        - username to give Account.
+   * @param password
+   *        - password to give Account.
+   */
+  public Account(String mailAddress, String password) {
     this(mailAddress);
     this.password = password;
   }
