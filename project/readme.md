@@ -158,11 +158,19 @@ restserver ..> jersey
 
 ```plantuml
 
-Alice -> Bob: Authentication Request
-Bob --> Alice: Authentication Response
+actor User
+database users.txt
 
-Alice -> Bob: Another authentication Request
-Alice <-- Bob: Another authentication Response
+
+User -> appController: handleCreateAccount()
+appController -> RestAccountDataAccess: createAccount(Account a)
+RestAcountDataAccess -> AccountService: createAccount(Account a)
+AccountService -> Account: createAccount(Account a)
+Account -> AccountIO: newAccount(this)
+AccountIO -> users.txt: println(String mail + "\t" + String password)
+AccountService -> RestAccountDataAccess: true
+RestAccountDataAccess -> appController: true
+appController -> User: loginVisibility()
 
 
 ```
