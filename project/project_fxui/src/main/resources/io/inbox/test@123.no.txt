@@ -8,3 +8,8 @@ test@123.no
 Hei tilbake
 Dette er en test
 
+test@123.no
+lukasnt@ntnu.no
+Hei tilbake
+Dette er en test
+

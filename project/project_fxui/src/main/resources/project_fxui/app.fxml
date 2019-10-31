@@ -118,7 +118,7 @@
             <Text layoutX="113.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email:" wrappingWidth="32.0" />
             <Text layoutX="92.0" layoutY="332.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password:" />
             <Button fx:id="btnConfirm" layoutX="272.0" layoutY="436.0" mnemonicParsing="false" onAction="#handleCreateAccount" text="Confirm" />
-            <PasswordField fx:id="txt_C_password" layoutX="160.0" layoutY="308.0" prefHeight="39.0" prefWidth="276.0" />
+            <PasswordField fx:id="txtCpassword" layoutX="160.0" layoutY="308.0" prefHeight="39.0" prefWidth="276.0" />
             <Button fx:id="backButton" layoutX="73.0" layoutY="71.0" mnemonicParsing="false" onAction="#loginVisibility" prefHeight="50.0" prefWidth="58.0" text="Back">
                <font>
                   <Font size="12.0" />

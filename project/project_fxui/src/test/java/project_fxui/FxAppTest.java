@@ -1,11 +1,12 @@
 
 package project_fxui;
 
+import javafx.scene.control.Label;
+
 import org.junit.Test;
 import org.testfx.api.FxAssert;
 import org.testfx.api.FxRobot;
 
-import javafx.scene.control.Label;
 
 public class FxAppTest extends TestFxBase {
 

@@ -3,10 +3,10 @@ package project_fxui;
 
 import java.io.IOException;
 
-import org.junit.Assert;
+import junit.framework.TestCase;
+
 import org.junit.Test;
 
-import junit.framework.TestCase;
 import project_core.Account;
 
 public abstract class AccountDataAccessTest extends TestCase {
