@@ -156,6 +156,8 @@ restserver ..> jersey
 
 ## Sequence diagram 
 
+This diagram shows what happens during a successful account creation. 
+
 ```plantuml
 
 actor User
