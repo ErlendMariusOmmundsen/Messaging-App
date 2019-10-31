@@ -162,13 +162,14 @@ actor User
 
 
 
-User -> appController: handleCreateAccount()
+User -> appController: *Request account*
 appController -> RestAccountDataAccess: createAccount(Account a)
 RestAccountDataAccess -> AccountService: createAccount(Account a)
 AccountService -> Account: createAccount(Account a)
 Account -> AccountIO: newAccount(this)
 database users.txt
 AccountIO -> users.txt: println(String mail + "\t" + String password)
+note right of AccountService: If no error happens in core the creation was successful and the API returns "true". 
 AccountService -> RestAccountDataAccess: true
 RestAccountDataAccess -> appController: true
 appController -> User: loginVisibility()
