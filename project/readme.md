@@ -94,6 +94,7 @@ Nr. 1: "As a user, i want to read messages from other people."
 
 Nr. 2: "As a user I want to have a contacts list that automaticly keeps track of everyone I have communicated with, so that I can easly contact them"
 
+## Package diagram of the project
 
 ```plantuml
 
@@ -151,4 +152,29 @@ component jersey {
 
 restserver ..> grizzly2
 restserver ..> jersey
+```
+
+## Sequence diagram 
+
+This diagram shows what happens during a successful account creation. 
+
+```plantuml
+
+actor User
+
+
+
+User -> appController: *Request account*
+appController -> RestAccountDataAccess: createAccount(Account a)
+RestAccountDataAccess -> AccountService: createAccount(Account a)
+AccountService -> Account: createAccount(Account a)
+Account -> AccountIO: newAccount(this)
+database users.txt
+AccountIO -> users.txt: println(String mail + "\t" + String password)
+note right of AccountService: If no error happens in core the creation was successful and the API returns "true". 
+AccountService -> RestAccountDataAccess: true
+RestAccountDataAccess -> appController: true
+appController -> User: loginVisibility()
+
+
 ```
