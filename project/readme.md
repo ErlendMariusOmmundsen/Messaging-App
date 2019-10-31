@@ -159,7 +159,7 @@ restserver ..> jersey
 ```plantuml
 
 actor User
-database users.txt
+
 
 
 User -> appController: handleCreateAccount()
@@ -167,6 +167,7 @@ appController -> RestAccountDataAccess: createAccount(Account a)
 RestAcountDataAccess -> AccountService: createAccount(Account a)
 AccountService -> Account: createAccount(Account a)
 Account -> AccountIO: newAccount(this)
+database users.txt
 AccountIO -> users.txt: println(String mail + "\t" + String password)
 AccountService -> RestAccountDataAccess: true
 RestAccountDataAccess -> appController: true
