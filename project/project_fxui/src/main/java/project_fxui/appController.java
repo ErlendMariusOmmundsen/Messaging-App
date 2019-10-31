@@ -1,7 +1,6 @@
 package project_fxui;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -55,7 +54,7 @@ public class appController {
 	/**
 	 * Makes the login menu visible
 	 */
-	private void loginVisibility() {
+	public void loginVisibility() {
 		loginPane.setVisible(true);
 		splitPane.setVisible(false);
 		CreateAccountPane.setVisible(false);
@@ -64,7 +63,7 @@ public class appController {
 	/**
 	 * Makes the create account page visible
 	 */
-	private void createAccountVisiblity() {
+	public void createAccountVisiblity() {
 		loginPane.setVisible(false);
 		splitPane.setVisible(false);
 		CreateAccountPane.setVisible(true);
@@ -156,10 +155,10 @@ public class appController {
 			dataAccess.sendMessage(message, currentAccount);
 			displayAlert(AlertType.INFORMATION, "Message Sent!", null);
 		} catch (IllegalStateException e) {
-			displayAlert(AlertType.ERROR, "Oops, there was an error!", null);
+			displayAlert(AlertType.ERROR, "Either of the accounts does not exist.", null);
 			System.out.println(e.getMessage());
 		} catch (IOException e) {
-			displayAlert(AlertType.ERROR, "Oops, there was an error!", null);
+			displayAlert(AlertType.ERROR, "There was a communication error.", null);
 			System.out.println(e.getMessage());
 		}
 		
