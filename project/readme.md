@@ -164,7 +164,7 @@ actor User
 
 User -> appController: handleCreateAccount()
 appController -> RestAccountDataAccess: createAccount(Account a)
-RestAcountDataAccess -> AccountService: createAccount(Account a)
+RestAccountDataAccess -> AccountService: createAccount(Account a)
 AccountService -> Account: createAccount(Account a)
 Account -> AccountIO: newAccount(this)
 database users.txt
