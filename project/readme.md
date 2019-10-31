@@ -94,6 +94,7 @@ Nr. 1: "As a user, i want to read messages from other people."
 
 Nr. 2: "As a user I want to have a contacts list that automaticly keeps track of everyone I have communicated with, so that I can easly contact them"
 
+## Package diagram of the project
 
 ```plantuml
 
@@ -151,4 +152,17 @@ component jersey {
 
 restserver ..> grizzly2
 restserver ..> jersey
+```
+
+## Sequence diagram 
+
+```plantuml
+
+Alice -> Bob: Authentication Request
+Bob --> Alice: Authentication Response
+
+Alice -> Bob: Another authentication Request
+Alice <-- Bob: Another authentication Response
+
+
 ```
