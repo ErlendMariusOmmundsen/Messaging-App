@@ -1,0 +1,15 @@
+to@example.no
+from@example.no
+testSubject
+this is a message
+
+to@example.no
+from@example.no
+testSubject
+this is a message
+
+from@example.no
+to@example.no
+hallo
+mer hallo
+

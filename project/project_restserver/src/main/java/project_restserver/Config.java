@@ -1,3 +1,4 @@
+
 package project_restserver;
 
 import org.glassfish.jersey.jackson.JacksonFeature;
@@ -7,10 +8,13 @@ import project_restapi.AccountObjectMapperProvider;
 import project_restapi.AccountService;
 
 public class Config extends ResourceConfig {
-  
-	public Config() {
+
+  /**
+   * This constructor just registers the AccountService (the api) and some JSON things.
+   */
+  public Config() {
     register(AccountService.class);
     register(AccountObjectMapperProvider.class);
-	register(JacksonFeature.class);
+    register(JacksonFeature.class);
   }
 }
