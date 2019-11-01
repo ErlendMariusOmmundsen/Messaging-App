@@ -10,6 +10,8 @@ We have used tools like checkstyles and spotbugs to try to improve our code qual
 
 There might have been other warnings slipped by somewhere of course.
 
-### Spotgbugs 
+### Spotgbugs
 
-Some things in core.
+**SXWN9001: A variable with no following sibling instructions has no effect** - This warning has always been there and happends every time you run the spotbugTest, but it isn't anything wrong with the test.
+
+**reads a file whose location might be specified by user input** - In core when handling file-IO this happends because each account have an inbox with their name as filename (as inbox). This can of course be a security warning, but it is essentialy a part of our application. SpotBugs suggests a fix, and that is using FilenameUtils.getName(filepath), but then we would have to import org.apache.commons.io.FilenameUtils, which is a whole dependency to org.appache.commons that we don't want. There doesn't seem to be an easy fix in just using standard java libraries.

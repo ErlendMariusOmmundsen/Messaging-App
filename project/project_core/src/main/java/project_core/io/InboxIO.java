@@ -2,9 +2,14 @@
 package project_core.io;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.io.Reader;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -26,7 +31,7 @@ public class InboxIO implements MailReader {
   @Override
   public void uploadMessage(Message message, String filename) throws IOException {
     String filepath = resourceFilepath + filename;
-    FileWriter fr = new FileWriter(new File(filepath), true);
+    FileWriter fr = new FileWriter(new File(filepath), StandardCharsets.UTF_8, true);
     PrintWriter writer = new PrintWriter(fr);
 
     writer.println(message.getTo().getMail_address());
@@ -51,7 +56,9 @@ public class InboxIO implements MailReader {
   @Override
   public List<Message> getMessages(String filename) throws IOException {
     String filepath = resourceFilepath + filename;
-    Scanner scanner = new Scanner(new File(filepath));
+    InputStream in = new FileInputStream(filepath);
+    Reader reader = new InputStreamReader(in, StandardCharsets.UTF_8);
+    Scanner scanner = new Scanner(reader);
 
     List<Message> messages = new ArrayList<Message>();
 
@@ -74,7 +81,7 @@ public class InboxIO implements MailReader {
 
   private void clearFile(String filename) throws IOException {
     String filepath = resourceFilepath + filename;
-    PrintWriter writer = new PrintWriter(new File(filepath));
+    PrintWriter writer = new PrintWriter(new File(filepath), StandardCharsets.UTF_8);
     writer.print("");
     writer.close();
   }

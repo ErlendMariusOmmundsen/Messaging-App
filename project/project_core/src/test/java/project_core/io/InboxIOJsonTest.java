@@ -27,7 +27,7 @@ import project_core.json.MessageSerializer;
 
 public class InboxIOJsonTest extends TestCase {
 
-  private InboxIOJson io;
+  private InboxIOjson io;
   private Inbox testInbox;
   private Message testMessage;
 
@@ -42,7 +42,7 @@ public class InboxIOJsonTest extends TestCase {
   public void testUploadInbox() {
     makeEmptyFile();
 
-    io = new InboxIOJson();
+    io = new InboxIOjson();
     testInbox = new Inbox(new Account("test"));
     testMessage = new Message("testMessage", "This is a test Message", new Account("testTo"),
         new Account("testFrom"));
@@ -88,7 +88,7 @@ public class InboxIOJsonTest extends TestCase {
   public void testGetMessages() {
     makeEmptyFile();
 
-    io = new InboxIOJson();
+    io = new InboxIOjson();
     testInbox = new Inbox(new Account("test"));
     testMessage = new Message("testMessage", "This is a test Message", new Account("testTo"),
         new Account("testFrom"));
