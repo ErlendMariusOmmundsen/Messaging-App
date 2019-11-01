@@ -65,6 +65,15 @@ gradle jacocoTestReport
 They will be generated in each module (except api tests are in server) and can be found in /build/jacocoHtml or /build/reports/jacoco/test/html folder relative to the submodule.
 
 
+Step 3 (optional): If you want to test, generate test reports and generate checkstyle and spotbugs reports all in one, write the following command:
+
+```
+gradle check
+```
+
+All the reports can be found in each module in the realtive path /build/reports.
+(click [here](codeQualityReadme.md) to see how we have handled checkstyle and spotbugs warnings)
+
 ## Built With
 
 * [Gradle](https://docs.gradle.org/current/userguide/userguide.html) - Dependency Management
