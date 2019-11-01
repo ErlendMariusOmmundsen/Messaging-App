@@ -1,15 +1,16 @@
 
 package project_fxui;
 
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.MouseButton;
+import javafx.stage.Stage;
+
 import org.junit.After;
 import org.junit.Before;
 import org.testfx.api.FxRobot;
 import org.testfx.api.FxToolkit;
 import org.testfx.framework.junit.ApplicationTest;
 
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.MouseButton;
-import javafx.stage.Stage;
 
 public abstract class TestFxBase {
   private FxRobot robot = new FxRobot();

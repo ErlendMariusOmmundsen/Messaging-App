@@ -2,9 +2,13 @@
 package project_core.io;
 
 import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.io.Reader;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Scanner;
 
@@ -24,7 +28,7 @@ public class InboxIOTest extends TestCase {
   private Inbox testInbox;
   private Message testMessage;
 
-  private final String testFilename = "testInbox.txt";
+  private static final String testFilename = "testInbox.txt";
 
   @Before
   public void setup() {
@@ -53,7 +57,11 @@ public class InboxIOTest extends TestCase {
     try {
       io.uploadMessage(testMessage, testFilename);
 
-      Scanner scanner = new Scanner(new File(InboxIO.resourceFilepath + testFilename));
+      String filepath = InboxIO.resourceFilepath + testFilename;
+      InputStream in = new FileInputStream(filepath);
+      Reader reader = new InputStreamReader(in, StandardCharsets.UTF_8);
+      Scanner scanner = new Scanner(reader);
+      
       assertTrue(scanner.nextLine().equals("testTo"));
       assertTrue(scanner.nextLine().equals("testFrom"));
       assertTrue(scanner.nextLine().equals("testMessage"));
@@ -84,7 +92,11 @@ public class InboxIOTest extends TestCase {
     try {
       io.uploadInbox(testInbox, testFilename);
 
-      Scanner scanner = new Scanner(new File(InboxIO.resourceFilepath + testFilename));
+      String filepath = InboxIO.resourceFilepath + testFilename;
+      InputStream in = new FileInputStream(filepath);
+      Reader reader = new InputStreamReader(in, StandardCharsets.UTF_8);
+      Scanner scanner = new Scanner(reader);
+
       assertTrue(scanner.nextLine().equals("testTo"));
       assertTrue(scanner.nextLine().equals("testFrom"));
       assertTrue(scanner.nextLine().equals("test"));
@@ -127,7 +139,8 @@ public class InboxIOTest extends TestCase {
     try {
       assertTrue(io.getMessages(testFilename).isEmpty());
 
-      PrintWriter writer = new PrintWriter(new File(InboxIO.resourceFilepath + testFilename));
+      PrintWriter writer = new PrintWriter(new File(InboxIO.resourceFilepath + testFilename),
+          StandardCharsets.UTF_8);
       writer.println("testTo");
       writer.println("testFrom");
       writer.println("test");
@@ -158,10 +171,11 @@ public class InboxIOTest extends TestCase {
 
   private void makeEmptyFile() {
     try {
-      PrintWriter writer = new PrintWriter(new File(InboxIO.resourceFilepath + testFilename));
+      PrintWriter writer = new PrintWriter(new File(InboxIO.resourceFilepath + testFilename),
+          StandardCharsets.UTF_8);
       writer.print("");
       writer.close();
-    } catch (FileNotFoundException e) {
+    } catch (IOException e) {
       System.out.println("Couldn't setup/tear down properly");
     }
   }

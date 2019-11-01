@@ -1,0 +1,15 @@
+1231
+from
+testSubject
+this is a message
+
+1231
+from
+testSubject
+this is a message
+
+1231
+from@example.no
+testSubject
+this is a message
+

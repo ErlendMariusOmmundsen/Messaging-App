@@ -4,10 +4,14 @@ package project_core.io;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.io.Reader;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Scanner;
 
@@ -20,10 +24,8 @@ import org.junit.Test;
 import project_core.Account;
 import project_core.Inbox;
 import project_core.Message;
-import project_core.io.InboxIO;
+import project_core.io.InboxIOjson;
 import project_core.json.CompleteObjectMapper;
-import project_core.json.MessageDeserializer;
-import project_core.json.MessageSerializer;
 
 public class InboxIOJsonTest extends TestCase {
 
@@ -31,7 +33,7 @@ public class InboxIOJsonTest extends TestCase {
   private Inbox testInbox;
   private Message testMessage;
 
-  private final String testFilename = "testInbox.json";
+  private static final String testFilename = "testInbox.json";
 
   @Before
   public void setup() {
@@ -57,7 +59,10 @@ public class InboxIOJsonTest extends TestCase {
       io.uploadInbox(testInbox, testFilename);
 
       ObjectMapper mapper = new CompleteObjectMapper();
-      Scanner scanner = new Scanner(new File(InboxIO.resourceFilepath + testFilename));
+      String filepath = InboxIO.resourceFilepath + testFilename;
+      InputStream in = new FileInputStream(filepath);
+      Reader reader = new InputStreamReader(in, StandardCharsets.UTF_8);
+      Scanner scanner = new Scanner(reader);
 
       Message message = mapper.readValue(scanner.nextLine(), Message.class);
       assertTrue(message.getTo().getMail_address().equals(mes1.getTo().getMail_address()));
@@ -97,7 +102,8 @@ public class InboxIOJsonTest extends TestCase {
         new Message("testHallo", "Hallo", new Account("testTo1"), new Account("testFrom1"));
 
     try {
-      FileWriter fr = new FileWriter(new File(InboxIO.resourceFilepath + testFilename), true);
+      FileWriter fr = new FileWriter(new File(InboxIO.resourceFilepath + testFilename),
+          StandardCharsets.UTF_8, true);
       PrintWriter writer = new PrintWriter(fr);
 
       ObjectMapper mapper = new CompleteObjectMapper();
@@ -131,10 +137,11 @@ public class InboxIOJsonTest extends TestCase {
 
   private void makeEmptyFile() {
     try {
-      PrintWriter writer = new PrintWriter(new File(InboxIO.resourceFilepath + testFilename));
+      PrintWriter writer = new PrintWriter(new File(InboxIO.resourceFilepath + testFilename),
+          StandardCharsets.UTF_8);
       writer.print("");
       writer.close();
-    } catch (FileNotFoundException e) {
+    } catch (IOException e) {
       System.out.println("Couldn't setup/tear down properly");
     }
   }

@@ -1,5 +1,5 @@
 
-package project_restserver;
+package project_restapi;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 
@@ -25,8 +25,9 @@ import project_core.Account;
 import project_core.Message;
 import project_core.json.CompleteObjectMapper;
 import project_restapi.AccountService;
+import project_restserver.GrizzlyApp;
 
-public class RestServerTest extends TestCase {
+public class AccountServiceTest extends TestCase {
 
   private HttpServer server;
 
