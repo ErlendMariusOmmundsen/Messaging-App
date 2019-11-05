@@ -88,14 +88,15 @@ Features:
 * Creating a user
 * Logging in
 * Deleting messages in inbox
+* Having contacts
 
 
 ## Authors
 
-* **Lukas** - *Gradle and IO* - [lukasnt](https://gitlab.stud.idi.ntnu.no/lukasnt)
-* **Brage** - *Gradle, JUNIT tests* - [bragesc](https://gitlab.stud.idi.ntnu.no/bragesc)
-* **Aleksander** - *Domainlogic* - [aleksawk](https://gitlab.stud.idi.ntnu.no/aleksawk)
-* **Erlend** - *FXML og App-controller* - [erlenmom](https://gitlab.stud.idi.ntnu.no/erlenmom)
+* **Lukas** - *Domainlogic, JSON, testing, RESTserver, documentation* - [lukasnt](https://gitlab.stud.idi.ntnu.no/lukasnt)
+* **Brage** - *Gradle/Java setup* - [bragesc](https://gitlab.stud.idi.ntnu.no/bragesc)
+* **Aleksander** - *Domainlogic, JSON, REST-api, documentation* - [aleksawk](https://gitlab.stud.idi.ntnu.no/aleksawk)
+* **Erlend** - *Client-side, UI/frontend, testing, documentation* - [erlenmom](https://gitlab.stud.idi.ntnu.no/erlenmom)
 
 ## User Stories  
 
