@@ -1,6 +1,9 @@
 
 package project_core.io;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.module.SimpleModule;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileWriter;
@@ -14,16 +17,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import project_core.Account;
 import project_core.Inbox;
 import project_core.Message;
-import project_core.io.MailReader;
+import project_core.json.MessageDeserializer;
+import project_core.json.MessageSerializer;
 
-/**
- * This class implements MailReader with text format of the messages. The Format of a single message
- * is the following: accountToEmail \n accountFromEmail \n messageSubject \n messageText \n
- */
-public class InboxIO implements MailReader {
+public class InboxIOjson implements MailReader {
 
   public static final String resourceFilepath =
       new File("").getAbsolutePath() + "\\src\\main\\resources\\io\\inbox\\";
@@ -32,22 +31,23 @@ public class InboxIO implements MailReader {
   public void uploadMessage(Message message, String filename) throws IOException {
     String filepath = resourceFilepath + filename;
     FileWriter fr = new FileWriter(new File(filepath), StandardCharsets.UTF_8, true);
+
+    ObjectMapper mapper = new ObjectMapper();
+    SimpleModule module = new SimpleModule();
+    module.addSerializer(Message.class, new MessageSerializer());
+    mapper.registerModule(module);
+
     PrintWriter writer = new PrintWriter(fr);
+    String text = mapper.writeValueAsString(message);
+    System.out.println(text);
+    writer.println(text);
 
-    writer.println(message.getTo().getMail_address());
-    writer.println(message.getFrom().getMail_address());
-    writer.println(message.getSubject());
-    writer.println(message.getMessage());
-    writer.println();
-
-    writer.flush();
     writer.close();
   }
 
   @Override
   public void uploadInbox(Inbox inbox, String filename) throws IOException {
     this.clearFile(filename);
-    System.out.println(inbox.getMessages().size());
     for (Message message : inbox.getMessages()) {
       this.uploadMessage(message, filename);
     }
@@ -62,17 +62,13 @@ public class InboxIO implements MailReader {
 
     List<Message> messages = new ArrayList<Message>();
 
+    ObjectMapper mapper = new ObjectMapper();
+    SimpleModule module = new SimpleModule();
+    module.addDeserializer(Message.class, new MessageDeserializer());
+    mapper.registerModule(module);
+
     while (scanner.hasNextLine()) {
-      Account to = new Account(scanner.nextLine(), null);
-      Account from = new Account(scanner.nextLine(), null);
-      String subject = scanner.nextLine();
-      String text = scanner.nextLine();
-
-      if (scanner.hasNextLine()) {
-        scanner.nextLine();        
-      }
-
-      messages.add(new Message(subject, text, to, from));
+      messages.add(mapper.readValue(scanner.nextLine(), Message.class));
     }
 
     scanner.close();
@@ -85,4 +81,5 @@ public class InboxIO implements MailReader {
     writer.print("");
     writer.close();
   }
+  
 }

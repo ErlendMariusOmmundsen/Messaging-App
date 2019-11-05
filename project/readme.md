@@ -1,6 +1,6 @@
 # Group gr1922 repository
 
-This is currently a messaging application. With the use of REST, it can send messages over the internet if you have a server to spare. 
+This is currently a messaging application where registered users can send messages to each other if they are on the same computer. With the use of REST, it can send messages over the Internet if you have a server to spare. 
 
 About the repository: The project is in /project. The project folder has different modules for all the different part of the code. The modules are:
 * project_core
@@ -62,8 +62,17 @@ Step 2: If you want to generate test reports with jacoco write the following com
 gradle jacocoTestReport
 ```
 
-They will be generated in each module (except api tests are in server) and can be found in /build/jacocoHtml or /build/reports/jacoco/test/html folder relative to the submodule.
+They will be generated in each module and can be found in /build/jacocoHtml or /build/reports/jacoco/test/html folder relative to the submodule.
 
+
+Step 3 (optional): If you want to test, generate test reports and generate checkstyle and spotbugs reports all in one, write the following command:
+
+```
+gradle check
+```
+
+All the reports can be found in each module in the realtive path /build/reports.
+(click [here](codeQualityReadme.md) to see how we have handled checkstyle and spotbugs warnings)
 
 ## Built With
 
@@ -71,28 +80,39 @@ They will be generated in each module (except api tests are in server) and can b
 
 ## Project Status
 
-We have completed the main functionality of the service, as described in the user story, and made the application restful.
+We have completed the main functionality of the service as planned and added the contacts feature, as described in the user stories, and made the application restful.
 
 Features:
 * Sending messages
-* Recieving messages in inbox
+* Receive messages in inbox
 * Creating a user
 * Logging in
 * Deleting messages in inbox
+* Having contacts
 
 
 ## Authors
 
-* **Lukas** - *Gradle and IO* - [lukasnt](https://gitlab.stud.idi.ntnu.no/lukasnt)
-* **Brage** - *Gradle, JUNIT tests* - [bragesc](https://gitlab.stud.idi.ntnu.no/bragesc)
-* **Aleksander** - *Domainlogic* - [aleksawk](https://gitlab.stud.idi.ntnu.no/aleksawk)
-* **Erlend** - *FXML og App-controller* - [erlenmom](https://gitlab.stud.idi.ntnu.no/erlenmom)
+* **Lukas** - *Domainlogic, JSON, testing, RESTserver, documentation* - [lukasnt](https://gitlab.stud.idi.ntnu.no/lukasnt)
+* **Brage** - *Gradle/Java setup, JUNIT test* - [bragesc](https://gitlab.stud.idi.ntnu.no/bragesc)
+* **Aleksander** - *Domainlogic, JSON, REST-api, documentation* - [aleksawk](https://gitlab.stud.idi.ntnu.no/aleksawk)
+* **Erlend** - *Client-side, UI/frontend, testing, documentation* - [erlenmom](https://gitlab.stud.idi.ntnu.no/erlenmom)
 
 ## User Stories  
 
-Nr. 1: "As a user, i want to read messages from other people."
+"As a user, i want to read messages from other people."
 
-Nr. 2: "As a user I want to have a contacts list that automaticly keeps track of everyone I have communicated with, so that I can easly contact them"
+"As a user, i want to create an account."
+
+"As a user, i want to log in."
+
+"As a user, i want to log out."
+
+"As a user, i want to delete messages."
+
+"As a user, i want to send messages."
+
+"As a sender, I want other users i have received messages from to be easy to contact again."
 
 ## Package diagram of the project
 

@@ -34,6 +34,9 @@ checkstyle {
 
 dependencies {
 	implementation project(':project_core')
+	testImplementation project(':project_restserver')
+	
+    testImplementation 'junit:junit:4.12'
 	
     compile "com.fasterxml.jackson.core:jackson-core:${depVersions.jackson}"
     compile "com.fasterxml.jackson.core:jackson-databind:${depVersions.jackson}"

@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="523.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project_fxui.appController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="523.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project_fxui.AppController">
    <children>
       <SplitPane fx:id="splitPane" prefHeight="523.0" prefWidth="600.0" visible="false">
         <items>
@@ -107,9 +107,9 @@
             <Button fx:id="btnSwitch_CA" layoutX="319.0" layoutY="475.0" mnemonicParsing="false" onAction="#createAccountVisiblity" text="Create Account" />
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="CreateAccountPane" layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="533.0" prefWidth="596.0" visible="false">
+      <AnchorPane fx:id="createAccountPane" layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="533.0" prefWidth="596.0" visible="false">
          <children>
-            <TextField fx:id="txt_C_Email" layoutX="160.0" layoutY="216.0" prefHeight="39.0" prefWidth="276.0" />
+            <TextField fx:id="txtCEmail" layoutX="160.0" layoutY="216.0" prefHeight="39.0" prefWidth="276.0" />
             <Text layoutX="200.0" layoutY="114.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Create Account">
                <font>
                   <Font size="29.0" />
@@ -118,7 +118,7 @@
             <Text layoutX="113.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email:" wrappingWidth="32.0" />
             <Text layoutX="92.0" layoutY="332.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password:" />
             <Button fx:id="btnConfirm" layoutX="272.0" layoutY="436.0" mnemonicParsing="false" onAction="#handleCreateAccount" text="Confirm" />
-            <PasswordField fx:id="txt_C_password" layoutX="160.0" layoutY="308.0" prefHeight="39.0" prefWidth="276.0" />
+            <PasswordField fx:id="txtCpassword" layoutX="160.0" layoutY="308.0" prefHeight="39.0" prefWidth="276.0" />
             <Button fx:id="backButton" layoutX="73.0" layoutY="71.0" mnemonicParsing="false" onAction="#loginVisibility" prefHeight="50.0" prefWidth="58.0" text="Back">
                <font>
                   <Font size="12.0" />
