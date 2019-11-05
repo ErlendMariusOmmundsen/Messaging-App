@@ -102,7 +102,7 @@ Features:
 
 Nr. 1: "As a user, i want to read messages from other people."
 
-Nr. 2: "As a user I want to have a contacts list that automaticly keeps track of everyone I have communicated with, so that I can easly contact them"
+Nr. 2: "As a user I want to have a contacts list that automaticly keeps track of everyone that have sent a message to me, so that I can easly contact them again."
 
 ## Package diagram of the project
 
