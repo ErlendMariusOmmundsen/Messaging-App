@@ -1,6 +1,6 @@
 # Group gr1922 repository
 
-This is currently a messaging application. With the use of REST, it can send messages over the internet if you have a server to spare. 
+This is currently a messaging application where registered users can send messages to each other if they are on the same computer. With the use of REST, it can send messages over the Internet if you have a server to spare. 
 
 About the repository: The project is in /project. The project folder has different modules for all the different part of the code. The modules are:
 * project_core
@@ -80,7 +80,7 @@ All the reports can be found in each module in the realtive path /build/reports.
 
 ## Project Status
 
-We have completed the main functionality of the service, as described in the user story, and made the application restful.
+We have completed the main functionality of the service as planned and added the contacts feature, as described in the user stories, and made the application restful.
 
 Features:
 * Sending messages
@@ -102,7 +102,7 @@ Features:
 
 Nr. 1: "As a user, i want to read messages from other people."
 
-Nr. 2: "As a user I want to have a contacts list that automaticly keeps track of everyone that have contacted me, so that I can easily contact them again"
+Nr. 2: "As a user I want to have a contacts list that automatically keeps track of everyone that have contacted me, so that I can easily contact them again"
 
 ## Package diagram of the project
 
