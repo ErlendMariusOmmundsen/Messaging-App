@@ -62,7 +62,7 @@ Step 2: If you want to generate test reports with jacoco write the following com
 gradle jacocoTestReport
 ```
 
-They will be generated in each module (except api tests are in server) and can be found in /build/jacocoHtml or /build/reports/jacoco/test/html folder relative to the submodule.
+They will be generated in each module and can be found in /build/jacocoHtml or /build/reports/jacoco/test/html folder relative to the submodule.
 
 
 Step 3 (optional): If you want to test, generate test reports and generate checkstyle and spotbugs reports all in one, write the following command:
