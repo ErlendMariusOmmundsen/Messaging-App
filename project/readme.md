@@ -84,7 +84,7 @@ We have completed the main functionality of the service as planned and added the
 
 Features:
 * Sending messages
-* Recieving messages in inbox
+* Receive messages in inbox
 * Creating a user
 * Logging in
 * Deleting messages in inbox
@@ -100,9 +100,19 @@ Features:
 
 ## User Stories  
 
-Nr. 1: "As a user, i want to read messages from other people."
+"As a user, i want to read messages from other people."
 
-Nr. 2: "As a user I want to have a contacts list that automatically keeps track of everyone that have contacted me, so that I can easily contact them again"
+"As a user, i want to create an account."
+
+"As a user, i want to log in."
+
+"As a user, i want to log out."
+
+"As a user, i want to delete messages."
+
+"As a user, i want to send messages."
+
+"As a sender, I want other users i have received messages from to be easy to contact again."
 
 ## Package diagram of the project
 
