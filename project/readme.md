@@ -94,7 +94,7 @@ Features:
 ## Authors
 
 * **Lukas** - *Domainlogic, JSON, testing, RESTserver, documentation* - [lukasnt](https://gitlab.stud.idi.ntnu.no/lukasnt)
-* **Brage** - *Gradle/Java setup* - [bragesc](https://gitlab.stud.idi.ntnu.no/bragesc)
+* **Brage** - *Gradle/Java setup, JUNIT test* - [bragesc](https://gitlab.stud.idi.ntnu.no/bragesc)
 * **Aleksander** - *Domainlogic, JSON, REST-api, documentation* - [aleksawk](https://gitlab.stud.idi.ntnu.no/aleksawk)
 * **Erlend** - *Client-side, UI/frontend, testing, documentation* - [erlenmom](https://gitlab.stud.idi.ntnu.no/erlenmom)
 
