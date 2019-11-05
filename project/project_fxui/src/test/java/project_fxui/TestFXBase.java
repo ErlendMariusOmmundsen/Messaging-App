@@ -10,7 +10,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseButton;
 import javafx.stage.Stage;
 
-public abstract class TestFXBase {
+public abstract class TestFXBase extends ApplicationTest {
 	private FxRobot robot = new FxRobot();
 	@Before
 	public void setUpClass() throws Exception{
