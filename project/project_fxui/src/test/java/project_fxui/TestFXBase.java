@@ -12,7 +12,7 @@ import org.testfx.api.FxToolkit;
 import org.testfx.framework.junit.ApplicationTest;
 
 
-public abstract class TestFxBase {
+public abstract class TestFXBase {
   private FxRobot robot = new FxRobot();
   
   /**
