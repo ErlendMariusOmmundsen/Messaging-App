@@ -1,9 +1,4 @@
 lukasnt@ntnu.no
-eksempel@outlook.com
-Hei tilbake
-Dette er en test
-
-lukasnt@ntnu.no
 test@123.no
 Hei tilbake
 Dette er en test
@@ -14,7 +9,7 @@ Hei tilbake
 Dette er en test
 
 lukasnt@ntnu.no
-newAcc
-This is a test
-Test message
+newTestAccount
+here is for you
+hello
 
