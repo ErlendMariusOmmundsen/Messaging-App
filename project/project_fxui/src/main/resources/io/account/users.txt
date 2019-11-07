@@ -7,7 +7,8 @@ test@example.com	abc123
 from@ex.no	123
 to@ex.no	ex
 123	123
-test@123.no	123
+test@123.no	abc
 1	1
 newAcc	12333
 lukas	123
+newTestAccount	test

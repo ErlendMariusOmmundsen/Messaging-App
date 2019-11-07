@@ -250,7 +250,8 @@ public class AppController {
       displayAlert(AlertType.ERROR, "Couldn't edit the Inbox file", null);
       System.out.println("Couldn't edit the Inbox file");
     }
-
+    
+    clear();
     List<String> subjects = currentAccount.getInbox().getMessages().stream()
         .map(m -> m.getSubject()).collect(Collectors.toList());
     inbox.getItems().clear();
