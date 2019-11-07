@@ -22,6 +22,11 @@ import project_core.Message;
 public class AccountService {
 
   public static final String ACCOUNT_SERVICE_PATH = "accounts";
+  
+  /**
+   * @param account
+   * @return boolean
+   */
 
   @POST
   @Path("/createAccount")
@@ -39,7 +44,12 @@ public class AccountService {
     }
     return creationSuccess;
   }
-
+  
+  /**
+   * 
+   * @param accountName 
+   * @return List
+   */
   @GET
   @Path("/{accountName}/inbox")
   @Consumes(MediaType.APPLICATION_JSON)
@@ -53,6 +63,12 @@ public class AccountService {
     return currentAccount.getInbox().getMessages();
   }
 
+  /**
+   * 
+   * @param message
+   * @param toName
+   * @return boolean
+   */
   @POST
   @Path("/{accountName}/inbox")
   @Consumes(MediaType.APPLICATION_JSON)
@@ -70,7 +86,13 @@ public class AccountService {
     }
     return uploadSuccess;
   }
-
+  
+  /**
+   * 
+   * @param messages
+   * @param email
+   * @return boolean
+   */
   @PUT
   @Path("/{accountName}/inbox")
   @Consumes(MediaType.APPLICATION_JSON)
@@ -91,7 +113,12 @@ public class AccountService {
     }
     return overwriteSuccess;
   }
-
+  
+  /**
+   * 
+   * @param account
+   * @return boolean
+   */
   @POST
   @Path("/isValid")
   @Consumes(MediaType.APPLICATION_JSON)
@@ -103,7 +130,12 @@ public class AccountService {
       return false;
     }
   }
-
+  
+  /**
+   * 
+   * @param accountName
+   * @return Collection
+   */
   @GET
   @Path("/{accountName}/Contacts")
   @Consumes(MediaType.APPLICATION_JSON)
