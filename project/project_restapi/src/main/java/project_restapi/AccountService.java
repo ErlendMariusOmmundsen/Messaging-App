@@ -48,7 +48,7 @@ public class AccountService {
   /**
    * 
    * @param accountName 
-   * @return List
+   * @return List 
    */
   @GET
   @Path("/{accountName}/inbox")
