@@ -17,11 +17,11 @@ Because we are working with multiple modules the settings.gradle in /project is 
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
+The following needs to be installed.
 
 ```
 Gradle
@@ -50,7 +50,7 @@ Or of course make your own account with the create-account menu. (Account name d
 
 ## Running the tests
 
-Step 1: Go to /project in CMD and write the command. For example:
+Step 1: Go to /project in any Terminal and write the command. For example:
 
 ```
 gradle test
@@ -65,7 +65,7 @@ gradle jacocoTestReport
 They will be generated in each module and can be found in /build/jacocoHtml or /build/reports/jacoco/test/html folder relative to the submodule.
 
 
-Step 3 (optional): If you want to test, generate test reports and generate checkstyle and spotbugs reports all in one, write the following command:
+Step 3 (optional): If you want to test (it will not generate jacoco reports), generate checkstyle and spotbugs reports all in one, write the following command:
 
 ```
 gradle check
@@ -113,6 +113,10 @@ Features:
 "As a user, i want to send messages."
 
 "As a sender, I want other users i have received messages from to be easy to contact again."
+
+# Diagrams
+
+The class diagram can be found in the readme for [project_core](project_core/readme.md).
 
 ## Package diagram of the project
 

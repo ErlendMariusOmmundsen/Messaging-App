@@ -23,6 +23,15 @@ public class AccountService {
 
   public static final String ACCOUNT_SERVICE_PATH = "accounts";
 
+  /**
+   * This methods is a POST method that takes an account object that you want to create and save in
+   * the Accounts file.
+   * 
+   * @param account
+   *        object to be saved in the Accounts file.
+   * @return boolean that indicates if this was successful.
+   */
+
   @POST
   @Path("/createAccount")
   @Consumes(MediaType.APPLICATION_JSON)
@@ -40,6 +49,13 @@ public class AccountService {
     return creationSuccess;
   }
 
+  /**
+   * This method is a GET method that returns all the messages in an accounts inbox.
+   * 
+   * @param accountName
+   *        containing the mail of the recipient.
+   * @return List with message objects.
+   */
   @GET
   @Path("/{accountName}/inbox")
   @Consumes(MediaType.APPLICATION_JSON)
@@ -53,6 +69,15 @@ public class AccountService {
     return currentAccount.getInbox().getMessages();
   }
 
+  /**
+   * This method is a POST method that takes a message object and sends it to an account.
+   * 
+   * @param message
+   *        object to be sent.
+   * @param toName
+   *        containing the mail of the recipient.
+   * @return boolean that indicates if this was successful.
+   */
   @POST
   @Path("/{accountName}/inbox")
   @Consumes(MediaType.APPLICATION_JSON)
@@ -71,6 +96,16 @@ public class AccountService {
     return uploadSuccess;
   }
 
+  /**
+   * This method overwrites all the messages in the inbox of the given account with a set of new,
+   * not necessarily distinct, messages.
+   * 
+   * @param messages
+   *        of message objects.
+   * @param email
+   *        containing the mail of the account which inbox should be overwritten.
+   * @return boolean that indicates if this was successful.
+   */
   @PUT
   @Path("/{accountName}/inbox")
   @Consumes(MediaType.APPLICATION_JSON)
@@ -81,7 +116,7 @@ public class AccountService {
     Account account = new Account(email);
     Inbox inbox = account.getInbox();
     try {
-      if (!(messages.size() == 1 && messages.get(0).equals(Message.emptyMessage))) {        
+      if (!(messages.size() == 1 && messages.get(0).equals(Message.emptyMessage))) {
         inbox.getMessages().addAll(messages);
       }
       inbox.uploadInbox();
@@ -92,6 +127,13 @@ public class AccountService {
     return overwriteSuccess;
   }
 
+  /**
+   * This method takes an account and checks if the account/password combination is valid.
+   * 
+   * @param account
+   *        object to check.
+   * @return boolean that indicates if the account is valid or not.
+   */
   @POST
   @Path("/isValid")
   @Consumes(MediaType.APPLICATION_JSON)
@@ -104,6 +146,13 @@ public class AccountService {
     }
   }
 
+  /**
+   * This method takes an account and returns all accounts that have messaged said account.
+   * 
+   * @param accountName
+   *        containing the mail of the account.
+   * @return Collection of account objects.
+   */
   @GET
   @Path("/{accountName}/Contacts")
   @Consumes(MediaType.APPLICATION_JSON)
