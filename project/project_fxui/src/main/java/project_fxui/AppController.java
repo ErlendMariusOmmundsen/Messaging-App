@@ -83,6 +83,7 @@ public class AppController {
     loginPane.setVisible(true);
     splitPane.setVisible(false);
     createAccountPane.setVisible(false);
+    clear();
   }
 
   /**
@@ -108,6 +109,8 @@ public class AppController {
     toComboBox.setValue("");
     fromField.setText("");
     subjectField.setText("");
+    txtCEmail.setText("");
+    txtCpassword.setText("");
   }
 
   /**
